@@ -19,104 +19,102 @@ end
 
 -- Have packer use a popup window
 packer.init({
-  display = {
-    open_fn = function()
-      return require('packer.util').float({ border = 'none' })
-    end,
-  },
+    display = {
+        open_fn = function()
+          return require('packer.util').float({ border = 'none' })
+        end,
+    },
 })
 
 return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim' -- Allow packer to manage itself
+      use 'wbthomason/packer.nvim' -- Allow packer to manage itself
 
-  -- Colors
-  use 'navarasu/onedark.nvim'
-  use 'ellisonleao/gruvbox.nvim'
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+      -- Colors
+      use 'navarasu/onedark.nvim'
+      use 'ellisonleao/gruvbox.nvim'
+      use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
-  -- LSP setup
-  use { 'neovim/nvim-lspconfig',
-    requires = {
-      { 'williamboman/mason.nvim' }, -- Easily install language servers
-      { 'williamboman/mason-lspconfig.nvim' }, -- Integrate language servers installed through Mason
-      { "jose-elias-alvarez/null-ls.nvim" }, -- Allows non-lsp sources to hook into Neovim's lsp system to provide formatting and linting.
-      { "jay-babu/mason-null-ls.nvim" }, -- Allows for automatic setup of linters and formatters installed via Mason
-      { 'simrat39/rust-tools.nvim' }, -- Better rust language support
-      { 'j-hui/fidget.nvim' }, -- Displays LSP setup progress in lower-right-hand corner
-      -- { 'weilbith/nvim-code-action-menu' }, -- Code actions in a popup
-    }
-  }
+      -- LSP setup
+      use { 'neovim/nvim-lspconfig',
+          requires = {
+              { 'williamboman/mason.nvim' }, -- Easily install language servers
+              { 'williamboman/mason-lspconfig.nvim' }, -- Integrate language servers installed through Mason
+              { "jose-elias-alvarez/null-ls.nvim" }, -- Allows non-lsp sources to hook into Neovim's lsp system to provide formatting and linting.
+              { "jay-babu/mason-null-ls.nvim" }, -- Allows for automatic setup of linters and formatters installed via Mason
+              { 'simrat39/rust-tools.nvim' }, -- Better rust language support
+              { 'j-hui/fidget.nvim' }, -- Displays LSP setup progress in lower-right-hand corner
+              -- { 'weilbith/nvim-code-action-menu' }, -- Code actions in a popup
+          }
+      }
 
-  -- Autocompletion and snippets
-  use { 'hrsh7th/nvim-cmp',
-    requires = {
-      { 'hrsh7th/cmp-nvim-lsp' }, -- Completions from Neovim's built-in LSP client
-      { 'hrsh7th/cmp-buffer' }, -- Completions from text in buffer
-      { 'hrsh7th/cmp-path' }, -- Completions from file paths
-      { 'hrsh7th/cmp-cmdline' }, -- Completions for the command line
-      { 'hrsh7th/cmp-nvim-lua' }, -- Completions specific for Neovim's lua
-      { 'saadparwaiz1/cmp_luasnip' }, -- Completions from luasnip
-      { 'L3MON4D3/LuaSnip' }, -- This provides snippets to CMP
-      { 'rafamadriz/friendly-snippets' }, -- A huge collection of snippets for a variety of languages
-    }
-  }
+      -- Autocompletion and snippets
+      use { 'hrsh7th/nvim-cmp',
+          requires = {
+              { 'hrsh7th/cmp-nvim-lsp' }, -- Completions from Neovim's built-in LSP client
+              { 'hrsh7th/cmp-buffer' }, -- Completions from text in buffer
+              { 'hrsh7th/cmp-path' }, -- Completions from file paths
+              { 'hrsh7th/cmp-cmdline' }, -- Completions for the command line
+              { 'hrsh7th/cmp-nvim-lua' }, -- Completions specific for Neovim's lua
+              { 'saadparwaiz1/cmp_luasnip' }, -- Completions from luasnip
+              { 'L3MON4D3/LuaSnip' }, -- This provides snippets to CMP
+              { 'rafamadriz/friendly-snippets' }, -- A huge collection of snippets for a variety of languages
+          }
+      }
 
-  -- Document Symbols
-  use 'stevearc/aerial.nvim'
+      -- Document Symbols
+      use 'simrat39/symbols-outline.nvim'
 
-  -- Fuzzy finder
-  use { 'nvim-telescope/telescope.nvim',
-    tag = '0.1.1',
-    requires = 'nvim-lua/plenary.nvim'
-  }
+      -- Fuzzy finder
+      use { 'nvim-telescope/telescope.nvim',
+          tag = '0.1.1',
+          requires = 'nvim-lua/plenary.nvim'
+      }
 
-  -- bufferline
-  use { 'akinsho/bufferline.nvim',
-    tag = "v3.*",
-    requires = 'nvim-tree/nvim-web-devicons'
-  }
+      -- bufferline
+      use { 'akinsho/bufferline.nvim',
+          tag = "v3.*",
+          requires = 'nvim-tree/nvim-web-devicons'
+      }
 
-  -- Statusline
-  use 'nvim-lualine/lualine.nvim'
+      -- Statusline
+      use 'nvim-lualine/lualine.nvim'
 
-  -- File explorer
-  use { 'nvim-neo-tree/neo-tree.nvim',
-    branch = 'v2.x',
-    requires = {
-      'nvim-lua/plenary.nvim',
-      'nvim-tree/nvim-web-devicons',
-      'MunifTanjim/nui.nvim',
-    }
-  }
+      -- File explorer
+      use { 'nvim-tree/nvim-tree.lua',
+          requires = {
+              'nvim-tree/nvim-web-devicons', -- optional, for file icons
+          },
+          tag = 'nightly' -- optional, updated every week. (see issue #1193)
+      }
 
-  -- Better exiting buffers
-  use { 'moll/vim-bbye',
-    config = function()
-      -- Register keymaps
-      require('core.keymaps').bbye()
-    end
-  }
+      -- Better exiting buffers
+      use { 'moll/vim-bbye',
+          config = function()
+            -- Register keymaps
+            require('core.keymaps').bbye()
+          end
+      }
 
-  -- Easily comment stuff
-  use { 'numToStr/Comment.nvim',
-    config = function()
-      require('Comment').setup()
-    end
-  }
+      -- Easily comment stuff
+      use { 'numToStr/Comment.nvim',
+          config = function()
+            require('Comment').setup()
+          end
+      }
 
-  -- Git integration
-  use 'lewis6991/gitsigns.nvim'
+      -- Git integration
+      use 'lewis6991/gitsigns.nvim'
 
-  -- Better popup for
-  use 'hood/popui.nvim'
+      -- Better popup for
+      use 'hood/popui.nvim'
 
-  -- Zen mode
-  use 'folke/zen-mode.nvim'
+      -- Zen mode
+      use 'folke/zen-mode.nvim'
 
-  -- Dim/Tint inactive windows
-  use 'levouh/tint.nvim'
+      -- Dim/Tint inactive windows
+      use 'levouh/tint.nvim'
 
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
+      if packer_bootstrap then
+        require('packer').sync()
+      end
+    end)

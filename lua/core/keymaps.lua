@@ -71,9 +71,9 @@ M.zenmode = function()
   keymap("n", "<leader>z", ":ZenMode<CR>", opts)
 end
 
-M.neotree = function()
-  keymap("n", "<leader>e", ":NeoTreeFocusToggle<CR>", opts)
-  keymap("n", "<leader>o", ":NeoTreeFocus<CR>", opts)
+M.nvimtree = function()
+  keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+  keymap("n", "<leader>o", ":NvimTreeFocus<CR>", opts)
 end
 
 M.bbye = function()
@@ -81,8 +81,8 @@ M.bbye = function()
   keymap("n", "<leader>X", ":Bdelete!<CR>", opts)
 end
 
-M.aerial = function()
-  keymap("n", "<leader>lo", ":AerialToggle<CR>", opts)
+M.symbols_outline = function()
+  keymap("n", "<leader>lo", ":SymbolsOutline<CR>", opts)
 end
 
 M.lsp = function(bufnr)
