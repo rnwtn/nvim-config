@@ -1,5 +1,5 @@
 -- Setup keymaps
-require("core.keymaps").nvimtree()
+require("user.keymaps").nvimtree()
 
 require("nvim-tree").setup({
     sort_by = "case_sensitive",
@@ -13,7 +13,7 @@ require("nvim-tree").setup({
         },
     },
     renderer = {
-        group_empty = true,
+        group_empty = false,
     },
     filters = {
         dotfiles = true,

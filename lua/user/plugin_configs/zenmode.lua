@@ -5,7 +5,7 @@ if not zenmode_ok then
 end
 
 -- Setup keymaps
-require("core.keymaps").zenmode()
+require("user.keymaps").zenmode()
 
 zenmode.setup {
   window = {

@@ -2,7 +2,7 @@ vim.ui.select =  require("popui.ui-overrider")
 vim.ui.input = require"popui.input-overrider"
 
 -- Available styles: "sharp" | "rounded" | "double"
-vim.g['popui_border_style'] = 'sharp'
+vim.g['popui_border_style'] = 'rounded'
 
 -- Update appearance
 -- hi PopuiCoordinates guifg=#6A1010 ctermfg=Red

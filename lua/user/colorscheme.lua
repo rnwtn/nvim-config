@@ -1,3 +1,42 @@
+local telescope_bg = '#32302f'
+local telescope_bg2 = '#3c3836'
+local telescope_fg = '#f2e5bc'
+local telescope_green = '#b8bb26'
+local telescope_red = '#fb4934'
+
+require("gruvbox").setup({
+  undercurl = true,
+  underline = true,
+  bold = true,
+  italic = true,
+  strikethrough = true,
+  invert_selection = false,
+  invert_signs = false,
+  invert_tabline = false,
+  invert_intend_guides = false,
+  inverse = true, -- invert background for search, diffs, statuslines and errors
+  contrast = "", -- can be "hard", "soft" or empty string
+  palette_overrides = {},
+  overrides = {
+     -- TelescopeBorder = { fg = '$bg2', bg = '$bg1' },
+     -- TelescopeNormal = { bg = '$bg1' },
+     TelescopePreviewBorder = { fg = telescope_bg, bg = telescope_bg },
+     TelescopePreviewNormal = { bg = telescope_bg },
+     TelescopePreviewTitle = { fg = telescope_bg, bg = telescope_green },
+     TelescopePromptBorder = { fg = telescope_bg2, bg = telescope_bg2 },
+     TelescopePromptNormal = { fg = telescope_fg, bg = telescope_bg2 },
+     TelescopePromptPrefix = { fg = telescope_red, bg = telescope_bg2 },
+     TelescopePromptTitle = { fg = telescope_bg, bg = telescope_red },
+     TelescopeResultsBorder = { fg = telescope_bg, bg = telescope_bg },
+     TelescopeResultsNormal = { bg = telescope_bg },
+     TelescopeResultsTitle = { fg = telescope_bg, bg = telescope_bg },
+  },
+  dim_inactive = false,
+  transparent_mode = false,
+})
+
+vim.cmd("colorscheme gruvbox")
+
 -- Lua
 -- require('onedark').setup {
 --     -- Main options --
@@ -56,42 +95,3 @@
 
 -- setup must be called before loading the colorscheme
 -- Default options:
-
-local telescope_bg = '#32302f'
-local telescope_bg2 = '#3c3836'
-local telescope_fg = '#f2e5bc'
-local telescope_green = '#b8bb26'
-local telescope_red = '#fb4934'
-
-require("gruvbox").setup({
-  undercurl = true,
-  underline = true,
-  bold = true,
-  italic = true,
-  strikethrough = true,
-  invert_selection = false,
-  invert_signs = false,
-  invert_tabline = false,
-  invert_intend_guides = false,
-  inverse = true, -- invert background for search, diffs, statuslines and errors
-  contrast = "", -- can be "hard", "soft" or empty string
-  palette_overrides = {},
-  overrides = {
-     -- TelescopeBorder = { fg = '$bg2', bg = '$bg1' },
-     -- TelescopeNormal = { bg = '$bg1' },
-     TelescopePreviewBorder = { fg = telescope_bg, bg = telescope_bg },
-     TelescopePreviewNormal = { bg = telescope_bg },
-     TelescopePreviewTitle = { fg = telescope_bg, bg = telescope_green },
-     TelescopePromptBorder = { fg = telescope_bg2, bg = telescope_bg2 },
-     TelescopePromptNormal = { fg = telescope_fg, bg = telescope_bg2 },
-     TelescopePromptPrefix = { fg = telescope_red, bg = telescope_bg2 },
-     TelescopePromptTitle = { fg = telescope_bg, bg = telescope_red },
-     TelescopeResultsBorder = { fg = telescope_bg, bg = telescope_bg },
-     TelescopeResultsNormal = { bg = telescope_bg },
-     TelescopeResultsTitle = { fg = telescope_bg, bg = telescope_bg },
-  },
-  dim_inactive = false,
-  transparent_mode = false,
-})
-
-vim.cmd("colorscheme gruvbox")

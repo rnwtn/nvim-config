@@ -16,7 +16,7 @@ local lsp_on_attach = function(client, bufnr)
   --end
 
   -- Keymaps
-  local keymaps = require("core.keymaps")
+  local keymaps = require("user.keymaps")
   keymaps.lsp(bufnr)
 
   -- use Telescope for definitions and references
@@ -47,7 +47,7 @@ require("mason").setup({
 })
 
 require("mason-lspconfig").setup({
-    ensure_installed = { "sumneko_lua", "rust_analyzer" },
+    ensure_installed = { "lua_ls", "rust_analyzer" },
 })
 
 require("mason-lspconfig").setup_handlers {
@@ -69,8 +69,8 @@ require("mason-lspconfig").setup_handlers {
           }
       }
     end,
-    ["sumneko_lua"] = function()
-      require('lspconfig').sumneko_lua.setup {
+    ["lua_ls"] = function()
+      require('lspconfig').lua_ls.setup {
           on_attach = lsp_on_attach,
           settings = {
               Lua = {

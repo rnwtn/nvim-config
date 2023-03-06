@@ -107,6 +107,8 @@ M.lsp_telescope = function(bufnr)
   bufkeymap(bufnr, "n", "gd", ":Telescope lsp_definitions<cr>", opts)
   bufkeymap(bufnr, "n", "gr", ":Telescope lsp_references<cr>", opts)
   bufkeymap(bufnr, "n", "gi", ":Telescope lsp_implementations<cr>", opts)
+  bufkeymap(bufnr, "n", "go", ":Telescope lsp_document_symbols<CR>", opts)
+  bufkeymap(bufnr, "n", "gO", ":Telescope lsp_workspace_symbols<CR>", opts)
   bufkeymap(bufnr, "n", "<leader>fs", ":Telescope lsp_document_symbols<CR>", opts)
   bufkeymap(bufnr, "n", "<leader>fS", ":Telescope lsp_workspace_symbols<CR>", opts)
 end

@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 -- Setup keymaps
-require("core.keymaps").telescope();
+require("user.keymaps").telescope();
 
 local actions = require "telescope.actions"
 
