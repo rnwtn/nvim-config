@@ -55,7 +55,7 @@ require("neodev").setup({ -- Setup neodev before the lus_ls server
   library = { plugins = { "nvim-dap-ui" }, types = true },
 })
 require("mason-lspconfig").setup({
-  ensure_installed = { "lua_ls", "rust_analyzer", "texlab" },
+  ensure_installed = { "lua_ls", "rust_analyzer", --[[ "texlab" ]] },
 })
 require("mason-lspconfig").setup_handlers {
   -- The first entry (without a key) will be the default handler
@@ -118,16 +118,16 @@ vim.g.code_action_menu_window_border = 'single'
 require("fidget").setup()
 
 -- Setup null-ls
--- require("mason-null-ls").setup({
---     ensure_installed = {
---         -- Opt to list sources here, when available in mason.
---     },
---     automatic_installation = false,
---     automatic_setup = true, -- Recommended, but optional
--- })
--- require("null-ls").setup{
---     sources = {
---         -- Anything not supported by mason.
---     }
--- }
--- require 'mason-null-ls'.setup_handlers() -- If `automatic_setup` is true.
+require("mason-null-ls").setup({
+  ensure_installed = {
+    -- Opt to list sources here, when available in mason.
+  },
+  automatic_installation = false,
+  automatic_setup = true, -- Recommended, but optional
+})
+require("null-ls").setup {
+  sources = {
+    -- Anything not supported by mason.
+  }
+}
+require 'mason-null-ls'.setup_handlers() -- If `automatic_setup` is true.

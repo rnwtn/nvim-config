@@ -158,4 +158,8 @@ M.toggle_term = function()
   vim.keymap.set("t", "<C-\\>", require("toggleterm").toggle_all, {})
 end
 
+M.ft_latex = function(bufnr)
+  vim.keymap.set("n", "<Leader>c", ":!tectonic %<cr>", { buffer = bufnr })
+end
+
 return M

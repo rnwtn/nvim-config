@@ -1,1 +1,1 @@
-vim.opt.wrap = true -- set word wrap for LaTeX decouments
+-- vim.opt.wrap = true -- set word wrap for LaTeX decouments
