@@ -159,7 +159,7 @@ M.toggle_term = function()
 end
 
 M.ft_latex = function(bufnr)
-  vim.keymap.set("n", "<Leader>c", ":!tectonic %<cr>", { buffer = bufnr })
+  vim.keymap.set("n", "<Leader>c", ":!lualatex %<cr>", { buffer = bufnr })
 end
 
 return M
