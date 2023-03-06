@@ -71,6 +71,9 @@ M.general = function()
 
   -- Reload colorscheme
   --keymap("n", "<leader><leader>", require("colorscheme").reload, opts)
+
+  -- Setup compilation keymap on fly
+  keymap("n", "<Leader>C", ":map <lt>leader>c :!<lt>cr><left><left><left><left>", {})
 end
 
 M.zenmode = function()
