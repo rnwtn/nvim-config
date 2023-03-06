@@ -136,7 +136,7 @@ end
 
 M.dap = function()
   keymap("n", "<leader>du", ":lua require('dapui').toggle({ reset = true })<cr>", opts)
-  keymap("n", "<leader>dh", ":PBToggleBreakpoint<cr>", opts)
+  keymap("n", "<leader>dh", ":DapToggleBreakpoint<cr>", opts)
   keymap("n", "<leader>dH", ":PBSetConditionalBreakpoint<cr>", opts)
   keymap("n", "<leader>dg", ":lua require('dap').goto_(vim.api.nvim_win_get_cursor(0)[1])<cr>", opts)
   keymap("n", "<F5>", ":DapContinue<cr>", opts)

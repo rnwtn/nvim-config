@@ -31,11 +31,22 @@ require("lazy").setup({
       { 'williamboman/mason-lspconfig.nvim' }, -- Integrate language servers installed through Mason
       { "jose-elias-alvarez/null-ls.nvim" }, -- Allows non-lsp sources to hook into Neovim's lsp system to provide formatting and linting.
       { "jay-babu/mason-null-ls.nvim" }, -- Allows for automatic setup of linters and formatters installed via Mason
+      { 'folke/neodev.nvim' }, -- Better support for neovim lua
       { 'simrat39/rust-tools.nvim' }, -- Better rust language support
       { 'j-hui/fidget.nvim' }, -- Displays LSP setup progress in lower-right-hand corner
       -- { 'weilbith/nvim-code-action-menu' }, -- Code actions in a popup
     },
     config = function() require("user.plugin_configs.lsp") end,
+  },
+
+  -- DAP setup
+  { 'mfussenegger/nvim-dap',
+    dependencies = {
+      { 'williamboman/mason.nvim' }, -- Easily install debug adapters
+      { 'rcarriga/nvim-dap-ui' }, -- A more user-friendly UI for nvim-dap
+      { 'theHamsta/nvim-dap-virtual-text' }, -- Debug information displayed alongside code
+    },
+    config = function() require("user.plugin_configs.dap") end,
   },
 
   -- Autocompletion and snippets
