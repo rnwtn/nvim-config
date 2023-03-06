@@ -125,4 +125,9 @@ require("lazy").setup({
     { 'folke/zen-mode.nvim',
         config = function() require('user.plugin_configs.zenmode') end,
     },
+
+    -- Color RGB hexcodes
+    { 'NvChad/nvim-colorizer.lua',
+        config = function() require('user.plugin_configs.nvim_colorizer') end
+    },
 }, opts)
