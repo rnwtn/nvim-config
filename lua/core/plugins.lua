@@ -113,6 +113,9 @@ return require('packer').startup(function(use)
   -- Zen mode
   use 'folke/zen-mode.nvim'
 
+  -- Dim/Tint inactive windows
+  use 'levouh/tint.nvim'
+
   if packer_bootstrap then
     require('packer').sync()
   end
