@@ -77,7 +77,7 @@ require("mason-lspconfig").setup_handlers {
       dap = {
         adapter = require('rust-tools.dap').get_codelldb_adapter(
           "codelldb",
-          "/home/rhett/.local/share/nvim/mason/packages/codelldb/extension/lldb/lib/liblldb.so"
+          vim.fn.expand("~/.local/share/nvim/mason/packages/codelldb/extension/lldb/lib/liblldb.so")
         )
       }
     }
