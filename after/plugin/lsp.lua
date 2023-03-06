@@ -116,9 +116,17 @@ require("mason-lspconfig").setup_handlers {
 -- Gives status updates in the lower-right corner as the lsp is being configured
 require("fidget").setup()
 
-if true then return end
-
 -- Setup null-ls
-require("mason-null-ls").setup({
-  automatic_setup = true,
-})
+-- require("mason-null-ls").setup({
+--     ensure_installed = {
+--         -- Opt to list sources here, when available in mason.
+--     },
+--     automatic_installation = false,
+--     automatic_setup = true, -- Recommended, but optional
+-- })
+-- require("null-ls").setup{
+--     sources = {
+--         -- Anything not supported by mason.
+--     }
+-- }
+-- require 'mason-null-ls'.setup_handlers() -- If `automatic_setup` is true.
