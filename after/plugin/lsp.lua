@@ -37,7 +37,7 @@ end
 
 require("mason").setup({
   ui = {
-    border = "rounded", -- Accepts same border values as |nvim_open_win()|
+    border = "none", -- Accepts same border values as |nvim_open_win()|
     icons = {
       package_installed = "✓",
       package_pending = "➜",
