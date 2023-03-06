@@ -146,5 +146,11 @@ require("lazy").setup({
     config = function()
       require("user.keymaps").toggle_term()
       require("toggleterm").setup()
-    end }
+    end
+  },
+
+  -- auto-close parentheses, brackets, and others
+  { 'windwp/nvim-autopairs',
+    config = function() require('nvim-autopairs').setup {} end
+  },
 }, opts)
