@@ -29,7 +29,20 @@ require('onedark').setup {
 
   -- Custom Highlights --
   colors = {}, -- Override default colors
-  highlights = {}, -- Override highlight groups
+  highlights = {
+    TelescopeBorder = { fg = '$bg2', bg = '$bg1' },
+    TelescopeNormal = { bg = '$bg1' },
+    TelescopePreviewBorder = { fg = '$bg1', bg = '$bg1' },
+    TelescopePreviewNormal = { bg = '$bg1' },
+    TelescopePreviewTitle = { fg = '$bg1', bg = '$green' },
+    TelescopePromptBorder = { fg = '$bg2', bg = '$bg2' },
+    TelescopePromptNormal = { fg = '$fg', bg = '$bg2' },
+    TelescopePromptPrefix = { fg = '$red', bg = '$bg2' },
+    TelescopePromptTitle = { fg = '$bg1', bg = '$red' },
+    TelescopeResultsBorder = { fg = '$bg1', bg = '$bg1' },
+    TelescopeResultsNormal = { bg = '$bg1' },
+    TelescopeResultsTitle = { fg = '$bg1', bg = '$bg1' },
+  },
 
   -- Plugins Config --
   diagnostics = {

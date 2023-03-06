@@ -14,8 +14,8 @@ local actions = require "telescope.actions"
 telescope.setup {
   defaults = {
     file_ignore_patterns = {".git/", "node_modules/", "%.o", "%.a", "%.out", "%.class", "%.pdf", "%.mkv", "%.mp4", "%.zip"},
-    prompt_prefix = " ",
-    selection_caret = " ",
+    -- prompt_prefix = " ",
+    -- selection_caret = " ",
     -- border = true,
     -- borderchars =  { " ", " ", " ", " ", " ", " ", " ", " " },
 
