@@ -3,11 +3,8 @@ if not status_ok then
   return
 end
 
--- register telescope keymaps
-vim.keymap.set("n", "<leader>ff", ":Telescope find_files<cr>")
-vim.keymap.set("n", "<leader>fw", ":Telescope live_grep<cr>")
-vim.keymap.set("n", "<leader>fb", ":Telescope buffers<cr>")
-vim.keymap.set("n", "<leader>fh", ":Telescope help_tags<cr>")
+-- Setup keymaps
+require("core.keymaps").telescope();
 
 local actions = require "telescope.actions"
 

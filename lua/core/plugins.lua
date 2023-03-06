@@ -67,6 +67,12 @@ return require('packer').startup(function(use)
     requires = 'nvim-lua/plenary.nvim'
   }
 
+  -- bufferline
+  use { 'akinsho/bufferline.nvim',
+    tag = "v3.*",
+    requires = 'nvim-tree/nvim-web-devicons'
+  }
+
   -- Statusline
   use 'nvim-lualine/lualine.nvim'
 
@@ -78,6 +84,14 @@ return require('packer').startup(function(use)
       'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
       'MunifTanjim/nui.nvim',
     }
+  }
+
+  -- Better exiting buffers
+  use { 'moll/vim-bbye',
+    config = function()
+      -- Register keymaps
+      require('core.keymaps').bbye()
+    end
   }
 
   -- Easily comment stuff

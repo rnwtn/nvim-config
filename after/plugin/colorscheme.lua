@@ -52,9 +52,3 @@ require('onedark').setup {
   },
 }
 require('onedark').load()
-
--- Configure Telescope view
-local telescope_ok, telescope = pcall(require, "telescope")
-if not telescope_ok then
-  return
-end

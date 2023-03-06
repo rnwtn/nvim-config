@@ -16,36 +16,19 @@ local lsp_on_attach = function(client, bufnr)
   --end
 
   -- Keymaps
-  local bufkeymap = vim.api.nvim_buf_set_keymap
-  local opts = { noremap = true, silent = true }
-  bufkeymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  bufkeymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-  bufkeymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  bufkeymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  bufkeymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  bufkeymap(bufnr, "n", "<leader>lk", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-  bufkeymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  bufkeymap(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-  bufkeymap(bufnr, "n", "<leader>ld", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-  bufkeymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-  bufkeymap(bufnr, "n", "<leader>l[", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
-  bufkeymap(bufnr, "n", "<leader>l]", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
-  bufkeymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
-  bufkeymap(bufnr, "n", "<leader>lo", "<cmd>SymbolsOutline<CR>", opts)
+  local keymaps = require("core.keymaps")
+  keymaps.lsp(bufnr)
 
   -- use Telescope for definitions and references
+  --
   local has_telescope, _ = pcall(require, "telescope")
   if has_telescope then
-    bufkeymap(bufnr, "n", "gd", ":Telescope lsp_definitions<cr>", opts)
-    bufkeymap(bufnr, "n", "gr", ":Telescope lsp_references<cr>", opts)
-    bufkeymap(bufnr, "n", "gi", ":Telescope lsp_implementations<cr>", opts)
+    keymaps.lsp_telescope(bufnr)
   end
 
   -- overwrite some keymappings for rust-tools
   if client.name == "rust_analyzer" then
-    local rust_tools = require("rust-tools")
-    vim.keymap.set("n", "K", rust_tools.hover_actions.hover_actions, { buffer = bufnr })
-    vim.keymap.set("n", "<Leader>la", rust_tools.code_action_group.code_action_group, { buffer = bufnr })
+    keymaps.lsp_rust_tools(bufnr)
   end
 
   -- add format command

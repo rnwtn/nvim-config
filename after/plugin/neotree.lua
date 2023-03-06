@@ -1,10 +1,13 @@
 local neotree = require("neo-tree")
 
+-- Setup keymaps
+require("core.keymaps").neotree()
+
 -- Unless you are still migrating, remove the deprecated commands from v1.x
 vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
 neotree.setup({
-  close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
+  close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
   popup_border_style = "rounded",
   enable_git_status = true,
   enable_diagnostics = true,
@@ -63,7 +66,7 @@ neotree.setup({
         -- Status type
         untracked = "",
         ignored   = "",
-        unstaged  = "",
+        unstaged  = "u",--"",
         staged    = "",
         conflict  = "",
       }
@@ -205,7 +208,3 @@ neotree.setup({
   }
 })
 
-local keymap = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
-keymap("n", "<leader>e", ":NeoTreeFocusToggle<CR>", opts)
-keymap("n", "<leader>o", ":NeoTreeFocus<CR>", opts)

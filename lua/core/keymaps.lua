@@ -27,9 +27,6 @@ M.general = function()
   keymap("n", "<C-k>", "<C-w>k", opts)
   keymap("n", "<C-l>", "<C-w>l", opts)
 
-  -- Open Lexplore
-  keymap("n", "<leader>e", ":Lex 30 <CR>", opts)
-
   -- Resize with arrows
   keymap("n", "<C-Up>", ":resize -2<CR>", opts)
   keymap("n", "<C-Down>", ":resize +2<CR>", opts)
@@ -39,8 +36,6 @@ M.general = function()
   -- Navigate buffers
   keymap("n", "<S-l>", ":bnext<CR>", opts)
   keymap("n", "<S-h>", ":bprevious<CR>", opts)
-  keymap("n", "<leader>x", ":Bdelete<CR>", opts)
-  keymap("n", "<leader>X", ":Bdelete!<CR>", opts)
 
   -- Escape unhighlights search results
   keymap("n", "<ESC>", ":noh<CR>", opts)
@@ -69,7 +64,17 @@ M.general = function()
   --[[ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts) ]]
 
   -- Reload colorscheme
-  --vim.keymap.set("n", "<leader><leader>", require("colorscheme").reload, opts)
+  --keymap("n", "<leader><leader>", require("colorscheme").reload, opts)
+end
+
+M.neotree = function()
+  keymap("n", "<leader>e", ":NeoTreeFocusToggle<CR>", opts)
+  keymap("n", "<leader>o", ":NeoTreeFocus<CR>", opts)
+end
+
+M.bbye = function()
+  keymap("n", "<leader>x", ":Bdelete<CR>", opts)
+  keymap("n", "<leader>X", ":Bdelete!<CR>", opts)
 end
 
 M.lsp = function(bufnr)
@@ -77,6 +82,7 @@ M.lsp = function(bufnr)
   bufkeymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
   bufkeymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
   bufkeymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+  bufkeymap(bufnr, "n", "gl", '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>', opts)
   bufkeymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
   bufkeymap(bufnr, "n", "<leader>lk", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   bufkeymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
@@ -87,23 +93,21 @@ M.lsp = function(bufnr)
   bufkeymap(bufnr, "n", "<leader>l]", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
   bufkeymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
   bufkeymap(bufnr, "n", "<leader>lo", "<cmd>SymbolsOutline<CR>", opts)
-  bufkeymap(bufnr, "n", "gl", '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>', opts)
 end
 
+-- overwrites some LSP keymaps
+--   should be called after lsp only if Telescope is installed
 M.lsp_telescope = function(bufnr)
-  -- overwrites some LSP keymaps
-  --   should be called after lsp only if Telescope is installed
   bufkeymap(bufnr, "n", "gd", ":Telescope lsp_definitions<cr>", opts)
   bufkeymap(bufnr, "n", "gr", ":Telescope lsp_references<cr>", opts)
   bufkeymap(bufnr, "n", "gi", ":Telescope lsp_implementations<cr>", opts)
 end
 
-M.lsp_rust_tools = function(bufnr, rust_tools)
-  -- overwrites some LSP keymaps
-  --   should be called after lsp if using rust_tools
-  -- Hover actions
+-- overwrites some LSP keymaps
+--   should be called after lsp only if rust_tools is installed
+M.lsp_rust_tools = function(bufnr)
+  local rust_tools = require('rust_tools')
   vim.keymap.set("n", "K", rust_tools.hover_actions.hover_actions, { buffer = bufnr })
-  -- Code action groups
   vim.keymap.set("n", "<Leader>la", rust_tools.code_action_group.code_action_group, { buffer = bufnr })
 end
 
@@ -123,10 +127,6 @@ M.dap = function()
   keymap("n", "<F10>", ":DapStepOver<cr>", opts)
   keymap("n", "<F12>", ":DapStepInto<cr>", opts)
   keymap("n", "<S-F12>", ":DapStepOut<cr>", opts)
-end
-
-M.nvim_tree = function()
-  keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 end
 
 M.toggle_term = function()
