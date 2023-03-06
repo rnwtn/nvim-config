@@ -143,10 +143,7 @@ require("lazy").setup({
   },
 
   { 'akinsho/toggleterm.nvim',
-    config = function()
-      require("user.keymaps").toggle_term()
-      require("toggleterm").setup()
-    end
+    config = function() require('user.plugin_configs.toggleterm') end
   },
 
   -- auto-close parentheses, brackets, and others
