@@ -10,7 +10,8 @@ local actions = require "telescope.actions"
 
 telescope.setup {
   defaults = {
-    file_ignore_patterns = {".git/", "node_modules/", "%.o", "%.a", "%.out", "%.class", "%.pdf", "%.mkv", "%.mp4", "%.zip"},
+    file_ignore_patterns = { ".git/", "node_modules/", "%.o", "%.a", "%.out", "%.class", "%.pdf", "%.mkv", "%.mp4",
+      "%.zip" },
     -- prompt_prefix = " ",
     -- selection_caret = " ",
     -- border = true,
@@ -38,8 +39,16 @@ telescope.setup {
         ["<C-p>"] = actions.cycle_history_prev,
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
+        ["<Tab>"] = actions.move_selection_worse,
+        ["<S-Tab>"] = actions.move_selection_better,
       },
-      n = { ["q"] = actions.close },
+      n = {
+        ["q"] = actions.close,
+        ["<Tab>"] = actions.move_selection_worse,
+        ["<S-Tab>"] = actions.move_selection_better,
+        ["m"] = actions.toggle_selection + actions.move_selection_worse,
+        ["M"] = actions.toggle_selection + actions.move_selection_better,
+      },
     },
 
 
@@ -132,4 +141,3 @@ telescope.setup {
   --   -- please take a look at the readme of the extension you want to configure
   -- },
 }
-

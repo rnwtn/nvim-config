@@ -67,6 +67,10 @@ M.general = function()
   --keymap("n", "<leader><leader>", require("colorscheme").reload, opts)
 end
 
+M.zenmode = function()
+  keymap("n", "<leader>z", ":ZenMode<CR>", opts)
+end
+
 M.neotree = function()
   keymap("n", "<leader>e", ":NeoTreeFocusToggle<CR>", opts)
   keymap("n", "<leader>o", ":NeoTreeFocus<CR>", opts)
@@ -77,12 +81,15 @@ M.bbye = function()
   keymap("n", "<leader>X", ":Bdelete!<CR>", opts)
 end
 
+M.aerial = function()
+  keymap("n", "<leader>lo", ":AerialToggle<CR>", opts)
+end
+
 M.lsp = function(bufnr)
   bufkeymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
   bufkeymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
   bufkeymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
   bufkeymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  bufkeymap(bufnr, "n", "gl", '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>', opts)
   bufkeymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
   bufkeymap(bufnr, "n", "<leader>lk", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   bufkeymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
@@ -92,7 +99,6 @@ M.lsp = function(bufnr)
   bufkeymap(bufnr, "n", "<leader>l[", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
   bufkeymap(bufnr, "n", "<leader>l]", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
   bufkeymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
-  bufkeymap(bufnr, "n", "<leader>lo", "<cmd>SymbolsOutline<CR>", opts)
 end
 
 -- overwrites some LSP keymaps
@@ -101,6 +107,7 @@ M.lsp_telescope = function(bufnr)
   bufkeymap(bufnr, "n", "gd", ":Telescope lsp_definitions<cr>", opts)
   bufkeymap(bufnr, "n", "gr", ":Telescope lsp_references<cr>", opts)
   bufkeymap(bufnr, "n", "gi", ":Telescope lsp_implementations<cr>", opts)
+  bufkeymap(bufnr, "n", "go", ":Telescope lsp_document_symbols<CR>", opts)
 end
 
 -- overwrites some LSP keymaps

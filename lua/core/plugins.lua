@@ -34,8 +34,7 @@ return require('packer').startup(function(use)
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
   -- LSP setup
-  use {
-    'neovim/nvim-lspconfig',
+  use { 'neovim/nvim-lspconfig',
     requires = {
       { 'williamboman/mason.nvim' }, -- Easily install language servers
       { 'williamboman/mason-lspconfig.nvim' }, -- Integrate language servers installed through Mason
@@ -43,12 +42,12 @@ return require('packer').startup(function(use)
       { "jay-babu/mason-null-ls.nvim" }, -- Allows for automatic setup of linters and formatters installed via Mason
       { 'simrat39/rust-tools.nvim' }, -- Better rust language support
       { 'j-hui/fidget.nvim' }, -- Displays LSP setup progress in lower-right-hand corner
+      -- { 'weilbith/nvim-code-action-menu' }, -- Code actions in a popup
     }
   }
 
   -- Autocompletion and snippets
-  use {
-    'hrsh7th/nvim-cmp',
+  use { 'hrsh7th/nvim-cmp',
     requires = {
       { 'hrsh7th/cmp-nvim-lsp' }, -- Completions from Neovim's built-in LSP client
       { 'hrsh7th/cmp-buffer' }, -- Completions from text in buffer
@@ -60,6 +59,9 @@ return require('packer').startup(function(use)
       { 'rafamadriz/friendly-snippets' }, -- A huge collection of snippets for a variety of languages
     }
   }
+
+  -- Document Symbols
+  use 'stevearc/aerial.nvim'
 
   -- Fuzzy finder
   use { 'nvim-telescope/telescope.nvim',
@@ -103,6 +105,12 @@ return require('packer').startup(function(use)
 
   -- Git integration
   use 'lewis6991/gitsigns.nvim'
+
+  -- Better popup for
+  use 'hood/popui.nvim'
+
+  -- Zen mode
+  use 'folke/zen-mode.nvim'
 
   if packer_bootstrap then
     require('packer').sync()
