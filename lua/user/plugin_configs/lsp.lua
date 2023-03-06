@@ -20,11 +20,16 @@ local lsp_on_attach = function(client, bufnr)
   keymaps.lsp(bufnr)
 
   -- use Telescope for definitions and references
-  --
   local has_telescope, _ = pcall(require, "telescope")
   if has_telescope then
     keymaps.lsp_telescope(bufnr)
   end
+
+  -- use nvim-code-action-menu for code actions
+  -- local has_code_action_menu, _ = pcall(require, "nvim-code-action-menu")
+  -- if has_code_action_menu then
+  --   keymaps.lsp_code_action_menu(bufnr)
+  -- end
 
   -- overwrite some keymappings for rust-tools
   if client.name == "rust_analyzer" then
@@ -95,6 +100,11 @@ require("mason-lspconfig").setup_handlers {
       }
     end
 }
+
+vim.g.code_action_menu_window_border = 'single'
+-- vim.g.code_action_menu_show_details = false
+-- vim.g.code_action_menu_show_diff = false
+-- vim.g.code_action_menu_show_action_kind = false
 
 -- Gives status updates in the lower-right corner as the lsp is being configured
 require("fidget").setup()

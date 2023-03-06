@@ -121,6 +121,12 @@ M.lsp_rust_tools = function(bufnr)
   vim.keymap.set("n", "<Leader>la", rust_tools.code_action_group.code_action_group, { buffer = bufnr })
 end
 
+-- overwrites some LSP keymaps
+--   should be called after lsp only if nvim-code-action-menu is installed
+M.lsp_code_action_menu = function(bufnr)
+  vim.keymap.set("n", "<Leader>la", ":CodeActionMenu", { buffer = bufnr })
+end
+
 M.telescope = function()
   keymap("n", "<leader>ff", ":Telescope find_files<cr>", opts)
   keymap("n", "<leader>fw", ":Telescope live_grep<cr>", opts)

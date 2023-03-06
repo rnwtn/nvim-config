@@ -16,8 +16,8 @@ local opts = {}
 
 require("lazy").setup({
     -- Colorschemes
-    'navarasu/onedark.nvim',
-    'ellisonleao/gruvbox.nvim',
+    { 'ellisonleao/gruvbox.nvim', config = function() require('user.plugin_configs.gruvbox') end, priority = 1000, },
+    { 'navarasu/onedark.nvim',    config = function() require('user.plugin_configs.onedark') end, priority = 1000, },
 
     -- Treesitter
     { 'nvim-treesitter/nvim-treesitter',
@@ -75,6 +75,18 @@ require("lazy").setup({
     -- Statusline
     { 'nvim-lualine/lualine.nvim',
         config = function() require("user.plugin_configs.lualine") end,
+    },
+
+    -- Context bar
+    {
+        "utilyre/barbecue.nvim",
+        name = "barbecue",
+        version = "*",
+        dependencies = {
+            "SmiteshP/nvim-navic",
+            "nvim-tree/nvim-web-devicons",
+        },
+        opts = {},
     },
 
     -- File explorer

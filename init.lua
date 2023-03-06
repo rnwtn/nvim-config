@@ -4,5 +4,3 @@ vim.g.loaded_netrwPlugin = 1
 require("user.options")
 require("user.keymaps").general()
 require("user.plugins")
-require("user.colorscheme")
-
