@@ -1,10 +1,10 @@
-local cmp = require("cmp")
-local luasnip = require("luasnip")
-
 local check_backspace = function()
   local col = vim.fn.col "." - 1
   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
+
+-- load snippets
+require("luasnip.loaders.from_vscode").lazy_load()
 
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 --   פּ ﯟ   some other good icons
@@ -36,6 +36,8 @@ local kind_icons = {
   TypeParameter = "",
 }
 
+local cmp = require("cmp")
+local luasnip = require("luasnip")
 cmp.setup {
   snippet = {
     expand = function(args)
