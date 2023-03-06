@@ -149,7 +149,7 @@ M.toggle_term = function()
   keymap("n", "<leader>tf", ":ToggleTerm direction=float<cr>", opts)
   keymap("n", "<leader>th", ":ToggleTerm direction=horizontal size=10<cr>", opts)
   keymap("n", "<C-\\>", ":ToggleTerm<cr>", opts)
-  keymap("t", "<C-\\>", require("toggleterm").toggle_all, {})
+  vim.keymap.set("t", "<C-\\>", require("toggleterm").toggle_all, {})
 end
 
 return M
