@@ -24,8 +24,8 @@ require("gruvbox").setup({
     contrast = "", -- can be "hard", "soft" or empty string
     palette_overrides = {},
     overrides = {
-        -- TelescopeBorder = { fg = '$bg2', bg = '$bg1' },
-        -- TelescopeNormal = { bg = '$bg1' },
+        TelescopeBorder = { fg = telescope_bg, bg = telescope_bg },
+        TelescopeNormal = { bg = telescope_bg2 },
         TelescopePreviewBorder = { fg = telescope_bg, bg = telescope_bg },
         TelescopePreviewNormal = { bg = telescope_bg },
         TelescopePreviewTitle = { fg = telescope_bg, bg = telescope_green },
