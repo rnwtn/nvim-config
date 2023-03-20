@@ -35,6 +35,7 @@ require("lazy").setup({
       { 'simrat39/rust-tools.nvim' }, -- Better rust language support
       { 'j-hui/fidget.nvim' }, -- Displays LSP setup progress in lower-right-hand corner
       -- { 'weilbith/nvim-code-action-menu' }, -- Code actions in a popup
+      { 'b0o/schemastore.nvim' }, -- Schemas for jsonls
     },
     config = function() require("user.plugin_configs.lsp") end,
   },
