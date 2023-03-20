@@ -150,4 +150,12 @@ require("lazy").setup({
   { 'windwp/nvim-autopairs',
     config = function() require('nvim-autopairs').setup {} end
   },
+
+  -- auto-close parentheses, brackets, and others
+  { 'petertriho/nvim-scrollbar',
+    dependencies = {
+      -- 'kevinhwang91/nvim-hlslens'
+    },
+    config = function() require("scrollbar").setup() end
+  },
 }, opts)

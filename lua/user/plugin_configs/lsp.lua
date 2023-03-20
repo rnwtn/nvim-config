@@ -108,6 +108,12 @@ require("mason-lspconfig").setup_handlers {
   --   }
   -- end
 }
+require'lspconfig'.gdscript.setup{
+  on_attach = lsp_on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  }
+}
 
 vim.g.code_action_menu_window_border = 'single'
 -- vim.g.code_action_menu_show_details = false

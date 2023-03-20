@@ -6,4 +6,5 @@ require("user.keymaps").general()
 require("user.plugins")
 require("user.autocmds")
 
-vim.cmd("colorscheme onedark")
+vim.cmd("colorscheme gruvbox")
+-- NvimTreeNormal

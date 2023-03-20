@@ -1,3 +1,4 @@
+local tree_bg = '#22201f'
 local telescope_bg = '#32302f'
 local telescope_bg2 = '#3c3836'
 local telescope_fg = '#f2e5bc'
@@ -45,6 +46,7 @@ require("gruvbox").setup({
         BufferLineModifiedDiagnosticSelected = { bg = 'None' },
         BufferLineDuplicateSelected = { bg = 'None' },
         BufferLineSeparatorSelected = { bg = 'None' },
+        NvimTreeNormal = { bg = tree_bg },
     },
     dim_inactive = false,
     transparent_mode = false,
