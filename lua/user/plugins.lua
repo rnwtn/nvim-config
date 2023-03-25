@@ -41,6 +41,7 @@ require("lazy").setup({
       { "j-hui/fidget.nvim" }, -- Displays LSP setup progress in lower-right-hand corner
       -- { 'weilbith/nvim-code-action-menu' }, -- Code actions in a popup
       { "b0o/schemastore.nvim" }, -- Schemas for jsonls
+      { "ray-x/lsp_signature.nvim" }, -- Signatur hints as you type
     },
     config = function() require "user.plugin_configs.lsp" end,
   },
