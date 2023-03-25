@@ -70,7 +70,6 @@ end
 
 local function lsp_highlight_document(client)
   -- Set autocommands conditional on server_capabilities
-  print(vim.inspect(client.server_capabilities));
   if client.server_capabilities.document_highlight then
     vim.api.nvim_exec(
       [[
