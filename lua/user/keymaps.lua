@@ -137,7 +137,7 @@ M.lsp_code_action_menu = function(bufnr)
 end
 
 M.telescope = function()
-  keymap("n", "<leader>ff", ":Telescope find_files<cr>", opts)
+  keymap("n", "<leader>ff", ":Telescope find_files hidden=true<cr>", opts)
   keymap("n", "<leader>fw", ":Telescope live_grep<cr>", opts)
   keymap("n", "<leader>fb", ":Telescope buffers<cr>", opts)
   keymap("n", "<leader>fh", ":Telescope help_tags<cr>", opts)
