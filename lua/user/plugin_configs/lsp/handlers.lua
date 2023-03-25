@@ -5,24 +5,24 @@ M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 M.capabilities = require("cmp_nvim_lsp").default_capabilities(M.capabilities)
 
 M.setup = function()
-  require("mason").setup({
+  require("mason").setup {
     ui = {
       border = "none", -- Accepts same border values as |nvim_open_win()|
       icons = {
         package_installed = "✓",
         package_pending = "➜",
-        package_uninstalled = "✗"
-      }
+        package_uninstalled = "✗",
+      },
     },
     log_level = vim.log.levels.INFO,
     max_concurrent_installers = 4,
-  })
+  }
 
   local signs = {
     { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn",  text = "" },
-    { name = "DiagnosticSignHint",  text = "" },
-    { name = "DiagnosticSignInfo",  text = "" },
+    { name = "DiagnosticSignWarn", text = "" },
+    { name = "DiagnosticSignHint", text = "" },
+    { name = "DiagnosticSignInfo", text = "" },
   }
 
   for _, sign in ipairs(signs) do
@@ -59,7 +59,7 @@ M.setup = function()
     border = "rounded",
   })
 
-  vim.g.code_action_menu_window_border = 'single'
+  vim.g.code_action_menu_window_border = "single"
   -- vim.g.code_action_menu_show_details = false
   -- vim.g.code_action_menu_show_diff = false
   -- vim.g.code_action_menu_show_action_kind = false
@@ -86,31 +86,23 @@ local function lsp_highlight_document(client)
 end
 
 local function lsp_keymaps(client, bufnr)
-  local keymaps = require("user.keymaps")
+  local keymaps = require "user.keymaps"
   keymaps.lsp(bufnr)
 
   -- use Telescope for definitions and references
   local has_telescope, _ = pcall(require, "telescope")
-  if has_telescope then
-    keymaps.lsp_telescope(bufnr)
-  end
+  if has_telescope then keymaps.lsp_telescope(bufnr) end
 
   -- overwrite some keymappings for rust-tools
-  if client.name == "rust_analyzer" then
-    keymaps.lsp_rust_tools(bufnr)
-  end
+  if client.name == "rust_analyzer" then keymaps.lsp_rust_tools(bufnr) end
 
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
   -- add format command
 end
 
 M.on_attach = function(client, bufnr)
-  if client.name == "tsserver" then
-    client.server_capabilities.document_formatting = false
-  end
-  if client.name == "lua_ls" then
-    client.server_capabilities.document_formatting = false
-  end
+  if client.name == "tsserver" then client.server_capabilities.document_formatting = false end
+  if client.name == "lua_ls" then client.server_capabilities.document_formatting = false end
   lsp_keymaps(client, bufnr)
   lsp_highlight_document(client)
 end
