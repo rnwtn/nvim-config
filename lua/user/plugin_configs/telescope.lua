@@ -1,17 +1,25 @@
 local status_ok, telescope = pcall(require, "telescope")
-if not status_ok then
-  return
-end
+if not status_ok then return end
 
 -- Setup keymaps
-require("user.keymaps").telescope();
+require("user.keymaps").telescope()
 
 local actions = require "telescope.actions"
 
 telescope.setup {
   defaults = {
-    file_ignore_patterns = { ".git/", "node_modules/", "%.o", "%.a", "%.out", "%.class", "%.pdf", "%.mkv", "%.mp4",
-      "%.zip" },
+    file_ignore_patterns = {
+      ".git/",
+      "node_modules/",
+      "%.o",
+      "%.a",
+      "%.out",
+      "%.class",
+      "%.pdf",
+      "%.mkv",
+      "%.mp4",
+      "%.zip",
+    },
     -- prompt_prefix = " ",
     -- selection_caret = " ",
     -- border = true,
@@ -32,7 +40,6 @@ telescope.setup {
       height = 0.80,
       preview_cutoff = 120,
     },
-
     mappings = {
       i = {
         ["<C-n>"] = actions.cycle_history_next,
@@ -50,9 +57,6 @@ telescope.setup {
         ["M"] = actions.toggle_selection + actions.move_selection_better,
       },
     },
-
-
-
     -- mappings = {
     --   i = {
     --     ["<C-n>"] = actions.cycle_history_next,
