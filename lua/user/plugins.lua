@@ -21,6 +21,9 @@ require("lazy").setup({
 
   -- Treesitter
   { 'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+      { 'nvim-treesitter/playground' }, -- Visualize treesitter syntax tree
+    },
     config = function() require('user.plugin_configs.treesitter') end
   },
 
