@@ -36,12 +36,12 @@ require("lazy").setup({
       { "williamboman/mason-lspconfig.nvim" }, -- Integrate language servers installed through Mason
       { "jose-elias-alvarez/null-ls.nvim" }, -- Allows non-lsp sources to hook into Neovim's lsp system to provide formatting and linting.
       { "jay-babu/mason-null-ls.nvim" }, -- Allows for automatic setup of linters and formatters installed via Mason
-      { "folke/neodev.nvim" }, -- Better support for neovim lua
-      { "simrat39/rust-tools.nvim" }, -- Better rust language support
       { "j-hui/fidget.nvim" }, -- Displays LSP setup progress in lower-right-hand corner
+      { "ray-x/lsp_signature.nvim" }, -- Signature hints as you type
+      { "folke/neodev.nvim" }, -- Better support for neovim lua (Lua)
+      { "b0o/schemastore.nvim" }, -- Schemas for jsonls (JSON)
+      { "simrat39/rust-tools.nvim" }, -- Better rust language support (Rust)
       -- { 'weilbith/nvim-code-action-menu' }, -- Code actions in a popup
-      { "b0o/schemastore.nvim" }, -- Schemas for jsonls
-      { "ray-x/lsp_signature.nvim" }, -- Signatur hints as you type
     },
     config = function() require "user.plugin_configs.lsp" end,
   },
@@ -53,6 +53,8 @@ require("lazy").setup({
       { "williamboman/mason.nvim" }, -- Easily install debug adapters
       { "rcarriga/nvim-dap-ui" }, -- A more user-friendly UI for nvim-dap
       { "theHamsta/nvim-dap-virtual-text" }, -- Debug information displayed alongside code
+      { "mxsdev/nvim-dap-vscode-js" }, -- Easily setup DAP for javascript/typescript debugging
+      { "David-Kunz/jester" }, -- Run and debug individual jest tests (Javascript/Typescript)
     },
     config = function() require "user.plugin_configs.dap" end,
   },

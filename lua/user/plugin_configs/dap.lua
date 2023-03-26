@@ -27,6 +27,12 @@ dap.adapters.codelldb = function(cb, config)
   cb(adapter)
 end
 
+require('dap-vscode-js').setup({
+  debugger_path = vim.fn.stdpath('data') .. '/mason/packages/js-debug-adapter',
+  debugger_cmd = { 'js-debug-adapter' },
+  adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
+})
+
 -- Setup default launch configurations
 local codelldb_config = {
   {
@@ -40,9 +46,39 @@ local codelldb_config = {
     stopOnEntry = false,
   },
 }
+local node_config = {
+  { 
+    type = "pwa-node",
+    request = "launch",
+    name = "Launch",
+    cwd = "${workspaceFolder}",
+    program = "${workspaceFolder}/dist/index.js",
+    detached = false,
+    skipFiles = { "<node_internals>/**" },
+    resolveSourceMapLocations = {
+      '${workspaceFolder}/dist/**/*.js',
+      '${workspaceFolder}/dist/*.js',
+    },
+  },
+  {
+    type = "pwa-node",
+    request = "attach",
+    name = "Attach",
+    cwd = "${workspaceFolder}",
+    processId = require("dap.utils").pick_process,
+    skipFiles = { "<node_internals>/**" },
+    resolveSourceMapLocations = {
+      '${workspaceFolder}/dist/**/*.js',
+      '${workspaceFolder}/dist/*.js',
+    },
+  },
+}
+
 dap.configurations.cpp = codelldb_config
 dap.configurations.c = codelldb_config
 dap.configurations.rust = codelldb_config
+dap.configurations.typescript = node_config
+dap.configurations.javascript = node_config
 
 require("mason").setup({
   ui = {
@@ -55,7 +91,7 @@ require("mason").setup({
   }
 })
 
--- Set virtial text when debugging
+-- Set virtual text when debugging
 require("nvim-dap-virtual-text").setup({})
 
 -- Setup the UI
