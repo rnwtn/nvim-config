@@ -38,6 +38,11 @@ dap.adapters.coreclr = function(cb, config)
   }
   cb(adapter)
 end
+dap.adapters.godot = {
+  type = "server",
+  host = '127.0.0.1',
+  port = 6006,
+}
 
 require('dap-vscode-js').setup({
   debugger_path = vim.fn.stdpath('data') .. '/mason/packages/js-debug-adapter',
@@ -95,6 +100,15 @@ dap.configurations.cs = {
         return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
     end,
   },
+}
+dap.configurations.gdscript = {
+  {
+    type = "godot",
+    request = "launch",
+    name = "Launch scene",
+    project = "${workspaceFolder}",
+    launch_scene = true,
+  }
 }
 
 dap.configurations.cpp = codelldb_config
