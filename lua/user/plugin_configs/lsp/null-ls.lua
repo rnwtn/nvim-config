@@ -8,6 +8,7 @@ require("mason-null-ls").setup({
 })
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
 local formatting = require("null-ls").builtins.formatting
+local diagnostics = require("null-ls").builtins.diagnostics
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 -- local diagnostics = null_ls.builtins.diagnostics
 require("null-ls").setup {
@@ -17,6 +18,8 @@ require("null-ls").setup {
     -- formatting.black.with({ extra_args = { "--fast" } }),
     formatting.stylua,
     formatting.csharpier,
+    formatting.gdformat,
+    diagnostics.gdlint
   }
 }
 -- require 'mason-null-ls'.setup_handlers() -- If `automatic_setup` is true.
