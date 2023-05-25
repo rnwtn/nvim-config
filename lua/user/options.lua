@@ -45,7 +45,8 @@ local options = {
     guifont = "monospace:h17", -- the font used in graphical neovim applications
     fillchars = { eob = " " }, -- use ' ' instead of '~' to indicate end of buffer
     --colorcolumn = "80"                       -- highlight the 80th column
-    laststatus = 3
+    laststatus = 3,
+    exrc = true -- project specific configs (e.g. debug configs)
 }
 
 vim.opt.shortmess:append "c"

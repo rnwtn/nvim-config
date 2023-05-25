@@ -183,4 +183,7 @@ require("lazy").setup({
     },
     config = function() require("scrollbar").setup() end,
   },
+
+  -- automatically set shiftwidth based on file and project
+  { "tpope/vim-sleuth" }
 }, opts)

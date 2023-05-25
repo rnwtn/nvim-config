@@ -26,6 +26,18 @@ dap.adapters.codelldb = function(cb, config)
   }
   cb(adapter)
 end
+dap.adapters.coreclr = function(cb, config)
+    if config.preLaunchTask then
+    vim.notify("Performing pre-launch tasks")
+    config.preLaunchTask()
+  end
+  local adapter = {
+    type = 'executable',
+    command = 'netcoredbg',
+    args = { '--interpreter=vscode' }
+  }
+  cb(adapter)
+end
 
 require('dap-vscode-js').setup({
   debugger_path = vim.fn.stdpath('data') .. '/mason/packages/js-debug-adapter',
@@ -47,7 +59,7 @@ local codelldb_config = {
   },
 }
 local node_config = {
-  { 
+  {
     type = "pwa-node",
     request = "launch",
     name = "Launch",
@@ -71,6 +83,17 @@ local node_config = {
       '${workspaceFolder}/dist/**/*.js',
       '${workspaceFolder}/dist/*.js',
     },
+  },
+}
+
+dap.configurations.cs = {
+  {
+    type = "coreclr",
+    name = "launch - netcoredbg",
+    request = "launch",
+    program = function()
+        return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+    end,
   },
 }
 

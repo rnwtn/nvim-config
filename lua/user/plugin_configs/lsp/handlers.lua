@@ -103,6 +103,7 @@ end
 M.on_attach = function(client, bufnr)
   if client.name == "tsserver" then client.server_capabilities.document_formatting = false end
   if client.name == "lua_ls" then client.server_capabilities.document_formatting = false end
+  if client.name == "csharp_ls" then client.server_capabilities.document_formatting = false end
   lsp_keymaps(client, bufnr)
   lsp_highlight_document(client)
   require("lsp_signature").on_attach({
