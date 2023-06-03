@@ -71,6 +71,7 @@ require("lazy").setup({
       { "saadparwaiz1/cmp_luasnip" }, -- Completions from luasnip
       { "L3MON4D3/LuaSnip" }, -- This provides snippets to CMP
       { "rafamadriz/friendly-snippets" }, -- A huge collection of snippets for a variety of languages
+      { "onsails/lspkind.nvim" } -- Icons
     },
     config = function() require "user.plugin_configs.cmp" end,
   },
