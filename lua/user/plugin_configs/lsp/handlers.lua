@@ -106,12 +106,6 @@ M.on_attach = function(client, bufnr)
   if client.name == "csharp_ls" then client.server_capabilities.document_formatting = false end
   lsp_keymaps(client, bufnr)
   lsp_highlight_document(client)
-  require("lsp_signature").on_attach({
-    bind = true, -- This is mandatory, otherwise border config won't get registered.
-    handler_opts = {
-      border = "rounded",
-    },
-  }, bufnr)
 end
 
 return M

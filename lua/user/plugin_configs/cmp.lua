@@ -83,6 +83,7 @@ cmp.setup {
     { name = "luasnip", priority = 750 },
     { name = "buffer", priority = 500 },
     { name = "path", priority = 250 },
+    { name = 'nvim_lsp_signature_help' }
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,

@@ -37,7 +37,6 @@ require("lazy").setup({
       { "jose-elias-alvarez/null-ls.nvim" }, -- Allows non-lsp sources to hook into Neovim's lsp system to provide formatting and linting.
       { "jay-babu/mason-null-ls.nvim" }, -- Allows for automatic setup of linters and formatters installed via Mason
       { "j-hui/fidget.nvim" }, -- Displays LSP setup progress in lower-right-hand corner
-      { "ray-x/lsp_signature.nvim" }, -- Signature hints as you type
       { "folke/neodev.nvim" }, -- Better support for neovim lua (Lua)
       { "b0o/schemastore.nvim" }, -- Schemas for jsonls (JSON)
       { "simrat39/rust-tools.nvim" }, -- Better rust language support (Rust)
@@ -68,6 +67,7 @@ require("lazy").setup({
       { "hrsh7th/cmp-path" }, -- Completions from file paths
       { "hrsh7th/cmp-cmdline" }, -- Completions for the command line
       { "hrsh7th/cmp-nvim-lua" }, -- Completions specific for Neovim's lua
+      { "hrsh7th/cmp-nvim-lsp-signature-help" }, -- signature help
       { "saadparwaiz1/cmp_luasnip" }, -- Completions from luasnip
       { "L3MON4D3/LuaSnip" }, -- This provides snippets to CMP
       { "rafamadriz/friendly-snippets" }, -- A huge collection of snippets for a variety of languages
