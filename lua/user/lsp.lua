@@ -4,15 +4,31 @@ local M = {
   dependencies = {
     {
       "hrsh7th/cmp-nvim-lsp",
+      "simrat39/rust-tools.nvim", -- Better rust language support (Rust)
+      "nvim-telescope/telescope.nvim",
     },
     {
-      "nvim-telescope/telescope.nvim",
+      "utilyre/barbecue.nvim",
+      name = "barbecue",
+      version = "*",
+      dependencies = {
+        "SmiteshP/nvim-navic",
+        "nvim-tree/nvim-web-devicons", -- optional dependency
+      },
+      opts = {},
+    },
+    {
+      "j-hui/fidget.nvim",
+      tag = "legacy",
+    },
+    {
+      "simrat39/rust-tools.nvim",
     },
   },
 }
 
-local cmp_nvim_lsp = require "cmp_nvim_lsp"
 function M.config()
+  local cmp_nvim_lsp = require "cmp_nvim_lsp"
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
@@ -72,9 +88,9 @@ function M.config()
 
   local signs = {
     { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn",  text = "" },
-    { name = "DiagnosticSignHint",  text = "" },
-    { name = "DiagnosticSignInfo",  text = "" },
+    { name = "DiagnosticSignWarn", text = "" },
+    { name = "DiagnosticSignHint", text = "" },
+    { name = "DiagnosticSignInfo", text = "" },
   }
 
   for _, sign in ipairs(signs) do
@@ -111,6 +127,22 @@ function M.config()
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
     border = "rounded",
   })
+
+  local rt = require "rust-tools"
+  rt.setup {
+    server = {
+      on_attach = function(client, bufnr)
+        on_attach(client, bufnr)
+
+        -- Hover actions
+        vim.keymap.set("n", "<S-k>", rt.hover_actions.hover_actions, { buffer = bufnr })
+        -- Code action groups
+        vim.keymap.set("n", "<Leader>la", rt.code_action_group.code_action_group, { buffer = bufnr })
+      end,
+    },
+  }
+
+  require("fidget").setup {}
 end
 
 return M
