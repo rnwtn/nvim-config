@@ -9,6 +9,7 @@ M.servers = {
   "bashls",
   "jsonls",
   "yamlls",
+  "rust_analyzer",
 }
 
 -- https://betterprogramming.pub/101-funny-programmer-quotes-76c7f335b92d
