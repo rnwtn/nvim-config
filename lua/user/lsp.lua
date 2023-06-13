@@ -4,8 +4,8 @@ local M = {
   dependencies = {
     {
       "hrsh7th/cmp-nvim-lsp",
-      "simrat39/rust-tools.nvim", -- Better rust language support (Rust)
       "nvim-telescope/telescope.nvim",
+      "simrat39/rust-tools.nvim", -- Better rust language support (Rust)
     },
     {
       "utilyre/barbecue.nvim",
@@ -20,9 +20,6 @@ local M = {
     {
       "j-hui/fidget.nvim",
       tag = "legacy",
-    },
-    {
-      "simrat39/rust-tools.nvim",
     },
   },
 }
@@ -88,9 +85,9 @@ function M.config()
 
   local signs = {
     { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn", text = "" },
-    { name = "DiagnosticSignHint", text = "" },
-    { name = "DiagnosticSignInfo", text = "" },
+    { name = "DiagnosticSignWarn",  text = "" },
+    { name = "DiagnosticSignHint",  text = "" },
+    { name = "DiagnosticSignInfo",  text = "" },
   }
 
   for _, sign in ipairs(signs) do
