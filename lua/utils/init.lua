@@ -120,4 +120,27 @@ function M.get_random_joke()
   return M.jokes[math.random(#M.jokes)]
 end
 
+function M.wrap(string, newline_cutoff)
+  local len = string.len(string)
+  local newlines_added = 0
+  local add_newline = false
+  for i = 1, len, 1 do
+    local index_by_cutoff = i - (newlines_added * newline_cutoff)
+    if index_by_cutoff >= newline_cutoff then
+      add_newline = true
+    end
+    if add_newline then
+      local char = string.sub(string, i, i)
+      if char == " " then
+        local left = string.sub(string, 0, i)
+        local right = string.sub(string, i + 1, len)
+        string = left .. "\n" .. right
+        add_newline = false
+        newlines_added = newlines_added + 1
+      end
+    end
+  end
+  return string
+end
+
 return M

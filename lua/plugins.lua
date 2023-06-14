@@ -15,7 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappings are correct
 
 -- load lazy
-require("lazy").setup("user", {
+require("lazy").setup("configs", {
   defaults = { lazy = true },
   ui = { wrap = "true" },
   change_detection = { enabled = false },
