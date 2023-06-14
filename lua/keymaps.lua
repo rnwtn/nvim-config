@@ -91,3 +91,6 @@ keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opt
 
 -- SymbolsOutline
 keymap("n", "<leader>lo", ":SymbolsOutline<CR>", opts)
+
+-- Zenmode
+keymap("n", "<leader>z", ":ZenMode<CR>", opts)
