@@ -6,6 +6,7 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "nvim-telescope/telescope.nvim",
       "simrat39/rust-tools.nvim", -- Better rust language support (Rust)
+      "b0o/schemastore.nvim", -- Schemas for jsonls (JSON)
     },
     {
       "utilyre/barbecue.nvim",

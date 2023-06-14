@@ -1,6 +1,7 @@
 local M = {}
 
 M.servers = {
+  "jsonls",
   "lua_ls",
   "cssls",
   "html",
