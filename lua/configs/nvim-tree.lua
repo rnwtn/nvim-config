@@ -130,8 +130,8 @@ function M.config()
     git = {
       enable = true,
       ignore = false,
-    }
+    },
   }
 end
-return M
 
+return M
