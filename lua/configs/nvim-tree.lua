@@ -85,7 +85,7 @@ function M.config()
       enable = true,
       update_root = false,
     },
-    sync_root_with_cwd = true,
+    sync_root_with_cwd = false,
     renderer = {
       icons = {
         glyphs = {
