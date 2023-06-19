@@ -83,8 +83,9 @@ function M.config()
     on_attach = on_attach,
     update_focused_file = {
       enable = true,
-      update_cwd = true,
+      update_root = false,
     },
+    sync_root_with_cwd = true,
     renderer = {
       icons = {
         glyphs = {
@@ -126,7 +127,11 @@ function M.config()
       width = 30,
       side = "left",
     },
+    git = {
+      enable = true,
+      ignore = false,
+    }
   }
 end
-
 return M
+
