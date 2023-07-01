@@ -42,6 +42,9 @@ keymap("n", "<leader>X", ":Bdelete!<CR>", opts)
 -- Clear highlights
 keymap("n", "<ESC>", ":noh<CR>", opts)
 
+-- Save with <leader>S
+keymap("n", "<leader>s", ":w<CR>", opts)
+
 -- Setup compilation keymap on fly
 keymap("n", "<Leader>C", ":map <lt>leader>c :!<lt>cr><left><left><left><left>", {})
 
@@ -63,8 +66,9 @@ keymap("v", ">", ">gv", opts)
 keymap("v", "p", '"_dP', opts)
 
 -- Plugins --
--- NvimTree
-keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+-- NeoTree
+keymap("n", "<leader>e", ":NeoTreeFocusToggle<CR>", opts)
+keymap("n", "<leader>o", ":NeoTreeRevealToggle<CR>", opts)
 
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)

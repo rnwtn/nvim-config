@@ -8,7 +8,6 @@ M.servers = {
   "tsserver",
   "pyright",
   "bashls",
-  "jsonls",
   "yamlls",
   "rust_analyzer",
 }
@@ -117,8 +116,9 @@ M.jokes = {
 }
 
 function M.get_random_joke()
-  math.randomseed(os.time())
-  return M.jokes[math.random(#M.jokes)]
+  -- math.randomseed(os.time())
+  -- return M.jokes[math.random(#M.jokes)]
+  return "vi vi vi — the editor of the beast"
 end
 
 function M.wrap(string, newline_cutoff)

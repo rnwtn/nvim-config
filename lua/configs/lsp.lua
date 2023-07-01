@@ -123,8 +123,16 @@ return {
       border = "rounded",
     })
 
+    -- rust-tools setup --
+    local extension_path = vim.env.HOME .. "/.vscode-oss/extensions/vadimcn.vscode-lldb-1.9.2-universal/"
+    local codelldb_path = extension_path .. "adapter/codelldb"
+    local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
     local rt = require "rust-tools"
     rt.setup {
+      dap = {
+        adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
+      },
+
       server = {
         on_attach = function(client, bufnr)
           on_attach(client, bufnr)
