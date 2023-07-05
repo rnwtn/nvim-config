@@ -1,6 +1,7 @@
 return {
   "navarasu/onedark.nvim",
   name = "onedark",
+  enabled = false,
   lazy = false, -- make sure we load this during startup if it is your main colorscheme
   priority = 1000, -- make sure to load this before all the other start plugins
   config = function()
@@ -47,7 +48,7 @@ return {
         TelescopeResultsBorder = { fg = "$bg1", bg = "$bg1" },
         TelescopeResultsNormal = { bg = "$bg1" },
         TelescopeResultsTitle = { fg = "$bg1", bg = "$bg1" },
-        ZenBG = { bg = "#ff0000" },
+        -- ZenBG = { bg = "#ff0000" },
         BufferLineNumbersSelected = { bg = "None", fg = "white" },
         BufferLineBufferSelected = { fg = "white", bg = "None" },
         BufferLineDiagnosticSelected = { bg = "None" },

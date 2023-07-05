@@ -32,8 +32,8 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+-- keymap("n", "<S-l>", ":bnext<CR>", opts)
+-- keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Close buffers
 keymap("n", "<leader>x", ":Bdelete<CR>", opts)
@@ -98,3 +98,11 @@ keymap("n", "<leader>lo", ":SymbolsOutline<CR>", opts)
 
 -- Zenmode
 keymap("n", "<leader>z", ":ZenMode<CR>", opts)
+
+-- Harpoon
+keymap("n", "<leader>a", ":lua require('harpoon.mark').add_file()<cr>", opts);
+keymap("n", "<leader>s", ":lua require('harpoon.ui').toggle_quick_menu()<cr>", opts);
+keymap("n", "<leader>u", ":lua require('harpoon.ui').nav_file(1)<cr>", opts);
+keymap("n", "<leader>i", ":lua require('harpoon.ui').nav_file(2)<cr>", opts);
+keymap("n", "<leader>o", ":lua require('harpoon.ui').nav_file(3)<cr>", opts);
+keymap("n", "<leader>p", ":lua require('harpoon.ui').nav_file(4)<cr>", opts);

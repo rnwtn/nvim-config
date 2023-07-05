@@ -2,8 +2,8 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "qf", "help", "man", "lspinfo", "spectre_panel" },
   callback = function()
     vim.cmd [[
-      nnoremap <silent> <buffer> q :close<CR> 
-      set nobuflisted 
+      nnoremap <silent> <buffer> q :close<CR>
+      set nobuflisted
     ]]
   end,
 })
@@ -15,8 +15,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     vim.opt_local.spell = true
   end,
 })
--- Automatically close tab/vim when nvim-tree is the last window in the tab
-vim.cmd "autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif"
 
 vim.api.nvim_create_autocmd({ "VimResized" }, {
   callback = function()
@@ -49,5 +47,21 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
     if line_count >= 5000 then
       vim.cmd "IlluminatePauseBuf"
     end
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "harpoon",
+  callback = function(ev)
+    vim.keymap.set("n", "x", "")
+    vim.keymap.set("n", "c", "")
+    vim.keymap.set("n", "s", "")
+    -- Open harpooned files in vsplit with <C-V>
+    vim.keymap.set("n", "<C-V>", function()
+      local curline = vim.api.nvim_get_current_line()
+      local working_directory = vim.fn.getcwd() .. "/"
+      vim.cmd "vs"
+      vim.cmd("e " .. working_directory .. curline)
+    end, { buffer = true, noremap = true, silent = true })
   end,
 })
