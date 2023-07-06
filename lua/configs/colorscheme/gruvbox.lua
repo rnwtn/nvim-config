@@ -50,10 +50,10 @@ return {
 
         -- Haropoon Tabline
         TabLineFill = { bg = dimmed_bg },
-        HarpoonInactive = { bg = dimmed_bg  },
-        HarpoonNumberInactive = { bg = dimmed_bg  },
-        HarpoonActive = { bg = NONE  },
-        HarpoonNumberActive = { bg = NONE  },
+        HarpoonInactive = { bg = dimmed_bg },
+        HarpoonNumberInactive = { bg = dimmed_bg },
+        HarpoonActive = { bg = "NONE" },
+        HarpoonNumberActive = { bg = "NONE" },
       },
       dim_inactive = false,
       transparent_mode = false,
