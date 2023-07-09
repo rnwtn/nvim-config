@@ -66,7 +66,18 @@ return {
       require("illuminate").on_attach(client)
     end
 
-    for _, server in pairs(require("utils").servers) do
+    local servers = {
+      "jsonls",
+      "lua_ls",
+      "cssls",
+      "html",
+      "tsserver",
+      "pyright",
+      "bashls",
+      "yamlls",
+      "rust_analyzer",
+    }
+    for _, server in pairs(servers) do
       Opts = {
         on_attach = on_attach,
         capabilities = capabilities,

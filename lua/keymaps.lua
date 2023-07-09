@@ -1,55 +1,18 @@
--- Shorten function name
-local keymap = vim.keymap.set
--- Silent keymap option
 local opts = { silent = true }
-
---Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
-vim.g.mapleader = " "
-
--- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
-
--- Better navigation for wrapped lines
-keymap("n", "j", "gj", opts)
+local keymap = vim.keymap.set
+keymap("n", "<leader>s", ":w<CR>", opts) -- Save with <leader>S
+keymap("n", "<ESC>", ":noh<CR>", opts) -- clear search highlights with escape
+keymap("n", "j", "gj", opts) -- better navigation for wrapped lines
 keymap("n", "k", "gk", opts)
-
--- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
+keymap("n", "<C-h>", "<C-w>h", opts) -- nav windows with C-{h,j,k,l}
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
-
--- Resize with arrows
-keymap("n", "<C-Up>", ":resize -2<CR>", opts)
+keymap("n", "<C-Up>", ":resize -2<CR>", opts) -- resize windows with C-arrows
 keymap("n", "<C-Down>", ":resize +2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
-
--- Navigate buffers
--- keymap("n", "<S-l>", ":bnext<CR>", opts)
--- keymap("n", "<S-h>", ":bprevious<CR>", opts)
-
--- Close buffers
-keymap("n", "<leader>x", ":Bdelete<CR>", opts)
-keymap("n", "<leader>X", ":Bdelete!<CR>", opts)
-
--- Clear highlights
-keymap("n", "<ESC>", ":noh<CR>", opts)
-
--- Save with <leader>S
-keymap("n", "<leader>s", ":w<CR>", opts)
-
--- Setup compilation keymap on fly
-keymap("n", "<Leader>C", ":map <lt>leader>c :!<lt>cr><left><left><left><left>", {})
-
--- Move text up and down
-keymap("n", "<A-j>", "<Esc>:m .+1<CR>==", opts)
+keymap("n", "<A-j>", "<Esc>:m .+1<CR>==", opts) -- Move text up and down
 keymap("n", "<A-k>", "<Esc>:m .-2<CR>==", opts)
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
@@ -57,29 +20,18 @@ keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
-
--- Stay in indent mode
-keymap("v", "<", "<gv", opts)
+keymap("n", "<leader>x", ":bdelete<CR>", opts) -- Close buffers
+keymap("n", "<leader>X", ":bdelete!<CR>", opts)
+keymap("v", "<", "<gv", opts) -- easier indenting in visual mode
 keymap("v", ">", ">gv", opts)
-
--- Don't overwrite yank register when pasting over visual selection
-keymap("v", "p", '"_dP', opts)
-
--- Plugins --
--- NeoTree
-keymap("n", "<leader>e", ":NeoTreeFocusToggle<CR>", opts)
-keymap("n", "<leader>o", ":NeoTreeRevealToggle<CR>", opts)
-
--- Telescope
-keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
+keymap("v", "p", '"_dP', opts) -- Don't overwrite yank register when pasting over visual selection
+keymap("n", "<Leader>C", ":map <lt>leader>c :!<lt>cr><left><left><left><left>", {}) -- Setup compilation keymap on fly
+keymap("n", "<leader>e", ":NeoTreeFocusToggle<CR>", opts) -- NeoTree
+keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts) -- Telescope
 keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
-
--- Git
-keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
-
--- DAP
-keymap("n", "<leader>du", ":lua require('dapui').toggle({ reset = true })<cr>", opts)
+keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts) -- open lazygit
+keymap("n", "<leader>du", ":lua require('dapui').toggle({ reset = true })<cr>", opts) -- DAP
 keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
 keymap("n", "<leader>db", ":DapToggleBreakpoint<cr>", opts)
 keymap("n", "<leader>dg", ":lua require('dap').goto_(vim.api.nvim_win_get_cursor(0)[1])<cr>", opts)
@@ -89,20 +41,12 @@ keymap("n", "<F5>", ":DapContinue<cr>", opts)
 keymap("n", "<F10>", ":DapStepOver<cr>", opts)
 keymap("n", "<F11>", ":DapStepInto<cr>", opts)
 keymap("n", "<S-F11>", ":DapStepOut<cr>", opts)
-
--- Lsp
-keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
-
--- SymbolsOutline
-keymap("n", "<leader>lo", ":SymbolsOutline<CR>", opts)
-
--- Zenmode
-keymap("n", "<leader>z", ":ZenMode<CR>", opts)
-
--- Harpoon
-keymap("n", "<leader>a", ":lua require('harpoon.mark').add_file()<cr>", opts);
-keymap("n", "<leader>s", ":lua require('harpoon.ui').toggle_quick_menu()<cr>", opts);
-keymap("n", "<leader>u", ":lua require('harpoon.ui').nav_file(1)<cr>", opts);
-keymap("n", "<leader>i", ":lua require('harpoon.ui').nav_file(2)<cr>", opts);
-keymap("n", "<leader>o", ":lua require('harpoon.ui').nav_file(3)<cr>", opts);
-keymap("n", "<leader>p", ":lua require('harpoon.ui').nav_file(4)<cr>", opts);
+keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts) -- Lsp
+keymap("n", "<leader>lo", ":SymbolsOutline<CR>", opts) -- SymbolsOutline
+keymap("n", "<leader>z", ":ZenMode<CR>", opts) -- Zenmode
+keymap("n", "<leader>a", ":lua require('harpoon.mark').add_file()<cr>", opts) -- Harpoon
+keymap("n", "<leader>s", ":lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)
+keymap("n", "<leader>u", ":lua require('harpoon.ui').nav_file(1)<cr>", opts)
+keymap("n", "<leader>i", ":lua require('harpoon.ui').nav_file(2)<cr>", opts)
+keymap("n", "<leader>o", ":lua require('harpoon.ui').nav_file(3)<cr>", opts)
+keymap("n", "<leader>p", ":lua require('harpoon.ui').nav_file(4)<cr>", opts)

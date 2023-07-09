@@ -1,14 +1,4 @@
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "qf", "help", "man", "lspinfo", "spectre_panel" },
-  callback = function()
-    vim.cmd [[
-      nnoremap <silent> <buffer> q :close<CR>
-      set nobuflisted
-    ]]
-  end,
-})
-
-vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "gitcommit", "markdown" },
   callback = function()
     vim.opt_local.wrap = true
@@ -16,22 +6,9 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "VimResized" }, {
-  callback = function()
-    vim.cmd "tabdo wincmd ="
-  end,
-})
-
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   callback = function()
     vim.highlight.on_yank { higroup = "Visual", timeout = 200 }
-  end,
-})
-
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-  pattern = { "*.java" },
-  callback = function()
-    vim.lsp.codelens.refresh()
   end,
 })
 
@@ -53,16 +30,16 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "harpoon",
   callback = function(ev)
-    local opts = { buffer = true, noremap = true, silent = true }
-    vim.keymap.set("n", "x", "", opts)
-    vim.keymap.set("n", "c", "", opts)
-    vim.keymap.set("n", "s", "", opts)
+    local harpoon_opts = { buffer = true, noremap = true, silent = true }
+    vim.keymap.set("n", "x", "", harpoon_opts)
+    vim.keymap.set("n", "c", "", harpoon_opts)
+    vim.keymap.set("n", "s", "", harpoon_opts)
     -- Open harpooned files in vsplit with <C-V>
     vim.keymap.set("n", "<C-V>", function()
       local curline = vim.api.nvim_get_current_line()
       local working_directory = vim.fn.getcwd() .. "/"
       vim.cmd "vs"
       vim.cmd("e " .. working_directory .. curline)
-    end, opts)
+    end, harpoon_opts)
   end,
 })

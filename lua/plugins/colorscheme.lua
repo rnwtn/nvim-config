@@ -1,8 +1,8 @@
 return {
   "ellisonleao/gruvbox.nvim",
   name = "gruvbox",
-  lazy = false, -- make sure we load this during startup if it is your main colorscheme
-  priority = 1000, -- make sure to load this before all the other start plugins
+  lazy = false,
+  priority = 1000,
   config = function()
     local dimmed_bg = "#22201f"
     local telescope_bg = "#32302f"
@@ -58,11 +58,5 @@ return {
       dim_inactive = false,
       transparent_mode = false,
     }
-    vim.cmd "colorscheme gruvbox"
-    -- vim.cmd "highlight! HarpoonInactive guibg=NONE guifg=#63698c"
-    -- vim.cmd "highlight! HarpoonActive guibg=NONE guifg=white"
-    -- vim.cmd "highlight! HarpoonNumberActive guibg=NONE guifg=#7aa2f7"
-    -- vim.cmd "highlight! HarpoonNumberInactive guibg=NONE guifg=#7aa2f7"
-    -- vim.cmd "highlight! TabLineFill guibg=NONE guifg=white"
   end,
 }
