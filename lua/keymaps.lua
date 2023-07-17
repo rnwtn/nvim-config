@@ -26,7 +26,6 @@ keymap("v", "<", "<gv", opts) -- easier indenting in visual mode
 keymap("v", ">", ">gv", opts)
 keymap("v", "p", '"_dP', opts) -- Don't overwrite yank register when pasting over visual selection
 keymap("n", "<Leader>C", ":map <lt>leader>c :!<lt>cr><left><left><left><left>", {}) -- Setup compilation keymap on fly
-keymap("n", "<leader>e", ":NeoTreeFocusToggle<CR>", opts) -- NeoTree
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts) -- Telescope
 keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)

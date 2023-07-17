@@ -1,8 +1,8 @@
-vim.opt.mouse = ""
 vim.opt.swapfile = false
+vim.opt.mouse = ""
 vim.opt.termguicolors = true
 vim.opt.number = true
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.colorcolumn = "80"
 vim.opt.ignorecase = true

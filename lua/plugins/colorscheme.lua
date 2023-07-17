@@ -30,6 +30,10 @@ return {
       contrast = "", -- can be "hard", "soft" or empty string
       palette_overrides = {},
       overrides = {
+        -- oil.nvim
+        NormalFloat = { bg = telescope_bg },
+        FloatBorder = { bg = telescope_bg, fg = telescope_fg },
+
         -- Telescope
         TelescopeBorder = { fg = telescope_bg, bg = telescope_bg },
         TelescopeNormal = { bg = telescope_bg2 },

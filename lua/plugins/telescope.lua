@@ -25,10 +25,9 @@ M.opts = {
       "%.mp4",
       "%.zip",
     },
-    prompt_prefix = " ",
-    selection_caret = " ",
+    prompt_prefix = " ",
+    selection_caret = " ",
     border = true,
-    -- borderchars =  { " ", " ", " ", " ", " ", " ", " ", " " },
 
     path_display = { "truncate" },
     sorting_strategy = "ascending",

@@ -76,6 +76,7 @@ return {
       "bashls",
       "yamlls",
       "rust_analyzer",
+      "tailwindcss",
     }
     for _, server in pairs(servers) do
       Opts = {
