@@ -26,9 +26,6 @@ keymap("v", "<", "<gv", opts) -- easier indenting in visual mode
 keymap("v", ">", ">gv", opts)
 keymap("v", "p", '"_dP', opts) -- Don't overwrite yank register when pasting over visual selection
 keymap("n", "<Leader>C", ":map <lt>leader>c :!<lt>cr><left><left><left><left>", {}) -- Setup compilation keymap on fly
-keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts) -- Telescope
-keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
-keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts) -- open lazygit
 keymap("n", "<leader>du", ":lua require('dapui').toggle({ reset = true })<cr>", opts) -- DAP
 keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
@@ -41,11 +38,3 @@ keymap("n", "<F10>", ":DapStepOver<cr>", opts)
 keymap("n", "<F11>", ":DapStepInto<cr>", opts)
 keymap("n", "<S-F11>", ":DapStepOut<cr>", opts)
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts) -- Lsp
-keymap("n", "<leader>lo", ":SymbolsOutline<CR>", opts) -- SymbolsOutline
-keymap("n", "<leader>z", ":ZenMode<CR>", opts) -- Zenmode
-keymap("n", "<leader>a", ":lua require('harpoon.mark').add_file()<cr>", opts) -- Harpoon
-keymap("n", "<leader>s", ":lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)
-keymap("n", "<leader>u", ":lua require('harpoon.ui').nav_file(1)<cr>", opts)
-keymap("n", "<leader>i", ":lua require('harpoon.ui').nav_file(2)<cr>", opts)
-keymap("n", "<leader>o", ":lua require('harpoon.ui').nav_file(3)<cr>", opts)
-keymap("n", "<leader>p", ":lua require('harpoon.ui').nav_file(4)<cr>", opts)

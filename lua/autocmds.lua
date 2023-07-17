@@ -27,19 +27,3 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "harpoon",
-  callback = function(ev)
-    local harpoon_opts = { buffer = true, noremap = true, silent = true }
-    vim.keymap.set("n", "x", "", harpoon_opts)
-    vim.keymap.set("n", "c", "", harpoon_opts)
-    vim.keymap.set("n", "s", "", harpoon_opts)
-    -- Open harpooned files in vsplit with <C-V>
-    vim.keymap.set("n", "<C-V>", function()
-      local curline = vim.api.nvim_get_current_line()
-      local working_directory = vim.fn.getcwd() .. "/"
-      vim.cmd "vs"
-      vim.cmd("e " .. working_directory .. curline)
-    end, harpoon_opts)
-  end,
-})
