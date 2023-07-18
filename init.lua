@@ -3,9 +3,9 @@
 ----------------------------------------
 vim.g.mapleader = " "
 
-require "plugin_manager"
-require "options"
-require "keymaps"
-require "autocmds"
+require "user.plugin_manager"
+require "user.options"
+require "user.keymaps"
+require "user.autocmds"
 
 vim.cmd "colorscheme gruvbox"
