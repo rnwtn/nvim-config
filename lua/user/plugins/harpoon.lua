@@ -2,10 +2,10 @@ return {
   "ThePrimeagen/harpoon",
   event = "BufEnter",
   config = function()
-    require("harpoon").setup { tabline = true }
+    require("harpoon").setup()
     vim.api.nvim_create_autocmd("FileType", {
       pattern = "harpoon",
-      callback = function(ev)
+      callback = function()
         local opts = { buffer = true, noremap = true, silent = true }
 
         -- disable certain keys in Harpoon quick menu

@@ -4,18 +4,22 @@ return {
   config = function()
     require("illuminate").configure {
       filetypes_denylist = {
-        "dirvish",
-        "fugitive",
-        "alpha",
         "Trouble",
         "lir",
         "Outline",
-        "spectre_panel",
         "toggleterm",
-        "DressingSelect",
+        "oil",
         "TelescopePrompt",
       },
     }
+    vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+      callback = function()
+        local line_count = vim.api.nvim_buf_line_count(0)
+        if line_count >= 5000 then
+          vim.cmd "IlluminatePauseBuf"
+        end
+      end,
+    })
   end,
   keys = {
     {
