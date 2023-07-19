@@ -43,24 +43,26 @@ return {
     version = false,
     lazy = false,
     priority = 1000,
-    opts = {
-      ui_contrast = "high",
-      on_highlights = function(hl, palette)
-        hl.NormalFloat = { bg = palette.none }
-        hl.FloatBorder = { bg = palette.none, fg = palette.fg }
-        hl.TelescopeBorder = { fg = palette.none, bg = palette.none }
-        hl.TelescopeNormal = { bg = palette.grey1 }
-        hl.TelescopePreviewBorder = { fg = palette.bg1, bg = palette.bg1 }
-        hl.TelescopePreviewNormal = { bg = palette.bg1 }
-        hl.TelescopePreviewTitle = { fg = palette.none, bg = palette.green }
-        hl.TelescopePromptBorder = { fg = palette.bg2, bg = palette.bg2 }
-        hl.TelescopePromptNormal = { fg = palette.fg, bg = palette.bg2 }
-        hl.TelescopePromptPrefix = { fg = palette.red, bg = palette.bg2 }
-        hl.TelescopePromptTitle = { fg = palette.none, bg = palette.red }
-        hl.TelescopeResultsBorder = { fg = palette.bg1, bg = palette.bg1 }
-        hl.TelescopeResultsNormal = { bg = palette.bg1 }
-        hl.TelescopeResultsTitle = { fg = palette.bg1, bg = palette.bg1 }
-      end,
-    },
+    config = function()
+      require("everforest").setup {
+        ui_contrast = "high",
+        on_highlights = function(hl, palette)
+          hl.NormalFloat = { bg = palette.none }
+          hl.FloatBorder = { bg = palette.none, fg = palette.fg }
+          hl.TelescopeBorder = { fg = palette.none, bg = palette.none }
+          hl.TelescopeNormal = { bg = palette.grey1 }
+          hl.TelescopePreviewBorder = { fg = palette.bg1, bg = palette.bg1 }
+          hl.TelescopePreviewNormal = { bg = palette.bg1 }
+          hl.TelescopePreviewTitle = { fg = palette.none, bg = palette.green }
+          hl.TelescopePromptBorder = { fg = palette.bg2, bg = palette.bg2 }
+          hl.TelescopePromptNormal = { fg = palette.fg, bg = palette.bg2 }
+          hl.TelescopePromptPrefix = { fg = palette.red, bg = palette.bg2 }
+          hl.TelescopePromptTitle = { fg = palette.none, bg = palette.red }
+          hl.TelescopeResultsBorder = { fg = palette.bg1, bg = palette.bg1 }
+          hl.TelescopeResultsNormal = { bg = palette.bg1 }
+          hl.TelescopeResultsTitle = { fg = palette.bg1, bg = palette.bg1 }
+        end,
+      }
+    end,
   },
 }
