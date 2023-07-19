@@ -9,15 +9,6 @@ return {
       "b0o/schemastore.nvim", -- Schemas for jsonls (JSON)
     },
     {
-      "utilyre/barbecue.nvim",
-      name = "barbecue",
-      version = "*",
-      dependencies = {
-        "SmiteshP/nvim-navic",
-        "nvim-tree/nvim-web-devicons", -- optional dependency
-      },
-    },
-    {
       "j-hui/fidget.nvim",
       tag = "legacy",
     },
@@ -159,6 +150,5 @@ return {
     }
 
     require("fidget").setup {}
-    require("barbecue").setup {}
   end,
 }
