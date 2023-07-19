@@ -6,7 +6,7 @@ return {
       filetypes_denylist = {
         "Trouble",
         "lir",
-        "Outline",
+        "qf",
         "toggleterm",
         "oil",
         "TelescopePrompt",
