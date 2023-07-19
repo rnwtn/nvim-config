@@ -8,7 +8,9 @@ return {
       ["q"] = "actions.close",
     },
     float = {
-      padding = 10,
+      padding = 5,
+      max_width = 100,
+      max_height = 80,
       win_options = {
         winblend = 0,
       },
