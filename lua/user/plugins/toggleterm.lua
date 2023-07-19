@@ -39,4 +39,7 @@ return {
       lazygit:toggle()
     end
   end,
+  keys = {
+    { "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", desc = "Open Lazygit" },
+  },
 }
