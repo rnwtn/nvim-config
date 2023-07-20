@@ -18,7 +18,7 @@ return {
         "%.mp4",
         "%.zip",
       },
-      prompt_prefix = " ",
+      prompt_prefix = "  ",
       selection_caret = " ",
       border = true,
       path_display = { "truncate" },
