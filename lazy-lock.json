@@ -36,6 +36,7 @@
   "nvim-ts-context-commentstring": { "branch": "main", "commit": "7f625207f225eea97ef7a6abe7611e556c396d2f" },
   "nvim-web-devicons": { "branch": "master", "commit": "efbfed0567ef4bfac3ce630524a0f6c8451c5534" },
   "oil.nvim": { "branch": "master", "commit": "eaa20a6aee7c4df89d80ec8208de63ec2fa4d38a" },
+  "onedark": { "branch": "master", "commit": "cae5fdf035ee92c407a29ee2ccfcff503d2be7f1" },
   "plenary.nvim": { "branch": "master", "commit": "267282a9ce242bbb0c5dc31445b6d353bed978bb" },
   "popui.nvim": { "branch": "master", "commit": "19c61223927d6f174848c0e5f866d72044c5a0e1" },
   "rust-tools.nvim": { "branch": "master", "commit": "0cc8adab23117783a0292a0c8a2fbed1005dc645" },
