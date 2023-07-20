@@ -130,5 +130,8 @@ return {
       }
       vim.diagnostic.config(config)
     end,
+    keys = {
+      { "<leader>li", "<cmd>LspInfo<cr>", desc = "Open LspInfo" },
+    },
   },
 }
