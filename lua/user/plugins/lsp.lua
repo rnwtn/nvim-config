@@ -128,7 +128,6 @@ return {
         severity_sort = true,
         float = {
           style = "minimal",
-          border = "rounded",
           source = "always",
         },
       }
