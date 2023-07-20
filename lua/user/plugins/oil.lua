@@ -17,6 +17,7 @@ return {
     },
   },
   keys = {
-    { "<leader>e", ":lua require('oil').open_float()<cr>", desc = "Open parent directory" },
+    { "<leader>e", ":lua require('oil').open()<cr>", desc = "Open parent directory" },
+    { "<leader>fe", ":lua require('oil').open_float()<cr>", desc = "Open parent directory" },
   },
 }
