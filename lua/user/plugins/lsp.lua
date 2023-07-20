@@ -25,8 +25,6 @@ return {
       local function lsp_keymaps(bufnr)
         local opts = { noremap = true, silent = true }
         local keymap = vim.api.nvim_buf_set_keymap
-        keymap(bufnr, "n", "<leader>li", "<cmd>LspInfo<cr>", opts)
-        keymap(bufnr, "n", "<leader>lI", "<cmd>Mason<cr>", opts)
         keymap(bufnr, "n", "<leader>lk", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
         keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
         keymap(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
@@ -128,10 +126,10 @@ return {
         severity_sort = true,
         float = {
           style = "minimal",
+          -- border = "rounded",
           source = "always",
         },
       }
-
       vim.diagnostic.config(config)
     end,
   },
