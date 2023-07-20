@@ -34,6 +34,3 @@ keymap("v", ">", ">gv", opts)
 keymap("v", "p", '"_dP', opts)
 -- Setup compilation keymap on fly
 keymap("n", "<Leader>C", ":map <lt>leader>c :!<lt>cr><left><left><left><left>", {})
--- Open LSP information
-keymap("n", "<leader>li", "<cmd>LspInfo<cr>", opts)
-keymap("n", "<leader>lI", "<cmd>Mason<cr>", opts)
