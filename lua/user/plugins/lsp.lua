@@ -82,7 +82,6 @@ return {
             dap = {
               adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
             },
-
             server = {
               on_attach = function(client, bufnr)
                 on_attach(client, bufnr)
@@ -104,7 +103,6 @@ return {
       vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
         border = "rounded",
       })
-
 
       local signs = {
         { name = "DiagnosticSignError", text = "" },
