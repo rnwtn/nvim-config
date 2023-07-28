@@ -43,3 +43,14 @@ keymap("v", "p", '"_dP', opts)
 
 -- Setup compilation keymap on fly
 keymap("n", "<Leader>C", ":map <lt>leader>c :!<lt>cr><left><left><left><left>", {})
+
+-- zen mode
+keymap("n", "<leader>z", function()
+  vim.cmd [[
+  if tabpagenr() > 1
+    tabclose
+  else
+    tabnew %
+  endif
+  ]]
+end, opts)
