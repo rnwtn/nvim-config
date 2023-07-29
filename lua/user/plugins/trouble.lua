@@ -1,6 +1,6 @@
 return {
   "folke/trouble.nvim",
-  event = "LspAttach",
+  event = "VimEnter",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {},
 }
