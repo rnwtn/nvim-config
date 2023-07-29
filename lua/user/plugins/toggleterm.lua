@@ -35,11 +35,11 @@ return {
     local Terminal = require("toggleterm.terminal").Terminal
     local lazygit = Terminal:new { cmd = "lazygit", hidden = true }
 
-    function _LAZYGIT_TOGGLE()
-      lazygit:toggle()
-    end
+    -- function _LAZYGIT_TOGGLE()
+    --   lazygit:toggle()
+    -- end
   end,
   keys = {
-    { "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", desc = "Open Lazygit" },
+    -- { "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", desc = "Open Lazygit" },
   },
 }
