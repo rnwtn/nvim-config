@@ -15,7 +15,7 @@ vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.opt.timeoutlen = 400
+vim.opt.timeoutlen = 1000
 vim.opt.undofile = true
 vim.opt.writebackup = false
 vim.opt.laststatus = 3
@@ -26,3 +26,4 @@ vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.iskeyword:append "-"
 vim.opt.whichwrap:append "<,>,[,],h,l"
+vim.opt.exrc = true
