@@ -44,6 +44,9 @@ keymap("v", "p", '"_dP', opts)
 -- Setup compilation keymap on fly
 keymap("n", "<Leader>C", ":map <lt>leader>c :!<lt>cr><left><left><left><left>", {})
 
+-- open LspInfo
+keymap("n", "<leader>li", ":LspInfo<cr>", opts)
+
 -- zen mode
 keymap("n", "<leader>z", function()
   vim.cmd [[
