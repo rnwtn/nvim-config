@@ -14,26 +14,29 @@ return {
 
       require("gruvbox").setup {
         invert_selection = true,
+        transparent_mode = true,
         overrides = {
-          NormalFloat = { bg = telescope_bg },
-          FloatBorder = { bg = telescope_bg, fg = telescope_fg },
-          TabLineFill = { bg = dimmed_bg },
-          TelescopeBorder = { fg = telescope_bg, bg = telescope_bg },
-          TelescopeNormal = { bg = telescope_bg2 },
-          TelescopePreviewBorder = { fg = telescope_bg, bg = telescope_bg },
-          TelescopePreviewNormal = { bg = telescope_bg },
-          TelescopePreviewTitle = { fg = telescope_bg, bg = telescope_green },
-          TelescopePromptBorder = { fg = telescope_bg2, bg = telescope_bg2 },
-          TelescopePromptNormal = { fg = telescope_fg, bg = telescope_bg2 },
-          TelescopePromptPrefix = { fg = telescope_red, bg = telescope_bg2 },
-          TelescopePromptTitle = { fg = telescope_bg, bg = telescope_red },
-          TelescopeResultsBorder = { fg = telescope_bg, bg = telescope_bg },
-          TelescopeResultsNormal = { bg = telescope_bg },
-          TelescopeResultsTitle = { fg = telescope_bg, bg = telescope_bg },
-          HarpoonInactive = { bg = dimmed_bg },
-          HarpoonNumberInactive = { bg = dimmed_bg },
-          HarpoonActive = { bg = "NONE" },
-          HarpoonNumberActive = { bg = "NONE" },
+          Normal = { bg = "NONE" },
+          NormalFloat = { bg = "NONE" },
+          -- NormalFloat = { bg = telescope_bg },
+          FloatBorder = { bg = "NONE", fg = telescope_fg },
+          -- TabLineFill = { bg = dimmed_bg },
+          -- TelescopeBorder = { fg = telescope_bg, bg = telescope_bg },
+          -- TelescopeNormal = { bg = telescope_bg2 },
+          -- TelescopePreviewBorder = { fg = telescope_bg, bg = telescope_bg },
+          -- TelescopePreviewNormal = { bg = telescope_bg },
+          -- TelescopePreviewTitle = { fg = telescope_bg, bg = telescope_green },
+          -- TelescopePromptBorder = { fg = telescope_bg2, bg = telescope_bg2 },
+          -- TelescopePromptNormal = { fg = telescope_fg, bg = telescope_bg2 },
+          -- TelescopePromptPrefix = { fg = telescope_red, bg = telescope_bg2 },
+          -- TelescopePromptTitle = { fg = telescope_bg, bg = telescope_red },
+          -- TelescopeResultsBorder = { fg = telescope_bg, bg = telescope_bg },
+          -- TelescopeResultsNormal = { bg = telescope_bg },
+          -- TelescopeResultsTitle = { fg = telescope_bg, bg = telescope_bg },
+          -- HarpoonInactive = { bg = dimmed_bg },
+          -- HarpoonNumberInactive = { bg = dimmed_bg },
+          -- HarpoonActive = { bg = "NONE" },
+          -- HarpoonNumberActive = { bg = "NONE" },
         },
       }
     end,
@@ -74,7 +77,7 @@ return {
       require("onedark").setup {
         -- Main options --
         style = "darker", -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-        transparent = false, -- Show/hide background
+        transparent = true, -- Show/hide background
         term_colors = true, -- Change terminal color as per the selected theme style
         ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
         cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
