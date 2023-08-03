@@ -5,8 +5,8 @@ local keymap = vim.keymap.set
 keymap("n", "<ESC>", ":noh<CR>", opts)
 
 -- better navigation for wrapped lines)
-keymap("n", "j", "gj", opts)
-keymap("n", "k", "gk", opts)
+-- keymap("n", "j", "gj", opts)
+-- keymap("n", "k", "gk", opts)
 
 -- nav windows with C-{h,j,k,l}
 keymap("n", "<C-h>", "<C-w>h", opts)
