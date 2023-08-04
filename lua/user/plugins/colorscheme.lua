@@ -14,6 +14,7 @@ return {
           Normal = { bg = "NONE" },
           NormalFloat = { bg = "NONE" },
           FloatBorder = { bg = "NONE", fg = fg },
+          LspInfoBorder = { bg = "NONE", fg = fg },
         },
       }
     end,

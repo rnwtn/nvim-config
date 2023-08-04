@@ -97,6 +97,8 @@ return {
 
       lsp.skip_server_setup { "rust_analyzer" }
       lsp.setup()
+
+      require("lspconfig.ui.windows").default_options.border = "rounded"
     end
 
     configure_lsp_zero()
