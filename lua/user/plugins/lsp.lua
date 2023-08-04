@@ -105,4 +105,7 @@ return {
     configure_rust_tools()
     require("fidget").setup {}
   end,
+  keys = {
+    { "<leader>li", ":LspInfo<cr>", desc = "LspInfo open" },
+  }
 }
