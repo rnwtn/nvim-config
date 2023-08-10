@@ -9,13 +9,13 @@ return {
         local opts = { buffer = true, noremap = true, silent = true }
 
         -- disable certain keys in Harpoon quick menu
-        vim.keymap.set("n", "x", "", opts)
-        vim.keymap.set("n", "c", "", opts)
-        vim.keymap.set("n", "s", "", opts)
-        vim.keymap.set("n", "h", "", opts)
-        vim.keymap.set("n", "l", "", opts)
-        vim.keymap.set("n", "J", "", opts)
-        vim.keymap.set("n", "K", "", opts)
+        -- vim.keymap.set("n", "x", "", opts)
+        -- vim.keymap.set("n", "c", "", opts)
+        -- vim.keymap.set("n", "s", "", opts)
+        -- vim.keymap.set("n", "h", "", opts)
+        -- vim.keymap.set("n", "l", "", opts)
+        -- vim.keymap.set("n", "J", "", opts)
+        -- vim.keymap.set("n", "K", "", opts)
 
         -- open harpoon files in vsplit with <C-V>
         vim.keymap.set("n", "<C-V>", function()
@@ -24,9 +24,6 @@ return {
           vim.cmd "vs"
           vim.cmd("e " .. working_directory .. curline)
         end, opts)
-
-        -- move cursor to beginning of line
-        vim.cmd "0"
       end,
     })
   end,
