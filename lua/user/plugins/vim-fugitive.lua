@@ -17,7 +17,7 @@ return {
         local opts = { buffer = true, noremap = true, silent = true }
         vim.keymap.set("n", "q", ":q!<cr>", opts)
         vim.keymap.set("n", "<leader>gc", ":q!<cr>", opts)
-        vim.cmd "startinsert"
+        -- vim.cmd "startinsert"
       end,
     })
   end,
