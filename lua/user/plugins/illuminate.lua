@@ -9,6 +9,7 @@ return {
         "qf",
         "toggleterm",
         "oil",
+        "harpoon",
         "TelescopePrompt",
       },
     }
