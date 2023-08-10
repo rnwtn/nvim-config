@@ -97,6 +97,7 @@ return {
 
       lsp.skip_server_setup { "rust_analyzer" }
       lsp.setup()
+      vim.diagnostic.config { virtual_text = false }
 
       require("lspconfig.ui.windows").default_options.border = "rounded"
       vim.api.nvim_create_autocmd("FileType", {
