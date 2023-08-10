@@ -8,6 +8,7 @@ return {
         "lir",
         "qf",
         "toggleterm",
+        "gitcommit",
         "oil",
         "harpoon",
         "TelescopePrompt",
