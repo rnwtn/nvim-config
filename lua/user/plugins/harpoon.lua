@@ -7,6 +7,7 @@ return {
       pattern = "harpoon",
       callback = function()
         local opts = { buffer = true, noremap = true, silent = true }
+        vim.keymap.set("n", "q", "<esc>", opts)
 
         -- disable certain keys in Harpoon quick menu
         -- vim.keymap.set("n", "x", "", opts)
@@ -28,11 +29,11 @@ return {
     })
   end,
   keys = {
-    { "<leader>a", ":lua require('harpoon.mark').add_file()<cr>", desc = "Add buffer to Harpoon list" },
+    { "<leader>a", ":lua require('harpoon.mark').add_file()<cr>",        desc = "Add buffer to Harpoon list" },
     { "<leader>s", ":lua require('harpoon.ui').toggle_quick_menu()<cr>", desc = "Open Harpoon quick menu" },
-    { "<leader>u", ":lua require('harpoon.ui').nav_file(1)<cr>", desc = "Navigate to Harpoon file 1" },
-    { "<leader>i", ":lua require('harpoon.ui').nav_file(2)<cr>", desc = "Navigate to Harpoon file 2" },
-    { "<leader>o", ":lua require('harpoon.ui').nav_file(3)<cr>", desc = "Navigate to Harpoon file 3" },
-    { "<leader>p", ":lua require('harpoon.ui').nav_file(4)<cr>", desc = "Navigate to Harpoon file 4" },
+    { "<leader>u", ":lua require('harpoon.ui').nav_file(1)<cr>",         desc = "Navigate to Harpoon file 1" },
+    { "<leader>i", ":lua require('harpoon.ui').nav_file(2)<cr>",         desc = "Navigate to Harpoon file 2" },
+    { "<leader>o", ":lua require('harpoon.ui').nav_file(3)<cr>",         desc = "Navigate to Harpoon file 3" },
+    { "<leader>p", ":lua require('harpoon.ui').nav_file(4)<cr>",         desc = "Navigate to Harpoon file 4" },
   },
 }
