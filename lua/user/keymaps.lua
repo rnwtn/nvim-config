@@ -47,6 +47,9 @@ keymap("v", "p", '"_dP', opts)
 -- Setup compilation keymap on fly
 keymap("n", "<Leader>C", ":map <lt>leader>c :!<lt>cr><left><left><left><left>", {})
 
+-- Open Lazy
+keymap("n", "<leader>ll", ":Lazy<cr>")
+
 -- zen mode
 keymap("n", "<leader>z", function()
   vim.cmd [[
