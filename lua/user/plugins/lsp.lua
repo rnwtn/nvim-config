@@ -104,8 +104,16 @@ return {
     configure_lsp_zero()
     configure_rust_tools()
     require("fidget").setup {}
+
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "lspinfo",
+      callback = function()
+        local opts = { buffer = true, noremap = true, silent = true }
+        vim.keymap.set("n", "<leader>li", ":q<cr>", opts)
+      end,
+    })
   end,
   keys = {
     { "<leader>li", ":LspInfo<cr>", desc = "LspInfo open" },
-  }
+  },
 }
