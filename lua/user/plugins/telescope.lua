@@ -18,9 +18,6 @@ return {
         "%.mp4",
         "%.zip",
       },
-      prompt_prefix = "  ",
-      selection_caret = " ",
-      border = true,
       path_display = { "truncate" },
       sorting_strategy = "ascending",
       layout_config = {
