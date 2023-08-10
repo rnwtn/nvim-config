@@ -2,6 +2,16 @@ return {
   "tpope/vim-fugitive",
   event = "VimEnter",
   dependencies = { "nvim-tree/nvim-web-devicons" },
+  config = function()
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "fugitive",
+      callback = function()
+        local opts = { buffer = true, noremap = true, silent = true }
+        vim.keymap.set("n", "<leader>gs", ":q<cr>", opts)
+        vim.keymap.set("n", "q", ":q<cr>", opts)
+      end,
+    })
+  end,
   keys = {
     -- {
     --   "<leader>gs",
