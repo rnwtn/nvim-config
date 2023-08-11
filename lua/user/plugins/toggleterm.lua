@@ -2,6 +2,13 @@ return {
   "akinsho/toggleterm.nvim",
   event = "VeryLazy",
   config = function()
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "toggleterm",
+      callback = function()
+        local opts = { buffer = true, noremap = true, silent = true }
+        vim.keymap.set("n", "q", ":q<cr>", opts)
+      end,
+    })
     local toggleterm = require "toggleterm"
 
     toggleterm.setup {
