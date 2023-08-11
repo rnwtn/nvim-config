@@ -17,6 +17,5 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   callback = function()
     local opts = { buffer = true, noremap = true, silent = true }
     vim.keymap.set("n", "q", ":q<cr>", opts)
-    vim.keymap.set("n", "<esc>", ":q<cr>", opts)
   end,
 })
