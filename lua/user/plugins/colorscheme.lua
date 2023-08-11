@@ -37,6 +37,7 @@ return {
         on_highlights = function(hl, palette)
           hl.NormalFloat = { bg = palette.none }
           hl.FloatBorder = { bg = palette.none, fg = palette.fg }
+          hl.LspInfoBorder = { fg = palette.fg }
         end,
       }
     end,
@@ -49,7 +50,7 @@ return {
     config = function()
       require("onedark").setup {
         -- Main options --
-        style = "darker",             -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+        style = "deep",               -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
         transparent = true,           -- Show/hide background
         term_colors = true,           -- Change terminal color as per the selected theme style
         ending_tildes = false,        -- Show the end-of-buffer tildes. By default they are hidden
@@ -63,7 +64,7 @@ return {
         -- Options are italic, bold, underline, none
         -- You can configure multiple style with comma seperated, For e.g., keywords = 'italic,bold'
         code_style = {
-          comments = "italic",
+          comments = "none",
           keywords = "none",
           functions = "none",
           strings = "none",
@@ -80,6 +81,14 @@ return {
         highlights = {
           NormalFloat = { bg = "none" },
           FloatBorder = { bg = "none", fg = "$fg" },
+          TelescopeBorder = { fg = "$fg" },
+          TelescopeNormal = { fg = "$fg" },
+          TelescopePreviewBorder = { fg = "$fg" },
+          TelescopePromptBorder = { fg = "$fg" },
+          TelescopeResultsBorder = { fg = "$fg" },
+          TelescopePromptPrefix = { fg = "$red" },
+          TelescopeSelectionCaret = { fg = "$red" },
+          LspInfoBorder = { fg = "$fg" },
         },
 
         -- Plugins Config --
