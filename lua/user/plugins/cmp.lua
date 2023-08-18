@@ -2,14 +2,14 @@ return {
   "hrsh7th/nvim-cmp",
   dependencies = {
     {
-      "hrsh7th/cmp-nvim-lsp", -- Completions from Neovim's built-in LSP client
-      "hrsh7th/cmp-buffer", -- Completions from text in buffer
-      "hrsh7th/cmp-path", -- Completions from file paths
-      "hrsh7th/cmp-cmdline", -- Completions for the command line
-      "hrsh7th/cmp-nvim-lua", -- Completions specific for Neovim's lua
+      "hrsh7th/cmp-nvim-lsp",                -- Completions from Neovim's built-in LSP client
+      "hrsh7th/cmp-buffer",                  -- Completions from text in buffer
+      "hrsh7th/cmp-path",                    -- Completions from file paths
+      "hrsh7th/cmp-cmdline",                 -- Completions for the command line
+      "hrsh7th/cmp-nvim-lua",                -- Completions specific for Neovim's lua
       "hrsh7th/cmp-nvim-lsp-signature-help", -- signature help
-      "saadparwaiz1/cmp_luasnip", -- Completions from luasnip
-      "onsails/lspkind.nvim", -- Icons
+      "saadparwaiz1/cmp_luasnip",            -- Completions from luasnip
+      "onsails/lspkind.nvim",                -- Icons
     },
     {
       "L3MON4D3/LuaSnip", -- This provides snippets to CMP
@@ -87,8 +87,8 @@ return {
       formatting = {
         fields = { "kind", "abbr", "menu" },
         format = lspkind.cmp_format {
-          mode = "symbol", -- show only symbol annotations
-          maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+          mode = "symbol",       -- show only symbol annotations
+          maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
           ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
           before = function(entry, vim_item)
             vim_item.menu = ({
@@ -102,10 +102,10 @@ return {
         },
       },
       sources = {
-        { name = "nvim_lsp", priority = 1000 },
-        { name = "luasnip", priority = 750 },
-        { name = "buffer", priority = 500 },
-        { name = "path", priority = 250 },
+        { name = "nvim_lsp",               priority = 1000 },
+        { name = "luasnip",                priority = 750 },
+        { name = "buffer",                 priority = 500 },
+        { name = "path",                   priority = 250 },
         { name = "nvim_lsp_signature_help" },
       },
       window = {
@@ -131,6 +131,14 @@ return {
       }, {
         { name = "cmdline" },
       }),
+    })
+
+    -- Disable cmp for certain file types
+    vim.api.nvim_create_autocmd({ "FileType" }, {
+      pattern = { "spectre_panel" },
+      callback = function()
+        require("cmp").setup.buffer { enabled = false }
+      end,
     })
   end,
 }
