@@ -13,7 +13,7 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "help", "lazy" },
+  pattern = { "help", "lazy", "spectre_panel" },
   callback = function()
     local opts = { buffer = true, noremap = true, silent = true }
     vim.keymap.set("n", "q", ":q<cr>", opts)
