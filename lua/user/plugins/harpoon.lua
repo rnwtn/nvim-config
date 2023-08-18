@@ -1,6 +1,7 @@
 return {
   "ThePrimeagen/harpoon",
   event = "BufEnter",
+  dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
     require("harpoon").setup()
     vim.api.nvim_create_autocmd("FileType", {
