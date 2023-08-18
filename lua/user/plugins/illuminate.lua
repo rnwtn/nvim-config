@@ -12,6 +12,7 @@ return {
         "oil",
         "harpoon",
         "TelescopePrompt",
+        "spectre_panel",
       },
     }
     vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
