@@ -7,5 +7,7 @@ return {
     "SmiteshP/nvim-navic",
     "nvim-tree/nvim-web-devicons",
   },
-  opts = {},
+  opts = {
+    exclude_filetypes = { "netrw", "toggleterm", "gitcommit" },
+  },
 }
