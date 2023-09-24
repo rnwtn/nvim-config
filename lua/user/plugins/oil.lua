@@ -3,6 +3,9 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   event = "VimEnter",
   opts = {
+    view_options = {
+      show_hidden = true,
+    },
     keymaps = {
       ["<leader>e"] = "actions.close",
       ["q"] = "actions.close",
