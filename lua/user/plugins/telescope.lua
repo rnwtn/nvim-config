@@ -18,14 +18,15 @@ return {
         "%.mp4",
         "%.zip",
       },
-      path_display = { "truncate" },
+      -- path_display = { "truncate" },
       sorting_strategy = "ascending",
-      layout_strategy = "vertical",
+      layout_strategy = "horizontal",
       layout_config = {
         height = 0.95,
-        vertical = {
+        horizontal = {
           prompt_position = "top",
           mirror = false,
+          -- preview_cutoff = 0,
         },
       },
       mappings = {
@@ -48,7 +49,8 @@ return {
     },
   },
   keys = {
-    { "<leader>ff", ":Telescope find_files<CR>", desc = "Telescope find files" },
+    { "<leader>ff", ":Telescope git_files<CR>", desc = "Telescope git files" },
+    { "<C-p>", ":Telescope find_files<CR>", desc = "Telescope find files" },
     { "<leader>fg", ":Telescope live_grep<CR>", desc = "Telescope live grep" },
     { "<leader>fw", ":Telescope grep_string<CR>", desc = "Telescope grep string" },
     { "<leader>fb", ":Telescope buffers<CR>", desc = "Telescop find buffer" },
