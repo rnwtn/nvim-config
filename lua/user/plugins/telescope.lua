@@ -49,8 +49,8 @@ return {
     },
   },
   keys = {
-    { "<leader>ff", ":Telescope git_files<CR>", desc = "Telescope git files" },
-    { "<C-p>", ":Telescope find_files<CR>", desc = "Telescope find files" },
+    { "<leader>ff", ":Telescope find_files hidden=true<CR>", desc = "Telescope find files" },
+    { "<C-p>", ":Telescope git_files<CR>", desc = "Telescope git files" },
     { "<leader>fg", ":Telescope live_grep<CR>", desc = "Telescope live grep" },
     { "<leader>fw", ":Telescope grep_string<CR>", desc = "Telescope grep string" },
     { "<leader>fb", ":Telescope buffers<CR>", desc = "Telescop find buffer" },
