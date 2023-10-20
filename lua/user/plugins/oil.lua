@@ -11,6 +11,8 @@ return {
       ["q"] = "actions.close",
       ["<C-j>"] = "j",
       ["<C-k>"] = "k",
+      ["<Tab>"] = "j",
+      ["<S-Tab>"] = "k",
     },
     float = {
       padding = 5,
