@@ -9,6 +9,8 @@ return {
     keymaps = {
       ["<leader>e"] = "actions.close",
       ["q"] = "actions.close",
+      ["<C-j>"] = "j",
+      ["<C-k>"] = "k",
     },
     float = {
       padding = 5,
