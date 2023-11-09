@@ -1,5 +1,5 @@
 vim.opt.swapfile = false
-vim.opt.mouse = ""
+-- vim.opt.mouse = ""
 vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.relativenumber = true
