@@ -44,13 +44,13 @@ return {
         },
         -- path_display = { "truncate" },
         sorting_strategy = "ascending",
-        layout_strategy = "horizontal",
+        layout_strategy = "vertical",
         layout_config = {
           height = 0.95,
-          horizontal = {
+          vertical = {
             prompt_position = "top",
-            mirror = false,
-            -- preview_cutoff = 0,
+            mirror = true,
+            preview_cutoff = 0,
           },
         },
         mappings = {
