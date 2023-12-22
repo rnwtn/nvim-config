@@ -16,7 +16,7 @@ return {
     { "nvim-telescope/telescope.nvim" },
     { "RRethy/vim-illuminate" },
     { "j-hui/fidget.nvim",                tag = "legacy" },
-    { "jose-elias-alvarez/null-ls.nvim" },
+    { "nvimtools/none-ls.nvim" },
     { "simrat39/rust-tools.nvim" },
     { "b0o/schemastore.nvim" },
   },
