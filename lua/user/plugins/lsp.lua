@@ -13,6 +13,7 @@ return {
     { "hrsh7th/cmp-nvim-lsp" }, -- Required
     { "L3MON4D3/LuaSnip" },     -- Required
 
+    { "kevinhwang91/nvim-ufo",            dependencies = "kevinhwang91/promise-async" },
     { "nvim-telescope/telescope.nvim" },
     { "RRethy/vim-illuminate" },
     { "j-hui/fidget.nvim",                tag = "legacy" },
@@ -75,6 +76,27 @@ return {
       }
     end
 
+    local function configure_code_folding()
+      vim.o.foldcolumn = "0" -- '0' is not bad
+      vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
+
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+      }
+      local language_servers = require("lspconfig").util.available_servers()
+      for _, ls in ipairs(language_servers) do
+        require("lspconfig")[ls].setup {
+          capabilities = capabilities,
+          -- you can add other fields for setting up lsp server in this table
+        }
+      end
+      require("ufo").setup()
+    end
+
     local function configure_lsp_zero()
       local lsp = require("lsp-zero").preset {}
       lsp.on_attach(on_lsp_attach)
@@ -96,6 +118,15 @@ return {
           },
         },
       }
+      require("lspconfig").lua_ls.setup {
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { "vim" },
+            },
+          },
+        },
+      }
 
       lsp.skip_server_setup { "rust_analyzer" }
       lsp.setup()
@@ -111,6 +142,7 @@ return {
       })
     end
 
+    configure_code_folding()
     configure_lsp_zero()
     configure_rust_tools()
     require("fidget").setup {}
