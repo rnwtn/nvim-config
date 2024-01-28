@@ -4,7 +4,11 @@ return {
   event = "BufEnter",
   branch = "harpoon2",
   dependencies = { "nvim-lua/plenary.nvim" },
-  opts = {},
+  opts = {
+    settings = {
+      save_on_toggle = true,
+    },
+  },
   keys = {
     { "<leader>a", ":lua require('harpoon'):list():append()<cr>",  desc = "Add buffer to Harpoon list" },
     { "<leader>s", toggleQuickMenu,                                desc = "Open Harpoon quick menu" },
