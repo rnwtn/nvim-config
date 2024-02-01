@@ -2,14 +2,9 @@ return {
   "nvim-treesitter/nvim-treesitter",
   event = "BufReadPost",
   dependencies = {
-    {
-      "JoosepAlviste/nvim-ts-context-commentstring",
-      event = "VeryLazy",
-    },
-    {
-      "nvim-tree/nvim-web-devicons",
-      event = "VeryLazy",
-    },
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    "nvim-tree/nvim-web-devicons",
+    "windwp/nvim-ts-autotag",
   },
   main = "nvim-treesitter.configs",
   config = function()
@@ -40,6 +35,9 @@ return {
         additional_vim_regex_highlighting = false,
       },
       autopairs = {
+        enable = true,
+      },
+      autotag = {
         enable = true,
       },
     }
