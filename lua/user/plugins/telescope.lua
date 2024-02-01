@@ -75,10 +75,11 @@ return {
     require("telescope").load_extension "ui-select"
   end,
   keys = {
-    { "<leader>ff", ":Telescope find_files hidden=true<CR>", desc = "Telescope find files" },
-    { "<C-p>",      ":Telescope git_files<CR>",              desc = "Telescope git files" },
-    { "<leader>fg", ":Telescope live_grep<CR>",              desc = "Telescope live grep" },
-    { "<leader>fw", ":Telescope grep_string<CR>",            desc = "Telescope grep string" },
-    { "<leader>fb", ":Telescope buffers<CR>",                desc = "Telescop find buffer" },
+    { "<leader>ff", ":Telescope find_files hidden=true<CR>",    desc = "Telescope find files" },
+    { "<C-p>",      ":Telescope git_files<CR>",                 desc = "Telescope git files" },
+    { "<leader>/",  ":Telescope current_buffer_fuzzy_find<CR>", desc = "Telescope fuzzy find in file" },
+    { "<leader>fg", ":Telescope live_grep<CR>",                 desc = "Telescope live grep" },
+    { "<leader>fw", ":Telescope grep_string<CR>",               desc = "Telescope grep string" },
+    { "<leader>fb", ":Telescope buffers<CR>",                   desc = "Telescop find buffer" },
   },
 }
