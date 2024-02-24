@@ -26,6 +26,9 @@ return {
       if client.name == "tsserver" then
         client.server_capabilities.documentFormattingProvider = false
       end
+      if client.name == "volar" then
+        client.server_capabilities.documentFormattingProvider = false
+      end
       if client.name == "sumneko_lua" then
         client.server_capabilities.documentFormattingProvider = false
       end
@@ -127,6 +130,11 @@ return {
               globals = { "vim" },
             },
           },
+        },
+      }
+      require("lspconfig").tsserver.setup {
+        settings = {
+          formatting = false,
         },
       }
 

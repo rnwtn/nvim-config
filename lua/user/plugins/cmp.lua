@@ -10,6 +10,7 @@ return {
       "hrsh7th/cmp-nvim-lsp-signature-help", -- signature help
       "saadparwaiz1/cmp_luasnip",            -- Completions from luasnip
       "onsails/lspkind.nvim",                -- Icons
+      "zbirenbaum/copilot-cmp",              --Copilot
     },
     {
       "L3MON4D3/LuaSnip", -- This provides snippets to CMP
@@ -31,6 +32,9 @@ return {
 
     -- load snippets
     require("luasnip.loaders.from_vscode").lazy_load()
+
+    -- setup copilot-cmp
+    require("copilot_cmp").setup()
 
     local lspkind = require "lspkind"
     local cmp = require "cmp"
@@ -93,6 +97,7 @@ return {
           before = function(entry, vim_item)
             vim_item.menu = ({
               nvim_lsp = "[LSP]",
+              copilot = "[Copilot]",
               luasnip = "[Snippet]",
               buffer = "[Buffer]",
               path = "[Path]",
@@ -102,6 +107,7 @@ return {
         },
       },
       sources = {
+        { name = "copilot",                priority = 1250 },
         { name = "nvim_lsp",               priority = 1000 },
         { name = "luasnip",                priority = 750 },
         { name = "buffer",                 priority = 500 },
