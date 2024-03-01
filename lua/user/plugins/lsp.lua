@@ -22,37 +22,65 @@ return {
     { "b0o/schemastore.nvim" },
   },
   config = function()
+    local is_nuxt_project = false
+    local dirList = vim.fn.systemlist "ls -a"
+    local original_definition = vim.lsp.buf.definition
+    local function nuxt_goto()
+      original_definition()
+      for _, dirname in ipairs(dirList) do
+        if dirname == ".nuxt" then
+          is_nuxt_project = true
+        end
+      end
+
+      if not is_nuxt_project then
+        return
+      end
+      vim.defer_fn(function()
+        local line = vim.fn.getline "."
+        local path = string.match(line, '".-/(.-)"')
+        local file = vim.fn.expand "%"
+
+        if string.find(file, "components.d.ts") then
+          vim.cmd "bdelete"
+          vim.cmd("edit " .. path)
+        end
+      end, 100)
+    end
+
     local function on_lsp_attach(client, bufnr)
+      local keymap = vim.keymap.set
+      local opts = { noremap = true, silent = true, buffer = bufnr }
+      keymap("n", "<leader>lk", ":lua vim.lsp.buf.signature_help()<CR>", opts)
+      keymap("n", "<leader>lr", ":lua vim.lsp.buf.rename()<CR>", opts)
+      keymap("n", "<leader>la", ":lua vim.lsp.buf.code_action()<CR>", opts)
+      keymap("n", "<leader>ld", ":lua vim.diagnostic.open_float()<CR>", opts)
+      keymap("n", "<leader>fd", ":Telescope diagnostics bufnr=0<CR>", opts)
+      keymap("n", "<leader>fD", ":Telescope diagnostics<CR>", opts)
+      keymap("n", "<leader>ls", ":lua vim.lsp.buf.signature_help()<CR>", opts)
+      keymap("n", "<leader>lq", ":lua vim.diagnostic.setloclist()<CR>", opts)
+      keymap("n", "<leader>lf", ":lua vim.lsp.buf.format({ async = true })<CR>", opts)
+      keymap("n", "K", ":lua vim.lsp.buf.hover()<CR>", opts)
+      keymap("n", "g[", ':lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
+      keymap("n", "g]", ':lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
+      keymap("n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opts)
+      keymap("n", "gd", ":Telescope lsp_definitions show_line=false<cr>", opts)
+      keymap("n", "gr", ":Telescope lsp_references show_line=false<cr>", opts)
+      keymap("n", "gi", ":Telescope lsp_implementations show_line=false<cr>", opts)
+      keymap("n", "go", ":Telescope lsp_document_symbols<CR>", opts)
+      keymap("n", "gO", ":Telescope lsp_workspace_symbols<CR>", opts)
+
       if client.name == "tsserver" then
         client.server_capabilities.documentFormattingProvider = false
       end
       if client.name == "volar" then
         client.server_capabilities.documentFormattingProvider = false
+        vim.keymap.del("n", "gi", opts)
+        vim.keymap.set("n", "gi", nuxt_goto, opts)
       end
       if client.name == "sumneko_lua" then
         client.server_capabilities.documentFormattingProvider = false
       end
-
-      local opts = { noremap = true, silent = true }
-      local keymap = vim.api.nvim_buf_set_keymap
-      keymap(bufnr, "n", "<leader>lk", ":lua vim.lsp.buf.signature_help()<CR>", opts)
-      keymap(bufnr, "n", "<leader>lr", ":lua vim.lsp.buf.rename()<CR>", opts)
-      keymap(bufnr, "n", "<leader>la", ":lua vim.lsp.buf.code_action()<CR>", opts)
-      keymap(bufnr, "n", "<leader>ld", ":lua vim.diagnostic.open_float()<CR>", opts)
-      keymap(bufnr, "n", "<leader>fd", ":Telescope diagnostics bufnr=0<CR>", opts)
-      keymap(bufnr, "n", "<leader>fD", ":Telescope diagnostics<CR>", opts)
-      keymap(bufnr, "n", "<leader>ls", ":lua vim.lsp.buf.signature_help()<CR>", opts)
-      keymap(bufnr, "n", "<leader>lq", ":lua vim.diagnostic.setloclist()<CR>", opts)
-      keymap(bufnr, "n", "<leader>lf", ":lua vim.lsp.buf.format({ async = true })<CR>", opts)
-      keymap(bufnr, "n", "K", ":lua vim.lsp.buf.hover()<CR>", opts)
-      keymap(bufnr, "n", "g[", ':lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
-      keymap(bufnr, "n", "g]", ':lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
-      keymap(bufnr, "n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opts)
-      keymap(bufnr, "n", "gd", ":Telescope lsp_definitions show_line=false<cr>", opts)
-      keymap(bufnr, "n", "gr", ":Telescope lsp_references show_line=false<cr>", opts)
-      keymap(bufnr, "n", "gi", ":Telescope lsp_implementations show_line=false<cr>", opts)
-      keymap(bufnr, "n", "go", ":Telescope lsp_document_symbols<CR>", opts)
-      keymap(bufnr, "n", "gO", ":Telescope lsp_workspace_symbols<CR>", opts)
 
       require("illuminate").on_attach(client)
     end
