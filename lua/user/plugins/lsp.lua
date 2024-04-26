@@ -40,6 +40,9 @@ return {
         local line = vim.fn.getline "."
         local path = string.match(line, '".-/(.-)"')
         local file = vim.fn.expand "%"
+        if string.find(path, "index") then
+          path = path .. ".ts"
+        end
 
         if string.find(file, "components.d.ts") then
           vim.cmd "bdelete"

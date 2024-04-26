@@ -4,6 +4,7 @@ return {
   dependencies = {
     "williamboman/mason.nvim",
     "rcarriga/nvim-dap-ui",
+    "nvim-neotest/nvim-nio",
     "theHamsta/nvim-dap-virtual-text",
     "simrat39/rust-tools.nvim",
     "David-Kunz/jester",

@@ -3,6 +3,7 @@ local M = {
   event = "BufReadPre",
   dependencies = {
     {
+      "nvimtools/none-ls-extras.nvim",
       "nvim-lua/plenary.nvim",
       lazy = true,
     },
@@ -28,8 +29,8 @@ function M.config()
       formatting.black.with { extra_args = { "--fast" } },
       formatting.stylua,
       formatting.google_java_format,
-      diagnostics.flake8,
-      code_actions.eslint_d,
+      require "none-ls.diagnostics.flake8",
+      require "none-ls.code_actions.eslint_d",
     },
   }
 end
