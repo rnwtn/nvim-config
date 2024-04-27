@@ -9,7 +9,7 @@ return {
   main = "nvim-treesitter.configs",
   config = function()
     vim.g.skip_ts_context_commentstring_module = true
-    require("nvim-treesitter.configs").setup {
+    require("nvim-treesitter.configs").setup({
       -- A list of parser names, or "all"
       -- ensure_installed = { "c", "lua", "rust" },
       -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -40,6 +40,6 @@ return {
       autotag = {
         enable = true,
       },
-    }
+    })
   end,
 }

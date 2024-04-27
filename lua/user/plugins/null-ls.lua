@@ -11,7 +11,7 @@ local M = {
 }
 
 function M.config()
-  local null_ls = require "null-ls"
+  local null_ls = require("null-ls")
   -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
   local formatting = null_ls.builtins.formatting
   -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
@@ -19,20 +19,20 @@ function M.config()
   local code_actions = null_ls.builtins.code_actions
 
   -- https://github.com/prettier-solidity/prettier-plugin-solidity
-  null_ls.setup {
+  null_ls.setup({
     debug = false,
     sources = {
-      formatting.prettier.with {
+      formatting.prettier.with({
         extra_filetypes = { "toml" },
         -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
-      },
-      formatting.black.with { extra_args = { "--fast" } },
+      }),
+      formatting.black.with({ extra_args = { "--fast" } }),
       formatting.stylua,
       formatting.google_java_format,
-      require "none-ls.diagnostics.flake8",
-      require "none-ls.code_actions.eslint_d",
+      require("none-ls.diagnostics.flake8"),
+      require("none-ls.code_actions.eslint_d"),
     },
-  }
+  })
 end
 
 return M

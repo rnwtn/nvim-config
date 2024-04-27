@@ -1,6 +1,6 @@
 return function(cb, config)
   if config.preLaunchTask then
-    vim.notify "Performing pre-launch tasks"
+    vim.notify("Performing pre-launch tasks")
     config.preLaunchTask()
   end
   local adapter = {

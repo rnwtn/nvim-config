@@ -52,11 +52,11 @@ keymap("n", "<leader>ll", ":Lazy<cr>")
 
 -- zen mode
 keymap("n", "<leader>z", function()
-  vim.cmd [[
+  vim.cmd([[
   if tabpagenr() > 1
     tabclose
   else
     tabnew %
   endif
-  ]]
+  ]])
 end, opts)

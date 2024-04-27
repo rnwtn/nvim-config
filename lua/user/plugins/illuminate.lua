@@ -2,7 +2,7 @@ return {
   "RRethy/vim-illuminate",
   event = "VeryLazy",
   config = function()
-    require("illuminate").configure {
+    require("illuminate").configure({
       filetypes_denylist = {
         "Trouble",
         "lir",
@@ -14,12 +14,12 @@ return {
         "TelescopePrompt",
         "spectre_panel",
       },
-    }
+    })
     vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
       callback = function()
         local line_count = vim.api.nvim_buf_line_count(0)
         if line_count >= 5000 then
-          vim.cmd "IlluminatePauseBuf"
+          vim.cmd("IlluminatePauseBuf")
         end
       end,
     })

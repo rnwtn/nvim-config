@@ -24,6 +24,6 @@ vim.opt.wrap = false
 vim.opt.linebreak = true
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
-vim.opt.iskeyword:append "-"
-vim.opt.whichwrap:append "<,>,[,],h,l"
+vim.opt.iskeyword:append("-")
+vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.exrc = true

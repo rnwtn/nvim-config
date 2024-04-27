@@ -5,7 +5,7 @@ return {
   opts = {
     ui = {
       border = "rounded",
-    }
+    },
   },
   keys = {
     { "<leader>lI", "<cmd>Mason<cr>", desc = "Open Mason" },

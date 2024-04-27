@@ -4,26 +4,26 @@ return {
   event = "BufRead",
   dependencies = {
     -- LSP Support
-    { "neovim/nvim-lspconfig" },             -- Required
-    { "williamboman/mason.nvim" },           -- Optional
+    { "neovim/nvim-lspconfig" }, -- Required
+    { "williamboman/mason.nvim" }, -- Optional
     { "williamboman/mason-lspconfig.nvim" }, -- Optional
 
     -- Autocompletion
-    { "hrsh7th/nvim-cmp" },     -- Required
+    { "hrsh7th/nvim-cmp" }, -- Required
     { "hrsh7th/cmp-nvim-lsp" }, -- Required
-    { "L3MON4D3/LuaSnip" },     -- Required
+    { "L3MON4D3/LuaSnip" }, -- Required
 
-    { "kevinhwang91/nvim-ufo",            dependencies = "kevinhwang91/promise-async" },
+    { "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
     { "nvim-telescope/telescope.nvim" },
     { "RRethy/vim-illuminate" },
-    { "j-hui/fidget.nvim",                tag = "legacy" },
+    { "j-hui/fidget.nvim", tag = "legacy" },
     { "nvimtools/none-ls.nvim" },
     { "simrat39/rust-tools.nvim" },
     { "b0o/schemastore.nvim" },
   },
   config = function()
     local is_nuxt_project = false
-    local dirList = vim.fn.systemlist "ls -a"
+    local dirList = vim.fn.systemlist("ls -a")
     local original_definition = vim.lsp.buf.definition
     local function nuxt_goto()
       original_definition()
@@ -37,15 +37,15 @@ return {
         return
       end
       vim.defer_fn(function()
-        local line = vim.fn.getline "."
+        local line = vim.fn.getline(".")
         local path = string.match(line, '".-/(.-)"')
-        local file = vim.fn.expand "%"
+        local file = vim.fn.expand("%")
         if string.find(path, "index") then
           path = path .. ".ts"
         end
 
         if string.find(file, "components.d.ts") then
-          vim.cmd "bdelete"
+          vim.cmd("bdelete")
           vim.cmd("edit " .. path)
         end
       end, 100)
@@ -92,8 +92,8 @@ return {
       local extension_path = vim.env.HOME .. "/.vscode-oss/extensions/vadimcn.vscode-lldb-1.9.2-universal/"
       local codelldb_path = extension_path .. "adapter/codelldb"
       local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
-      local rust_tools = require "rust-tools"
-      rust_tools.setup {
+      local rust_tools = require("rust-tools")
+      rust_tools.setup({
         dap = {
           adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
         },
@@ -107,12 +107,12 @@ return {
             vim.keymap.set("n", "<Leader>la", rust_tools.code_action_group.code_action_group, { buffer = bufnr })
           end,
         },
-      }
+      })
     end
 
     local function configure_code_folding()
       vim.o.foldcolumn = "0" -- '0' is not bad
-      vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+      vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true
 
@@ -125,20 +125,20 @@ return {
       }
       local language_servers = require("lspconfig").util.available_servers()
       for _, ls in ipairs(language_servers) do
-        require("lspconfig")[ls].setup {
+        require("lspconfig")[ls].setup({
           capabilities = capabilities,
           -- you can add other fields for setting up lsp server in this table
-        }
+        })
       end
       require("ufo").setup()
     end
 
     local function configure_lsp_zero()
-      local lsp = require("lsp-zero").preset {}
+      local lsp = require("lsp-zero").preset({})
       lsp.on_attach(on_lsp_attach)
 
       require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
-      require("lspconfig").jsonls.setup {
+      require("lspconfig").jsonls.setup({
         settings = {
           json = {
             schemas = require("schemastore").json.schemas(),
@@ -148,13 +148,13 @@ return {
           commands = {
             Format = {
               function()
-                vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line "$", 0 })
+                vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line("$"), 0 })
               end,
             },
           },
         },
-      }
-      require("lspconfig").lua_ls.setup {
+      })
+      require("lspconfig").lua_ls.setup({
         settings = {
           Lua = {
             diagnostics = {
@@ -162,16 +162,16 @@ return {
             },
           },
         },
-      }
-      require("lspconfig").tsserver.setup {
+      })
+      require("lspconfig").tsserver.setup({
         settings = {
           formatting = false,
         },
-      }
+      })
 
-      lsp.skip_server_setup { "rust_analyzer" }
+      lsp.skip_server_setup({ "rust_analyzer" })
       lsp.setup()
-      vim.diagnostic.config { virtual_text = false }
+      vim.diagnostic.config({ virtual_text = false })
 
       require("lspconfig.ui.windows").default_options.border = "rounded"
       vim.api.nvim_create_autocmd("FileType", {
@@ -186,7 +186,7 @@ return {
     configure_code_folding()
     configure_lsp_zero()
     configure_rust_tools()
-    require("fidget").setup {}
+    require("fidget").setup({})
   end,
   keys = {
     { "<leader>li", ":LspInfo<cr>", desc = "LspInfo open" },

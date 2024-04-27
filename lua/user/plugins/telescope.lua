@@ -1,4 +1,4 @@
-local actions = require "telescope.actions"
+local actions = require("telescope.actions")
 
 return {
   "nvim-telescope/telescope.nvim",
@@ -6,12 +6,12 @@ return {
   event = "Bufenter",
   cmd = { "Telescope" },
   config = function()
-    require("telescope").setup {
+    require("telescope").setup({
       extensions = {
         ["ui-select"] = {
-          require("telescope.themes").get_dropdown {
+          require("telescope.themes").get_dropdown({
             -- even more opts
-          },
+          }),
 
           -- pseudo code / specification for writing custom displays, like the one
           -- for "codeactions"
@@ -71,15 +71,15 @@ return {
           },
         },
       },
-    }
-    require("telescope").load_extension "ui-select"
+    })
+    require("telescope").load_extension("ui-select")
   end,
   keys = {
-    { "<leader>ff", ":Telescope find_files hidden=true<CR>",    desc = "Telescope find files" },
-    { "<C-p>",      ":Telescope git_files<CR>",                 desc = "Telescope git files" },
-    { "<leader>/",  ":Telescope current_buffer_fuzzy_find<CR>", desc = "Telescope fuzzy find in file" },
-    { "<leader>fg", ":Telescope live_grep<CR>",                 desc = "Telescope live grep" },
-    { "<leader>fw", ":Telescope grep_string<CR>",               desc = "Telescope grep string" },
-    { "<leader>fb", ":Telescope buffers<CR>",                   desc = "Telescop find buffer" },
+    { "<leader>ff", ":Telescope find_files hidden=true<CR>", desc = "Telescope find files" },
+    { "<C-p>", ":Telescope git_files<CR>", desc = "Telescope git files" },
+    { "<leader>/", ":Telescope current_buffer_fuzzy_find<CR>", desc = "Telescope fuzzy find in file" },
+    { "<leader>fg", ":Telescope live_grep<CR>", desc = "Telescope live grep" },
+    { "<leader>fw", ":Telescope grep_string<CR>", desc = "Telescope grep string" },
+    { "<leader>fb", ":Telescope buffers<CR>", desc = "Telescop find buffer" },
   },
 }

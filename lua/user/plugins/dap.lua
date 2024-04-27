@@ -17,8 +17,8 @@ return {
     },
   },
   config = function()
-    local dap = require "dap"
-    local dapui = require "dapui"
+    local dap = require("dap")
+    local dapui = require("dapui")
 
     dap.listeners.after.event_initialized["dapui_config"] = function()
       dapui.open()
@@ -34,14 +34,14 @@ return {
 
     -- Setup adapters
     -- TODO: make this more automatic by looping over files
-    dap.adapters.codelldb = require "user.dap.adapters.codelldb"
-    dap.adapters.coreclr = require "user.dap.adapters.coreclr"
-    dap.adapters.godot = require "user.dap.adapters.godot"
+    dap.adapters.codelldb = require("user.dap.adapters.codelldb")
+    dap.adapters.coreclr = require("user.dap.adapters.coreclr")
+    dap.adapters.godot = require("user.dap.adapters.godot")
 
     require("dap-vscode-js").setup({
-				debugger_path = vim.fn.stdpath("data") .. "/lazy/vscode-js-debug",
-				adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
-			})
+      debugger_path = vim.fn.stdpath("data") .. "/lazy/vscode-js-debug",
+      adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
+    })
 
     dap.configurations.cs = {
       {
@@ -62,7 +62,7 @@ return {
         launch_scene = true,
       },
     }
-    for _, language in ipairs { "cpp", "c", "rust" } do
+    for _, language in ipairs({ "cpp", "c", "rust" }) do
       require("dap").configurations[language] = {
         {
           name = "Launch file",
@@ -76,7 +76,7 @@ return {
         },
       }
     end
-    for _, language in ipairs { "typescript", "javascript", "svelte" } do
+    for _, language in ipairs({ "typescript", "javascript", "svelte" }) do
       require("dap").configurations[language] = {
         -- attach to a node process that has been started with
         -- `--inspect` for longrunning tasks or `--inspect-brk` for short tasks
@@ -117,24 +117,24 @@ return {
         },
         -- only if language is javascript, offer this debug action
         language == "javascript"
-        and {
-          -- use nvim-dap-vscode-js's pwa-node debug adapter
-          type = "pwa-node",
-          -- launch a new process to attach the debugger to
-          request = "launch",
-          -- name of the debug action you have to select for this config
-          name = "Launch file in new node process",
-          -- launch current file
-          program = "${file}",
-          cwd = "${workspaceFolder}",
-        }
-        or nil,
+            and {
+              -- use nvim-dap-vscode-js's pwa-node debug adapter
+              type = "pwa-node",
+              -- launch a new process to attach the debugger to
+              request = "launch",
+              -- name of the debug action you have to select for this config
+              name = "Launch file in new node process",
+              -- launch current file
+              program = "${file}",
+              cwd = "${workspaceFolder}",
+            }
+          or nil,
       }
     end
 
     -- Set virtual text when debugging
-    require("nvim-dap-virtual-text").setup {}
-    require("dapui").setup {
+    require("nvim-dap-virtual-text").setup({})
+    require("dapui").setup({
       expand_lines = true,
       icons = { expanded = "", collapsed = "", circular = "" },
       mappings = {
@@ -148,13 +148,13 @@ return {
       },
       floating = {
         max_height = 0.9,
-        max_width = 0.5,             -- Floats will be treated as percentage of your screen.
+        max_width = 0.5, -- Floats will be treated as percentage of your screen.
         border = vim.g.border_chars, -- Border style. Can be 'single', 'double' or 'rounded'
         mappings = {
           close = { "q", "<Esc>" },
         },
       },
-    }
+    })
 
     vim.fn.sign_define("DapStopped", { text = "", texthl = "DiagnosticSignWarn", linehl = "", numhl = "" })
     vim.fn.sign_define("DapBreakpoint", { text = "B", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
@@ -172,9 +172,9 @@ return {
     { "<leader>dg", ":lua require('dap').goto_(vim.api.nvim_win_get_cursor(0)[1])<cr>" },
     { "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>" },
     { "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>" },
-    { "<F5>",       ":DapContinue<cr>" },
-    { "<F10>",      ":DapStepOver<cr>" },
-    { "<F11>",      ":DapStepInto<cr>" },
-    { "<S-F11>",    ":DapStepOut<cr>" },
+    { "<F5>", ":DapContinue<cr>" },
+    { "<F10>", ":DapStepOver<cr>" },
+    { "<F11>", ":DapStepInto<cr>" },
+    { "<S-F11>", ":DapStepOut<cr>" },
   },
 }
