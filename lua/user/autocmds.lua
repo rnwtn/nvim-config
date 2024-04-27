@@ -19,3 +19,9 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     vim.keymap.set("n", "q", ":q<cr>", opts)
   end,
 })
+
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  callback = function()
+    vim.cmd("set foldlevel=999");
+  end,
+})
