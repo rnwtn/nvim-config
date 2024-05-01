@@ -1,6 +1,3 @@
-----------------------------------------
--- vi vi vi - the editor of the beast --
-----------------------------------------
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
