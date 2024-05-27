@@ -1,11 +1,10 @@
-local actions = require("telescope.actions")
-
 return {
   "nvim-telescope/telescope.nvim",
   dependencies = { "nvim-telescope/telescope-ui-select.nvim" },
   event = "Bufenter",
   cmd = { "Telescope" },
   config = function()
+    local actions = require("telescope.actions")
     require("telescope").setup({
       extensions = {
         ["ui-select"] = {
@@ -80,6 +79,8 @@ return {
     { "<leader>/", ":Telescope current_buffer_fuzzy_find<CR>", desc = "Telescope fuzzy find in file" },
     { "<leader>fg", ":Telescope live_grep<CR>", desc = "Telescope live grep" },
     { "<leader>fw", ":Telescope grep_string<CR>", desc = "Telescope grep string" },
-    { "<leader>fb", ":Telescope buffers<CR>", desc = "Telescop find buffer" },
+    { "<leader>fb", ":Telescope buffers<CR>", desc = "Telescope find buffer" },
+    { "<leader>fd", ":Telescope diagnostics bufnr=0<CR>", desc = "Telescope find diagnostics for buffer" },
+    { "<leader>fD", ":Telescope diagnostics<CR>", desc = "Telescope find diagnostics" },
   },
 }

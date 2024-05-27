@@ -1,5 +1,4 @@
 vim.opt.swapfile = false
--- vim.opt.mouse = ""
 vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -26,4 +25,9 @@ vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.iskeyword:append("-")
 vim.opt.whichwrap:append("<,>,[,],h,l")
-vim.opt.exrc = true
+vim.opt.foldcolumn = "0"
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
+-- vim.opt.exrc = true
+-- vim.opt.mouse = ""

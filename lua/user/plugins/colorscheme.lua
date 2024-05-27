@@ -17,10 +17,10 @@ return {
           LspInfoBorder = { bg = "NONE", fg = fg },
         },
         italic = {
-          strings = false,
-          comments = false,
-          operators = false,
-          folds = false,
+          -- strings = false,
+          -- comments = false,
+          -- operators = false,
+          -- folds = false,
         },
       })
     end,
