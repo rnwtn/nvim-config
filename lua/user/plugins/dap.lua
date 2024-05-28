@@ -6,7 +6,6 @@ return {
     "rcarriga/nvim-dap-ui",
     "nvim-neotest/nvim-nio",
     "theHamsta/nvim-dap-virtual-text",
-    "simrat39/rust-tools.nvim",
     "David-Kunz/jester",
     "mxsdev/nvim-dap-vscode-js",
     -- build debugger from source
@@ -32,36 +31,23 @@ return {
       dapui.close()
     end
 
-    -- Setup adapters
-    -- TODO: make this more automatic by looping over files
-    dap.adapters.codelldb = require("user.dap.adapters.codelldb")
-    dap.adapters.coreclr = require("user.dap.adapters.coreclr")
-    dap.adapters.godot = require("user.dap.adapters.godot")
+    local function build_adapter(adapter)
+      return function(cb, config)
+        if config.preLaunchTask then
+          config.preLaunchTask()
+        end
+        cb(adapter)
+      end
+    end
 
-    require("dap-vscode-js").setup({
-      debugger_path = vim.fn.stdpath("data") .. "/lazy/vscode-js-debug",
-      adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
+    dap.adapters.codelldb = build_adapter({
+      type = "server",
+      port = "${port}",
+      executable = {
+        command = "codelldb",
+        args = { "--port", "${port}" },
+      },
     })
-
-    dap.configurations.cs = {
-      {
-        type = "coreclr",
-        name = "launch - netcoredbg",
-        request = "launch",
-        program = function()
-          return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
-        end,
-      },
-    }
-    dap.configurations.gdscript = {
-      {
-        type = "godot",
-        request = "launch",
-        name = "Launch scene",
-        project = "${workspaceFolder}",
-        launch_scene = true,
-      },
-    }
     for _, language in ipairs({ "cpp", "c", "rust" }) do
       require("dap").configurations[language] = {
         {
@@ -76,6 +62,42 @@ return {
         },
       }
     end
+
+    dap.adapters.coreclr = build_adapter({
+      type = "executable",
+      command = "netcoredbg",
+      args = { "--interpreter=vscode" },
+    })
+    dap.configurations.cs = {
+      {
+        type = "coreclr",
+        name = "launch - netcoredbg",
+        request = "launch",
+        program = function()
+          return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
+        end,
+      },
+    }
+
+    dap.adapters.godot = build_adapter({
+      type = "server",
+      host = "127.0.0.1",
+      port = 6006,
+    })
+    dap.configurations.gdscript = {
+      {
+        type = "godot",
+        request = "launch",
+        name = "Launch scene",
+        project = "${workspaceFolder}",
+        launch_scene = true,
+      },
+    }
+
+    require("dap-vscode-js").setup({
+      debugger_path = vim.fn.stdpath("data") .. "/lazy/vscode-js-debug",
+      adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
+    })
     for _, language in ipairs({ "typescript", "javascript", "svelte" }) do
       require("dap").configurations[language] = {
         -- attach to a node process that has been started with
@@ -132,8 +154,6 @@ return {
       }
     end
 
-    -- Set virtual text when debugging
-    require("nvim-dap-virtual-text").setup({})
     require("dapui").setup({
       expand_lines = true,
       icons = { expanded = "", collapsed = "", circular = "" },
@@ -156,6 +176,8 @@ return {
       },
     })
 
+    require("nvim-dap-virtual-text").setup({})
+
     vim.fn.sign_define("DapStopped", { text = "", texthl = "DiagnosticSignWarn", linehl = "", numhl = "" })
     vim.fn.sign_define("DapBreakpoint", { text = "B", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
     vim.fn.sign_define(
@@ -167,6 +189,7 @@ return {
   end,
   keys = {
     { "<leader>du", ":lua require('dapui').toggle({ reset = true })<cr>" },
+    { "<leader>do", ":lua require('dapui').toggle({ reset = true })<cr>" },
     { "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>" },
     { "<leader>db", ":DapToggleBreakpoint<cr>" },
     { "<leader>dg", ":lua require('dap').goto_(vim.api.nvim_win_get_cursor(0)[1])<cr>" },
