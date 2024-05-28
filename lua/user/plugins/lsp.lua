@@ -1,6 +1,6 @@
 return {
   "neovim/nvim-lspconfig",
-  event = "BufReadPre",
+  event = "VeryLazy",
   dependencies = {
     { "b0o/schemastore.nvim" },
     { "j-hui/fidget.nvim" },
@@ -28,28 +28,20 @@ return {
 
       local clients_without_formatting = { "tsserver", "lua_ls" }
       if vim.tbl_contains(clients_without_formatting, client.name) then
-        vim.print("Disabling formatting for " .. client.name)
         client.server_capabilities.documentFormattingProvider = false
       end
     end
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities.textDocument.foldingRange = {
-      dynamicRegistration = false,
-      lineFoldingOnly = true,
-    }
-
+    local lspconfig = require("lspconfig")
     require("mason-lspconfig").setup()
     require("mason-lspconfig").setup_handlers({
       function(server_name) -- default handler
-        require("lspconfig")[server_name].setup({
-          capabilities = capabilities,
+        lspconfig[server_name].setup({
           on_attach = on_attach,
         })
       end,
       ["tsserver"] = function()
-        require("lspconfig").tsserver.setup({
-          capabilities = capabilities,
+        lspconfig.tsserver.setup({
           on_attach = on_attach,
           settings = {
             formatting = false,
@@ -57,8 +49,7 @@ return {
         })
       end,
       ["lua_ls"] = function()
-        require("lspconfig").lua_ls.setup({
-          capabilities = capabilities,
+        lspconfig.lua_ls.setup({
           on_attach = on_attach,
           settings = {
             formatting = false,
@@ -79,8 +70,7 @@ return {
         })
       end,
       ["jsonls"] = function()
-        require("lspconfig").jsonls.setup({
-          capabilities = capabilities,
+        lspconfig.jsonls.setup({
           on_attach = on_attach,
           settings = {
             json = {
@@ -121,6 +111,7 @@ return {
       end,
     })
 
+    require("lspconfig.ui.windows").default_options.border = "rounded"
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
       border = "rounded",
       title = "hover",
@@ -129,10 +120,6 @@ return {
       float = { border = "rounded" },
     })
 
-    require("lspconfig.ui.windows").default_options.border = "rounded"
-    require("ufo").setup()
-    require("fidget").setup()
-
     vim.api.nvim_create_autocmd("FileType", {
       pattern = "lspinfo",
       callback = function()
@@ -140,16 +127,19 @@ return {
         vim.keymap.set("n", "<leader>li", ":q<cr>", opts)
       end,
     })
+
+    require("fidget").setup()
+    require("ufo").setup({
+      provider_selector = function()
+        return { "treesitter", "indent" }
+      end,
+    })
   end,
   keys = {
     { "<leader>li", ":LspInfo<cr>", desc = "LspInfo open" },
-    { "<leader>ld", ":lua vim.diagnostic.open_float({ border = 'rounded' })<CR>", desc = "Open diagnostic" },
-    {
-      "<leader>lq",
-      ":lua vim.diagnostic.setloclist()<CR>",
-      desc = "Add diagnostics to quickfix list",
-    },
-    { "g[", ":lua vim.diagnostic.goto_prev({ border = 'rounded' })<CR>", desc = "goto prev diagnostic" },
-    { "g]", ":lua vim.diagnostic.goto_next({ border = 'rounded' })<CR>", desc = "goto next diagnostic" },
+    { "<leader>ld", ":lua vim.diagnostic.open_float()<CR>", desc = "Open diagnostics" },
+    { "<leader>lq", ":lua vim.diagnostic.setloclist()<CR>", desc = "Quickfix diagnostics" },
+    { "g[", ":lua vim.diagnostic.goto_prev()<CR>", desc = "goto prev diagnostic" },
+    { "g]", ":lua vim.diagnostic.goto_next()<CR>", desc = "goto next diagnostic" },
   },
 }
