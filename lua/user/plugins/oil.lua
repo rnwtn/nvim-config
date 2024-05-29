@@ -9,6 +9,8 @@ return {
     keymaps = {
       ["<leader>e"] = "actions.close",
       ["q"] = "actions.close",
+      ["<2-LeftMouse>"] = "actions.select",
+      ["<RightMouse>"] = "actions.parent",
       ["<C-j>"] = "j",
       ["<C-k>"] = "k",
       ["<Tab>"] = "j",
@@ -16,7 +18,7 @@ return {
     },
     float = {
       padding = 5,
-      max_width = 100,
+      max_width = 130,
       max_height = 80,
       win_options = {
         winblend = 0,
@@ -26,5 +28,6 @@ return {
   keys = {
     { "<leader>e", ":lua require('oil').open_float()<cr>", desc = "Open parent directory" },
     { "-", ":lua require('oil').open_float()<cr>", desc = "Open parent directory" },
+    { "<RightMouse>", ":lua require('oil').open_float()<cr>", desc = "Open parent directory" },
   },
 }
