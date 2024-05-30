@@ -24,7 +24,7 @@ return {
     { "<leader>2", ":lua require('harpoon'):list():select(2)<cr>", desc = "Navigate to Harpoon file 2" },
     { "<leader>3", ":lua require('harpoon'):list():select(3)<cr>", desc = "Navigate to Harpoon file 3" },
     { "<leader>4", ":lua require('harpoon'):list():select(4)<cr>", desc = "Navigate to Harpoon file 4" },
-    { "<leader>5", ":lua require('harpoon'):list():select(5)<cr>", desc = "Navigate to Harpoon file 4" },
+    { "<leader>5", ":lua require('harpoon'):list():select(5)<cr>", desc = "Navigate to Harpoon file 5" },
     { "<leader>6", ":lua require('harpoon'):list():select(6)<cr>", desc = "Navigate to Harpoon file 6" },
     { "<leader>7", ":lua require('harpoon'):list():select(7)<cr>", desc = "Navigate to Harpoon file 7" },
     { "<leader>8", ":lua require('harpoon'):list():select(8)<cr>", desc = "Navigate to Harpoon file 8" },
