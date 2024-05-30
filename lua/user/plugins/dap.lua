@@ -7,12 +7,6 @@ return {
     "theHamsta/nvim-dap-virtual-text",
     "David-Kunz/jester",
     "mxsdev/nvim-dap-vscode-js",
-    -- build debugger from source
-    {
-      "microsoft/vscode-js-debug",
-      version = "1.x",
-      build = "npm i && npm run compile vsDebugServerBundle && mv dist out",
-    },
   },
   config = function()
     local dap = require("dap")
@@ -94,7 +88,7 @@ return {
     }
 
     require("dap-vscode-js").setup({
-      debugger_path = vim.fn.stdpath("data") .. "/lazy/vscode-js-debug",
+      debugger_cmd = "js-debug-adapter",
       adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
     })
     for _, language in ipairs({ "typescript", "javascript", "svelte" }) do
