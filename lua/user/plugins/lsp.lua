@@ -3,9 +3,6 @@ return {
   event = "VeryLazy",
   dependencies = {
     { "b0o/schemastore.nvim" },
-    { "j-hui/fidget.nvim" },
-    { "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
-    { "nvim-telescope/telescope.nvim" },
     { "simrat39/rust-tools.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
   },
@@ -125,13 +122,6 @@ return {
       callback = function()
         local opts = { buffer = true, noremap = true, silent = true }
         vim.keymap.set("n", "<leader>li", ":q<cr>", opts)
-      end,
-    })
-
-    require("fidget").setup()
-    require("ufo").setup({
-      provider_selector = function()
-        return { "treesitter", "indent" }
       end,
     })
   end,
