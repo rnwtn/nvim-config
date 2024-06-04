@@ -8,6 +8,19 @@ keymap("n", "<ESC>", ":noh<CR>", opts)
 -- keymap("n", "j", "gj", opts)
 -- keymap("n", "k", "gk", opts)
 
+-- disable mouse actions in normal mode
+keymap("n", "<RightMouse>", "<NOP>", opts)
+keymap("n", "<2-RightMouse>", "<NOP>", opts)
+keymap("n", "<3-RightMouse>", "<NOP>", opts)
+keymap("n", "<4-RightMouse>", "<NOP>", opts)
+keymap("n", "<MiddleMouse>", "<NOP>", opts)
+keymap("n", "<2-MiddleMouse>", "<NOP>", opts)
+keymap("n", "<3-MiddleMouse>", "<NOP>", opts)
+keymap("n", "<4-MiddleMouse>", "<NOP>", opts)
+
+-- quick-switch buffer with TAB
+keymap("n", "<TAB>", "<C-6>", opts)
+
 -- nav windows with C-{h,j,k,l}
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
