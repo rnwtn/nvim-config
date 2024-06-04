@@ -1,45 +1,26 @@
-return {
-    "ellisonleao/gruvbox.nvim",
-    name = "gruvbox",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      local fg = "#f2e5bc"
+local fg = "#f2e5bc"
 
-      require("gruvbox").setup({
-        invert_selection = true,
-        transparent_mode = true,
-        overrides = {
-          Normal = { bg = "NONE" },
-          NormalFloat = { bg = "NONE" },
-          FloatBorder = { bg = "NONE", fg = fg },
-          LspInfoBorder = { bg = "NONE", fg = fg },
-        },
-        italic = {
-          -- strings = false,
-          -- comments = false,
-          -- operators = false,
-          -- folds = false,
-        },
-      })
-    end,
+return {
+  "ellisonleao/gruvbox.nvim",
+  name = "gruvbox",
+  lazy = false,
+  priority = 1000,
+  opts = {
+    invert_selection = true,
+    transparent_mode = true,
+    overrides = {
+      Normal = { bg = "NONE" },
+      NormalFloat = { bg = "NONE" },
+      FloatBorder = { bg = "NONE", fg = fg },
+      LspInfoBorder = { bg = "NONE", fg = fg },
+    },
+    italic = {
+      -- strings = false,
+      -- comments = false,
+      -- operators = false,
+      -- folds = false,
+    },
   },
-  {
-    "neanias/everforest-nvim",
-    version = false,
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("everforest").setup({
-        ui_contrast = "high",
-        transparent_background_level = 2,
-        on_highlights = function(hl, palette)
-          hl.NormalFloat = { bg = palette.none }
-          hl.FloatBorder = { bg = palette.none, fg = palette.fg }
-          hl.LspInfoBorder = { fg = palette.fg }
-        end,
-      })
-    end,
 }
 
 -- For NvChad like telescope theme, do something like the following
