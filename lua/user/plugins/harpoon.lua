@@ -4,7 +4,6 @@ return {
   branch = "harpoon2",
   dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
-    require("harpoon"):setup()
     vim.api.nvim_create_autocmd({ "FileType" }, {
       pattern = { "harpoon" },
       callback = function()
@@ -18,6 +17,7 @@ return {
         vim.keymap.set("n", "<RightMouse>", "<NOP>", opts)
       end,
     })
+    require("harpoon"):setup()
   end,
   keys = {
     { "<leader>1", ":lua require('harpoon'):list():select(1)<cr>", desc = "Navigate to Harpoon file 1" },
@@ -41,6 +41,24 @@ return {
     },
     {
       "<MiddleMouse>",
+      ":lua require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())<cr>",
+      desc = "Open Harpoon quick menu",
+      silent = true,
+    },
+    {
+      "<2-MiddleMouse>",
+      ":lua require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())<cr>",
+      desc = "Open Harpoon quick menu",
+      silent = true,
+    },
+    {
+      "<3-MiddleMouse>",
+      ":lua require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())<cr>",
+      desc = "Open Harpoon quick menu",
+      silent = true,
+    },
+    {
+      "<4-MiddleMouse>",
       ":lua require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())<cr>",
       desc = "Open Harpoon quick menu",
       silent = true,
