@@ -17,7 +17,10 @@ return {
         vim.keymap.set("n", "<RightMouse>", "<NOP>", opts)
       end,
     })
-    require("harpoon"):setup()
+    local harpoon = require("harpoon")
+    local extensions = require("harpoon.extensions")
+    harpoon:setup()
+    harpoon:extend(extensions.builtins.navigate_with_number())
   end,
   keys = {
     { "<leader>1", ":lua require('harpoon'):list():select(1)<cr>", desc = "Navigate to Harpoon file 1" },
@@ -34,7 +37,7 @@ return {
     { "<leader>n", ":lua require('harpoon'):list():next()<cr>", desc = "Navigate to Harpoon next file" },
     { "<leader>a", ":lua require('harpoon'):list():add()<cr>", desc = "Add buffer to Harpoon list" },
     {
-      "<leader>s",
+      "s",
       ":lua require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())<cr>",
       desc = "Open Harpoon quick menu",
       silent = true,
