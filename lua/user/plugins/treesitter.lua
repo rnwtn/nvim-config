@@ -5,8 +5,8 @@ return {
     "JoosepAlviste/nvim-ts-context-commentstring",
     "nvim-tree/nvim-web-devicons",
     "windwp/nvim-ts-autotag",
+    "nvim-treesitter/nvim-treesitter-textobjects",
   },
-  main = "nvim-treesitter.configs",
   config = function()
     vim.g.skip_ts_context_commentstring_module = true
     require("nvim-treesitter.configs").setup({
@@ -39,6 +39,51 @@ return {
       },
       autotag = {
         enable = true,
+      },
+      textobjects = {
+        select = {
+          enable = true,
+          lookahead = true,
+          keymaps = {
+            -- You can use the capture groups defined in textobjects.scm
+            ["af"] = "@function.outer",
+            ["if"] = "@function.inner",
+            ["ac"] = "@class.outer",
+            ["ic"] = "@class.inner",
+            ["aa"] = "@parameter.outer",
+            ["ia"] = "@parameter.inner",
+          },
+          selection_modes = {
+            ["@parameter.outer"] = "v",
+            ["@function.outer"] = "V",
+            ["@class.outer"] = "V",
+          },
+        },
+
+        move = {
+          enable = true,
+          set_jumps = true, -- whether to set jumps in the jumplist
+          goto_next_start = {
+            ["]a"] = "@parameter.inner",
+            ["]f"] = "@function.outer",
+            ["]c"] = "@class.outer",
+          },
+          goto_next_end = {
+            ["]A"] = "@parameter.inner",
+            ["]f"] = "@function.outer",
+            ["]C"] = "@class.outer",
+          },
+          goto_previous_start = {
+            ["[a"] = "@parameter.inner",
+            ["[f"] = "@function.outer",
+            ["[c"] = "@class.outer",
+          },
+          goto_previous_end = {
+            ["[A"] = "@parameter.inner",
+            ["[F"] = "@function.outer",
+            ["[C"] = "@class.outer",
+          },
+        },
       },
     })
   end,
