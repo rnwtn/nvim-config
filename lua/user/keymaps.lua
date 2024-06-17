@@ -54,6 +54,11 @@ keymap("n", "<leader>X", ":bdelete!<CR>", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
+-- Leader yank/paste to copy to system clipboard
+keymap("n", "<Leader>y", '"+y', opts)
+keymap("n", "<Leader>p", '"+p', opts)
+keymap("n", "<Leader>P", '"+P', opts)
+
 -- Don't overwrite yank register when pasting over visual selection
 keymap("v", "p", '"_dP', opts)
 

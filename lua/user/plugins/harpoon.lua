@@ -33,8 +33,6 @@ return {
     { "<leader>8", ":lua require('harpoon'):list():select(8)<cr>", desc = "Navigate to Harpoon file 8" },
     { "<leader>9", ":lua require('harpoon'):list():select(9)<cr>", desc = "Navigate to Harpoon file 9" },
     { "<leader>0", ":lua require('harpoon'):list():select(10)<cr>", desc = "Navigate to Harpoon file 10" },
-    { "<leader>p", ":lua require('harpoon'):list():prev()<cr>", desc = "Navigate to Harpoon previous file" },
-    { "<leader>n", ":lua require('harpoon'):list():next()<cr>", desc = "Navigate to Harpoon next file" },
     { "<leader>a", ":lua require('harpoon'):list():add()<cr>", desc = "Add buffer to Harpoon list" },
     {
       "s",
