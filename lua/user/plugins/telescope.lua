@@ -31,6 +31,7 @@ return {
         file_ignore_patterns = {
           ".git/",
           ".svelte%-kit/",
+          ".next/",
           "node_modules/",
           "%.o",
           "%.a",
@@ -74,7 +75,7 @@ return {
     require("telescope").load_extension("ui-select")
   end,
   keys = {
-    { "<leader>ff", ":Telescope find_files hidden=true<CR>", desc = "Telescope find files" },
+    { "<leader>ff", ":Telescope find_files no_ignore=true hidden=true<CR>", desc = "Telescope find files" },
     { "<C-p>", ":Telescope git_files<CR>", desc = "Telescope git files" },
     { "<leader>/", ":Telescope current_buffer_fuzzy_find<CR>", desc = "Telescope fuzzy find in file" },
     { "<leader>fg", ":Telescope live_grep<CR>", desc = "Telescope live grep" },
@@ -82,5 +83,6 @@ return {
     { "<leader>fb", ":Telescope buffers<CR>", desc = "Telescope find buffer" },
     { "<leader>fd", ":Telescope diagnostics bufnr=0<CR>", desc = "Telescope find diagnostics for buffer" },
     { "<leader>fD", ":Telescope diagnostics<CR>", desc = "Telescope find diagnostics" },
+    { "<leader>fn", ":Telescope notify<CR>", desc = "Telescope find notification" },
   },
 }
