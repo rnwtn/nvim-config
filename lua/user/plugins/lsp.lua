@@ -9,7 +9,7 @@ return {
   config = function()
     local function on_attach(client, bufnr)
       local keymap = vim.keymap.set
-      local opts = { buffer = bufnr }
+      local opts = { buffer = bufnr, silent = true }
       keymap("n", "<leader>lk", ":lua vim.lsp.buf.signature_help()<CR>", opts)
       keymap("n", "<leader>lr", ":lua vim.lsp.buf.rename()<CR>", opts)
       keymap("n", "<leader>la", ":lua vim.lsp.buf.code_action()<CR>", opts)
