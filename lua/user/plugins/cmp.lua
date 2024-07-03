@@ -1,17 +1,15 @@
 return {
   "hrsh7th/nvim-cmp",
   dependencies = {
-    {
-      "hrsh7th/cmp-nvim-lsp", -- Completions from Neovim's built-in LSP client
-      "hrsh7th/cmp-buffer", -- Completions from text in buffer
-      "hrsh7th/cmp-path", -- Completions from file paths
-      "hrsh7th/cmp-cmdline", -- Completions for the command line
-      "hrsh7th/cmp-nvim-lua", -- Completions specific for Neovim's lua
-      "hrsh7th/cmp-nvim-lsp-signature-help", -- signature help
-      "saadparwaiz1/cmp_luasnip", -- Completions from luasnip
-      "onsails/lspkind.nvim", -- Icons
-      "zbirenbaum/copilot-cmp", --Copilot
-    },
+    "hrsh7th/cmp-nvim-lsp", -- Completions from Neovim's built-in LSP client
+    "hrsh7th/cmp-buffer", -- Completions from text in buffer
+    "hrsh7th/cmp-path", -- Completions from file paths
+    "hrsh7th/cmp-cmdline", -- Completions for the command line
+    "hrsh7th/cmp-nvim-lua", -- Completions specific for Neovim's lua
+    "hrsh7th/cmp-nvim-lsp-signature-help", -- signature help
+    "saadparwaiz1/cmp_luasnip", -- Completions from luasnip
+    "onsails/lspkind.nvim", -- Icons
+    "zbirenbaum/copilot-cmp", --Copilot
     {
       "L3MON4D3/LuaSnip", -- This provides snippets to CMP
       event = "InsertEnter",
