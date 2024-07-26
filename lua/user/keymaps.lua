@@ -58,6 +58,9 @@ keymap("v", ">", ">gv", opts)
 keymap("n", "<Leader>y", '"+y', opts)
 keymap("n", "<Leader>p", '"+p', opts)
 keymap("n", "<Leader>P", '"+P', opts)
+keymap("v", "<Leader>y", '"+y', opts)
+keymap("v", "<Leader>p", '"+p', opts)
+keymap("v", "<Leader>P", '"+P', opts)
 
 -- Don't overwrite yank register when pasting over visual selection
 keymap("v", "p", '"_dP', opts)
