@@ -7,8 +7,6 @@ return {
       pattern = "fugitive",
       callback = function()
         local opts = { buffer = true, noremap = true, silent = true }
-        vim.opt.number = true
-        vim.opt.relativenumber = true
         vim.keymap.set("n", "<leader>gs", ":q<cr>", opts)
         vim.keymap.set("n", "q", ":q<cr>", opts)
       end,
