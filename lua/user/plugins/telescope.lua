@@ -32,6 +32,7 @@ return {
           ".git/",
           ".svelte%-kit/",
           ".next/",
+          "android/",
           "node_modules/",
           "%.o",
           "%.a",
