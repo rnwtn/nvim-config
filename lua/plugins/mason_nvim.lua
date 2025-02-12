@@ -1,11 +1,11 @@
 return {
-	"williamboman/mason.nvim",
-	opts = {
+  "williamboman/mason.nvim",
+  opts = {
     ui = {
-      border = "single"
-    }
+      border = "single",
+    },
   },
-	keys = {
-		{ "<leader>lI", ":Mason<cr>", desc = "Open Mason" },
-	},
+  keys = {
+    { "<leader>lI", ":Mason<cr>", desc = "Open Mason" },
+  },
 }

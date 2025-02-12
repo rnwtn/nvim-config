@@ -70,4 +70,3 @@ keymap("t", "<esc>", "<C-\\><C-n>", opts)
 
 -- Open Lazy
 keymap("n", "<leader>ll", ":Lazy<cr>")
-
