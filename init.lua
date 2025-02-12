@@ -1,9 +1,9 @@
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.maplocalleader = "\\"
 
-require("user.lazy")
-require("user.options")
-require("user.keymaps")
-require("user.autocmds")
+require("config.autocmds")
+require("config.options")
+require("config.keymaps")
+require("config.lazy")
 
 vim.cmd("colorscheme gruvbox")
