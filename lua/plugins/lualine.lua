@@ -16,9 +16,9 @@ return {
         },
       },
       sections = {
-        lualine_c = {
-          require("lsp-progress").progress,
-        },
+        -- lualine_c = {
+        --   require("lsp-progress").progress,
+        -- },
         lualine_x = {
           -- {
           --   require("noice").api.statusline.mode.get,
