@@ -11,7 +11,6 @@ return {
     dashboard = { enabled = true },
     notifier = { enabled = true },
     quickfile = { enabled = true },
-    words = { enabled = true },
     zen = {
       enabled = true,
       toggles = {
