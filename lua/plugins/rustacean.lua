@@ -4,12 +4,11 @@ return {
   ft = { "rust" },
   dependencies = {
     "williamboman/mason.nvim",
-    "saghen/blink.cmp",
   },
   opts = {
     server = {
       on_attach = function(_, bufnr)
-        vim.keymap.set("n", "<leader>cR", function()
+        vim.keymap.set("n", "<leader>la", function()
           vim.cmd.RustLsp("codeAction")
         end, { desc = "Code Action", buffer = bufnr })
         vim.keymap.set("n", "<leader>dr", function()
@@ -68,7 +67,13 @@ return {
     opts.dap = {
       adapter = require("rustaceanvim.config").get_codelldb_adapter(codelldb, library_path),
     }
-    vim.g.rustaceanvim = vim.tbl_deep_extend("keep", vim.g.rustaceanvim or {}, opts or {})
+    vim.g.rustaceanvim = {
+      tools = {
+        float_win_config = {
+          border = "single",
+        },
+      },
+    }
     if vim.fn.executable("rust-analyzer") == 0 then
       vim.notify(
         "**rust-analyzer** not found in PATH, please install it.\nhttps://rust-analyzer.github.io/",

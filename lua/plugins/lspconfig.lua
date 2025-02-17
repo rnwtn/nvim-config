@@ -9,11 +9,12 @@ return {
     "saghen/blink.cmp",
   },
   config = function()
+    ---@diagnostic disable-next-line: unused-local
     local function on_attach(client, bufnr)
-      local clients_without_formatting = { "ts_ls", "lua_ls" }
-      if vim.tbl_contains(clients_without_formatting, client.name) then
-        client.server_capabilities.documentFormattingProvider = false
-      end
+      -- local clients_without_formatting = { "ts_ls", "lua_ls" }
+      -- if vim.tbl_contains(clients_without_formatting, client.name) then
+      --   client.server_capabilities.documentFormattingProvider = false
+      -- end
     end
 
     local lspconfig = require("lspconfig")
