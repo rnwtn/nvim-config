@@ -23,6 +23,7 @@ return {
         require("none-ls.code_actions.eslint_d"),
         formatting.prettier.with({ extra_filetypes = { "toml" } }),
         formatting.stylua,
+        formatting.gdformat,
       },
     })
   end,
