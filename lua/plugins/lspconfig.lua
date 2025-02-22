@@ -11,7 +11,7 @@ return {
   config = function()
     ---@diagnostic disable-next-line: unused-local
     local function on_attach(client, bufnr)
-      -- vim.notify("LSP Connected")
+      vim.notify("LSP Connected")
     end
 
     local lspconfig = require("lspconfig")
