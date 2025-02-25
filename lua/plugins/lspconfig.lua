@@ -23,7 +23,7 @@ return {
       -- and will be called for each installed server that doesn't have
       -- a dedicated handler.
       function(server_name) -- default handler (optional)
-        require("lspconfig")[server_name].setup({
+        lspconfig[server_name].setup({
           capabilities = capabilities,
         })
       end,
@@ -154,7 +154,8 @@ return {
     { "<leader>lr", ":lua vim.lsp.buf.rename()<CR>", desc = "LSP symbol rename" },
     { "<leader>ls", ":lua vim.lsp.buf.signature_help()<CR>", desc = "LSP signature help" },
     { "<leader>lk", ":lua vim.lsp.buf.signature_help()<CR>", desc = "LSP signature help" },
-    { "<leader>ld", ":lua vim.diagnostic.open_float()<CR>", desc = "Open diagnostics" },
+    { "<leader>ld", ":lua vim.diagnostic.open_float()<CR>", desc = "LSP line diagnostics" },
+    { "<leader>lD", ":FzfLua diagnostics_workspace<CR>", desc = "LSP Workspace diagnostics" },
     { "<leader>lq", ":lua vim.diagnostic.setloclist()<CR>", desc = "Quickfix diagnostics" },
     { "<leader>la", ":FzfLua lsp_code_actions<CR>", desc = "LSP code actions" },
     { "<leader>ltl", ":DiagnosticsToggleVirtualText<CR>", desc = "LSP toggle inline diagnostics" },
