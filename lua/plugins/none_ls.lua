@@ -24,6 +24,7 @@ return {
         formatting.prettier.with({ extra_filetypes = { "toml" } }),
         formatting.stylua,
         formatting.gdformat,
+        formatting.csharpier,
       },
     })
   end,
