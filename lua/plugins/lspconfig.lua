@@ -128,6 +128,17 @@ return {
     vim.diagnostic.config({
       float = { border = "single" },
     })
+
+    -- Command to toggle inline diagnostics
+    vim.api.nvim_create_user_command("DiagnosticsToggleVirtualText", function()
+      local current_value = vim.diagnostic.config().virtual_text
+      vim.diagnostic.config({ virtual_text = not current_value })
+    end, {})
+
+    vim.api.nvim_create_user_command("DiagnosticsToggle", function()
+      local current_value = vim.diagnostic.is_enabled()
+      vim.diagnostic.enable(not current_value)
+    end, {})
   end,
   keys = {
     { "<leader>li", ":LspInfo<CR>", desc = "LSP information" },
@@ -138,6 +149,8 @@ return {
     { "<leader>ld", ":lua vim.diagnostic.open_float()<CR>", desc = "Open diagnostics" },
     { "<leader>lq", ":lua vim.diagnostic.setloclist()<CR>", desc = "Quickfix diagnostics" },
     { "<leader>la", ":FzfLua lsp_code_actions<CR>", desc = "LSP code actions" },
+    {"<leader>ltl", ":DiagnosticsToggleVirtualText<CR>", desc = "LSP toggle inline diagnostics"},
+    {"<leader>ltd", ":DiagnosticsToggle<CR>", desc = "LSP toggle diagnostics"},
     { "K", ":lua vim.lsp.buf.hover()<CR>", desc = "LSP Hover" },
     { "gD", ":lua vim.lsp.buf.declaration()<CR>", desc = "LSP goto declaration" },
     { "gd", ":FzfLua lsp_definitions<cr>", desc = "LSP goto definition" },
