@@ -11,3 +11,6 @@ vim.lsp.start({
     vim.notify(err, vim.log.levels.ERROR)
   end,
 })
+
+-- tabs are rendered as 4 spaces
+vim.opt.tabstop = 4
