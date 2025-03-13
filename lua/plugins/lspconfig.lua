@@ -99,7 +99,7 @@ return {
           settings = {
             tailwindCSS = {
               experimental = {
-                classRegex = { { "tv\\(([^;]*)\\);", "'([^']*)'" } },
+                classRegex = { { "tv\\(([^)]*)\\)", "{?\\s?[\\w].*:\\s*?[\"'`]([^\"'`]*).*?,?\\s?}?" } },
               },
               includeLanguages = {
                 svelte = "html",
