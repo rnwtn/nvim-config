@@ -4,6 +4,7 @@ return {
   lazy = false,
   opts = {
     bigfile = { enabled = true },
+    indent = { enabled = false },
     dashboard = { enabled = true },
     notifier = { enabled = true },
     quickfile = { enabled = true },
