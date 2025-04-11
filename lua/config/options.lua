@@ -29,6 +29,7 @@ vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 vim.opt.foldenable = true
 vim.opt.laststatus = 3
+vim.opt.winborder = "single"
 -- vim.opt.exrc = true
 -- vim.opt.mouse = ""
 -- vim.opt.pumblend = 0

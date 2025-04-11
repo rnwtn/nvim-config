@@ -10,9 +10,9 @@ return {
     palette_overrides = {
       dark0 = "#171819",
       dark1 = "#282828",
-      dark2 = "#3c3836",
-      dark3 = "#504945",
-      dark4 = "#665c54",
+      dark2 = "#282828",
+      dark3 = "#282828",
+      dark4 = "#282828",
     },
   },
 }
