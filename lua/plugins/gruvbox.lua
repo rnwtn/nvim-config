@@ -1,3 +1,14 @@
+local theme = "dark"
+local function toggle_light_dark()
+  if theme == "dark" then
+    theme = "light"
+  else
+    theme = "dark"
+  end
+  vim.opt.background = theme
+  vim.cmd("colorscheme gruvbox")
+end
+
 return {
   "ellisonleao/gruvbox.nvim",
   priority = 1000,
@@ -15,4 +26,7 @@ return {
       dark4 = "#282828",
     },
   },
+  keys = {
+    { "<leader>tt", toggle_light_dark, desc = "Theme toggle light/dark mode" },
+  }
 }
