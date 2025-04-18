@@ -20,12 +20,12 @@ return {
         auto_show = true,
         auto_show_delay_ms = 0,
         window = {
-          border = "single",
+          -- border = "single",
         },
       },
-      menu = { border = "single" },
+      -- menu = { border = "single" },
     },
-    signature = { window = { border = "single" } },
+    -- signature = { window = { border = "single" } },
     appearance = {
       use_nvim_cmp_as_default = true,
       nerd_font_variant = "mono",
