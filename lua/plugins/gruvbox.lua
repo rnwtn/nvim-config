@@ -17,7 +17,7 @@ return {
     -- overrides = {
     --   Pmenu = { bg = "NONE" },
     -- },
-    -- invert_selection = true,
+    invert_selection = true,
     palette_overrides = {
       dark0 = "#171819",
       dark1 = "#282828",
