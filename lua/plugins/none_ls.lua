@@ -25,6 +25,7 @@ return {
         formatting.stylua,
         formatting.gdformat,
         formatting.csharpier,
+        formatting.black,
       },
     })
   end,
