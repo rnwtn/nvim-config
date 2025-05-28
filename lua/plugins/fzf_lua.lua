@@ -20,7 +20,8 @@ return {
   keys = {
     { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "find files" },
     { "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "find open buffers" },
-    { "<leader>fg", "<cmd>FzfLua grep_visual<cr>", desc = "live grep" },
+    { "<leader>fg", "<cmd>FzfLua live_grep<cr>", desc = "live grep" },
+    { "<leader>fg", "<cmd>FzfLua grep_visual<cr>", desc = "grep visual selection", mode = {"v"}},
     { "<leader>fw", "<cmd>FzfLua grep_cword<cr>", desc = "grep word under cursor" },
     { "<leader>fW", "<cmd>FzfLua grep_cWORD<cr>", desc = "grep WORD under cursor" },
     { "<leader>fc", "<cmd>FzfLua colorschemes<cr>", desc = "change colorscheme" },
