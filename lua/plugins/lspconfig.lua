@@ -162,7 +162,7 @@ return {
     { "<leader>ltd", ":DiagnosticsToggle<CR>", desc = "LSP toggle diagnostics" },
     {
       "<leader>lf",
-      ":lua vim.lsp.buf.format()<CR>",
+      ":lua vim.lsp.buf.format({ timeout_ms = 2000 })<CR>",
       desc = "LSP format",
       mode = { "n" },
     },
