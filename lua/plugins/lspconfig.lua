@@ -2,8 +2,8 @@ return {
   "neovim/nvim-lspconfig",
   event = "VimEnter",
   dependencies = {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason.nvim",
+    "mason-org/mason-lspconfig.nvim",
     "ibhagwan/fzf-lua",
     "b0o/schemastore.nvim",
     "saghen/blink.cmp",
@@ -14,111 +14,195 @@ return {
       vim.notify("LSP Connected")
     end
 
-    local lspconfig = require("lspconfig")
     local capabilities = require("blink.cmp").get_lsp_capabilities()
     require("mason").setup()
     require("mason-lspconfig").setup()
-    require("mason-lspconfig").setup_handlers({
-      -- The first entry (without a key) will be the default handler
-      -- and will be called for each installed server that doesn't have
-      -- a dedicated handler.
-      function(server_name) -- default handler (optional)
-        lspconfig[server_name].setup({
-          capabilities = capabilities,
-        })
-      end,
-      -- Next, you can provide a dedicated handler for specific servers.
-      -- For example, a handler override for the `rust_analyzer`:
-      ["rust_analyzer"] = function() end, -- Don't setup for rust_analyzer
-      ["lua_ls"] = function()
-        lspconfig.lua_ls.setup({
-          capabilities = capabilities,
-          on_attach = on_attach,
-          settings = {
-            formatting = false,
-            Lua = {
-              runtime = {
-                version = "LuaJIT",
-              },
-              diagnostics = {
-                globals = { "vim" },
-              },
-              workspace = {
-                library = {
-                  vim.env.VIMRUNTIME,
-                },
-              },
-            },
-          },
-        })
-      end,
-      ["jsonls"] = function()
-        lspconfig.jsonls.setup({
-          capabilities = capabilities,
-          on_attach = on_attach,
-          settings = {
-            json = {
-              schemas = require("schemastore").json.schemas(),
-            },
-          },
-          setup = {
-            commands = {
-              Format = {
-                function()
-                  vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line("$"), 0 })
-                end,
-              },
-            },
-          },
-        })
-      end,
-      ["ts_ls"] = function()
-        lspconfig.ts_ls.setup({
-          capabilities = capabilities,
-          on_attach = on_attach,
-          settings = {
-            formatting = false,
-          },
-        })
-      end,
-      ["tailwindcss"] = function()
-        lspconfig.tailwindcss.setup({
-          capabilities = capabilities,
-          on_attach = on_attach,
-          filetypes = {
-            "html",
-            "css",
-            "scss",
-            "javascript",
-            "javascriptreact",
-            "typescript",
-            "typescriptreact",
-            "svelte",
-            "vue",
-          },
-          settings = {
-            tailwindCSS = {
-              experimental = {
-                classRegex = { { "tv\\(([^)]*)\\)", "{?\\s?[\\w].*:\\s*?[\"'`]([^\"'`]*).*?,?\\s?}?" } },
-              },
-              includeLanguages = {
-                svelte = "html",
-              },
-              lint = {
-                cssConflict = "warning",
-                invalidApply = "error",
-                invalidConfigPath = "error",
-                invalidScreen = "error",
-                invalidTailwindDirective = "error",
-                invalidVariant = "error",
-                recommendedVariantOrder = "warning",
-              },
-              validate = true,
-            },
-          },
-        })
-      end,
+
+    vim.lsp.config("*", {
+      capabilities = capabilities,
     })
+    vim.lsp.config("lua_ls", {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = {
+        formatting = false,
+        Lua = {
+          runtime = {
+            version = "LuaJIT",
+          },
+          diagnostics = {
+            globals = { "vim" },
+          },
+          workspace = {
+            library = {
+              vim.env.VIMRUNTIME,
+            },
+          },
+        },
+      },
+    })
+    vim.lsp.config("jsonls", {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = {
+        json = {
+          schemas = require("schemastore").json.schemas(),
+        },
+      },
+      setup = {
+        commands = {
+          Format = {
+            function()
+              vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line("$"), 0 })
+            end,
+          },
+        },
+      },
+    })
+    vim.lsp.config("ts_ls", {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = {
+        formatting = false,
+      },
+    })
+    vim.lsp.config("tailwindcss", {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      filetypes = {
+        "html",
+        "css",
+        "scss",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "svelte",
+        "vue",
+      },
+      settings = {
+        tailwindCSS = {
+          experimental = {
+            classRegex = { { "tv\\(([^)]*)\\)", "{?\\s?[\\w].*:\\s*?[\"'`]([^\"'`]*).*?,?\\s?}?" } },
+          },
+          includeLanguages = {
+            svelte = "html",
+          },
+          lint = {
+            cssConflict = "warning",
+            invalidApply = "error",
+            invalidConfigPath = "error",
+            invalidScreen = "error",
+            invalidTailwindDirective = "error",
+            invalidVariant = "error",
+            recommendedVariantOrder = "warning",
+          },
+          validate = true,
+        },
+      },
+    })
+
+    -- require("mason-lspconfig").setup_handlers({
+    --   -- The first entry (without a key) will be the default handler
+    --   -- and will be called for each installed server that doesn't have
+    --   -- a dedicated handler.
+    --   function(server_name) -- default handler (optional)
+    --     lspconfig[server_name].setup({
+    --       capabilities = capabilities,
+    --     })
+    --   end,
+    --   -- Next, you can provide a dedicated handler for specific servers.
+    --   -- For example, a handler override for the `rust_analyzer`:
+    --   ["rust_analyzer"] = function() end, -- Don't setup for rust_analyzer
+    --   ["lua_ls"] = function()
+    --     lspconfig.lua_ls.setup({
+    --       capabilities = capabilities,
+    --       on_attach = on_attach,
+    --       settings = {
+    --         formatting = false,
+    --         Lua = {
+    --           runtime = {
+    --             version = "LuaJIT",
+    --           },
+    --           diagnostics = {
+    --             globals = { "vim" },
+    --           },
+    --           workspace = {
+    --             library = {
+    --               vim.env.VIMRUNTIME,
+    --             },
+    --           },
+    --         },
+    --       },
+    --     })
+    --   end,
+    --   ["jsonls"] = function()
+    --     lspconfig.jsonls.setup({
+    --       capabilities = capabilities,
+    --       on_attach = on_attach,
+    --       settings = {
+    --         json = {
+    --           schemas = require("schemastore").json.schemas(),
+    --         },
+    --       },
+    --       setup = {
+    --         commands = {
+    --           Format = {
+    --             function()
+    --               vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line("$"), 0 })
+    --             end,
+    --           },
+    --         },
+    --       },
+    --     })
+    --   end,
+    --   ["ts_ls"] = function()
+    --     lspconfig.ts_ls.setup({
+    --       capabilities = capabilities,
+    --       on_attach = on_attach,
+    --       settings = {
+    --         formatting = false,
+    --       },
+    --     })
+    --   end,
+    --   ["tailwindcss"] = function()
+    --     lspconfig.tailwindcss.setup({
+    --       capabilities = capabilities,
+    --       on_attach = on_attach,
+    --       filetypes = {
+    --         "html",
+    --         "css",
+    --         "scss",
+    --         "javascript",
+    --         "javascriptreact",
+    --         "typescript",
+    --         "typescriptreact",
+    --         "svelte",
+    --         "vue",
+    --       },
+    --       settings = {
+    --         tailwindCSS = {
+    --           experimental = {
+    --             classRegex = { { "tv\\(([^)]*)\\)", "{?\\s?[\\w].*:\\s*?[\"'`]([^\"'`]*).*?,?\\s?}?" } },
+    --           },
+    --           includeLanguages = {
+    --             svelte = "html",
+    --           },
+    --           lint = {
+    --             cssConflict = "warning",
+    --             invalidApply = "error",
+    --             invalidConfigPath = "error",
+    --             invalidScreen = "error",
+    --             invalidTailwindDirective = "error",
+    --             invalidVariant = "error",
+    --             recommendedVariantOrder = "warning",
+    --           },
+    --           validate = true,
+    --         },
+    --       },
+    --     })
+    --   end,
+    -- })
 
     require("lspconfig.ui.windows").default_options.border = "single"
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {

@@ -3,7 +3,7 @@ return {
   version = "^5", -- Recommended
   ft = { "rust" },
   dependencies = {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
   },
   opts = {
     server = {
