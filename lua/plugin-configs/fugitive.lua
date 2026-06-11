@@ -1,6 +1,5 @@
 return {
-  "tpope/vim-fugitive",
-  event = "VimEnter",
+  src = "https://github.com/tpope/vim-fugitive",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     vim.api.nvim_create_autocmd("FileType", {
@@ -20,20 +19,9 @@ return {
         -- vim.cmd "startinsert"
       end,
     })
+    vim.keymap.set("n", "<leader>gs", ":Git<cr>");
+    vim.keymap.set("n", "<leader>gp", ":Git pull<cr>");
+    vim.keymap.set("n", "<leader>gP", ":Git push<cr>");
+    vim.keymap.set("n", "<leader>gc", ":Git commit<cr>");
   end,
-  keys = {
-    -- {
-    --   "<leader>gs",
-    --   function()
-    --     vim.cmd "tabnew"
-    --     vim.cmd "Git"
-    --     vim.cmd ":only"
-    --   end,
-    --   desc = "Git open Vim-Fugitive",
-    -- },
-    { "<leader>gs", ":Git<cr>", desc = "Git open Vim-Fugitive" },
-    { "<leader>gp", ":Git pull<cr>", desc = "Git pull" },
-    { "<leader>gP", ":Git push<cr>", desc = "Git push" },
-    { "<leader>gc", ":Git commit --no-verify<cr>", desc = "Git push" },
-  },
 }

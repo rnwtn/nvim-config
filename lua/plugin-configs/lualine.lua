@@ -1,5 +1,5 @@
 return {
-  "nvim-lualine/lualine.nvim",
+  src = "https://github.com/nvim-lualine/lualine.nvim",
   config = function()
     require("lualine").setup({
       options = {

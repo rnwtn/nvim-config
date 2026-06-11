@@ -205,10 +205,10 @@ return {
     -- })
 
     require("lspconfig.ui.windows").default_options.border = "single"
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-      border = "single",
-      -- title = "hover",
-    })
+    -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    --   border = "single",
+    --   -- title = "hover",
+    -- })
     vim.diagnostic.config({
       float = { border = "single" },
     })
