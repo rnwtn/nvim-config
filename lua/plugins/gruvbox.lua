@@ -27,5 +27,5 @@ return {
   },
   keys = {
     { "<leader>tt", toggle_light_dark, desc = "Theme toggle light/dark mode" },
-  }
+  },
 }

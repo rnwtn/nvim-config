@@ -28,6 +28,7 @@ return {
     },
     notifier = { enabled = true },
     quickfile = { enabled = true },
+    terminal = { enabled = true }, -- replaces toggleterm
     zen = {
       enabled = true,
       toggles = {
@@ -37,6 +38,13 @@ return {
     styles = {
       notification = {
         border = "single",
+      },
+      terminal = {
+        border = "single",
+        keys = {
+          -- keep the global single <Esc> -> normal mode mapping from keymaps.lua
+          term_normal = false,
+        },
       },
     },
   },
@@ -87,7 +95,27 @@ return {
     })
   end,
   keys = {
-    { "<leader>z", ":lua require('snacks').zen()<cr>" },
-    { "<leader>fn", ":lua require('snacks').notifier.show_history()<cr>" },
+    {
+      "<leader>z",
+      function()
+        Snacks.zen()
+      end,
+      desc = "Zen mode",
+    },
+    {
+      "<leader>fn",
+      function()
+        Snacks.notifier.show_history()
+      end,
+      desc = "Notification history",
+    },
+    {
+      "<C-\\>",
+      function()
+        Snacks.terminal.toggle(nil, { win = { position = "float" } })
+      end,
+      mode = { "n", "i", "t" },
+      desc = "Toggle floating terminal",
+    },
   },
 }

@@ -1,53 +1,55 @@
----@diagnostic disable: undefined-doc-name
 return {
   "saghen/blink.cmp",
-  event = "VimEnter",
-  version = "v0.*",
+  version = "1.*",
+  event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
     "rafamadriz/friendly-snippets",
-    "giuxtaposition/blink-cmp-copilot",
-    "zbirenbaum/copilot.lua",
+    "fang2hou/blink-copilot",
+    {
+      "zbirenbaum/copilot.lua",
+      cmd = "Copilot",
+      opts = {
+        -- completions are shown through blink instead
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      },
+    },
   },
+  ---@module 'blink.cmp'
+  ---@type blink.cmp.Config
   opts = {
     keymap = {
       preset = "default",
       ["<C-k>"] = { "select_prev", "fallback" },
       ["<C-j>"] = { "select_next", "fallback" },
-      ["<tab>"] = { "accept", "fallback" },
+      ["<Tab>"] = { "accept", "fallback" },
     },
     completion = {
       documentation = {
         auto_show = true,
         auto_show_delay_ms = 0,
-        window = {
-          -- border = "single",
-        },
       },
-      -- menu = { border = "single" },
     },
-    -- signature = { window = { border = "single" } },
     appearance = {
-      use_nvim_cmp_as_default = true,
       nerd_font_variant = "mono",
     },
     sources = {
-      default = { "lsp", "path", "snippets", "buffer", "copilot" },
+      default = { "lazydev", "lsp", "path", "snippets", "buffer", "copilot" },
       providers = {
+        lazydev = {
+          name = "LazyDev",
+          module = "lazydev.integrations.blink",
+          score_offset = 100,
+        },
         copilot = {
           name = "copilot",
-          module = "blink-cmp-copilot",
+          module = "blink-copilot",
           score_offset = 100,
           async = true,
         },
       },
     },
+    fuzzy = { implementation = "prefer_rust_with_warning" },
   },
   opts_extend = { "sources.default" },
-  config = function(_, opts)
-    require("copilot").setup({
-      suggestion = { enabled = false },
-      panel = { enabled = false },
-    })
-    require("blink.cmp").setup(opts)
-  end,
 }

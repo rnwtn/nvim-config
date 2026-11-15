@@ -1,6 +1,7 @@
+-- Requires a .NET SDK and roslyn-language-server (`:MasonInstall roslyn`).
+-- Razor/CSHTML support is built in now (rzls.nvim is archived).
 return {
   "seblyng/roslyn.nvim",
-  dependencies = { "tris203/rzls.nvim" },
-  ft = "cs",
+  ft = { "cs", "razor" },
   opts = {},
 }

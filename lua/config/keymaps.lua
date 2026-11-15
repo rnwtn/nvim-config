@@ -2,7 +2,7 @@ local opts = { silent = true }
 local keymap = vim.keymap.set
 
 -- clear search highlights with escape
-keymap("n", "<ESC>", ":noh<CR>", opts)
+keymap("n", "<ESC>", "<cmd>nohlsearch<CR>", opts)
 
 -- better navigation for wrapped lines)
 -- keymap("n", "j", "gj", opts)
@@ -70,3 +70,9 @@ keymap("t", "<esc>", "<C-\\><C-n>", opts)
 
 -- Open Lazy
 keymap("n", "<leader>ll", ":Lazy<cr>")
+
+-- Neovim 0.11+ adds default LSP maps under the "gr" prefix (grn, gra, grr, gri, ...).
+-- Remove them so the "gr" -> references mapping in lspconfig.lua fires instantly.
+for _, lhs in ipairs({ "grn", "gra", "grr", "gri", "grt", "grx" }) do
+  pcall(vim.keymap.del, { "n", "x" }, lhs)
+end
