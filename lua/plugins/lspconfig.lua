@@ -31,6 +31,15 @@ return {
       },
     })
 
+    -- Formatting comes from biome/prettier via conform. Turning the capability
+    -- off also keeps ts_ls out of conform's LSP fallback and `gq` (formatexpr).
+    vim.lsp.config("ts_ls", {
+      on_init = function(client)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+      end,
+    })
+
     vim.lsp.config("tailwindcss", {
       filetypes = {
         "html",
@@ -72,6 +81,7 @@ return {
         "ts_ls",
         "tailwindcss",
         "eslint", -- replaces eslint_d code actions from none-ls
+        "biome", -- lint diagnostics; only attaches in projects with a biome config
       },
       automatic_enable = {
         exclude = {
